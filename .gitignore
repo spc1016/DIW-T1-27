@@ -42,3 +42,9 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Spec-Kit / Spec-Driven Development (SDD)
+.specify/
+.agents/
+specs/
+
