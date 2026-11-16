@@ -1,0 +1,22 @@
+<section class="pagina" aria-labelledby="titulo-no-encontrado">
+  <header class="pagina__cabecera">
+    <p class="pagina__etiqueta">{{ cabecera.etiquetaTecnica }}</p>
+    <h1 id="titulo-no-encontrado" class="pagina__titulo">{{ cabecera.titulo }}</h1>
+    <p class="pagina__descripcion">{{ cabecera.subtitulo }}</p>
+  </header>
+
+  <article class="tarjeta tarjeta--cuero no-encontrado__tarjeta">
+    <p class="tarjeta__etiqueta">CONTROL DE RUTA · DESVÍO</p>
+    <h2 class="tarjeta__titulo">Retoma el recorrido oficial desde la portada</h2>
+    <p class="tarjeta__texto">
+      Comprueba la dirección introducida o utiliza los botones de retorno para regresar de forma
+      segura a una sección válida.
+    </p>
+    <div class="pagina__acciones">
+      <a class="boton boton--primario" routerLink="/inicio">Volver a Inicio</a>
+      <button type="button" class="boton boton--crono" (click)="volverAlInicio()">
+        Ir a portada por Router
+      </button>
+    </div>
+  </article>
+</section>

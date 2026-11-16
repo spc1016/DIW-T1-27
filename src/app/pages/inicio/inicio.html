@@ -1,0 +1,40 @@
+<section class="pagina" aria-labelledby="titulo-inicio">
+  <header class="pagina__cabecera">
+    <p class="pagina__etiqueta">{{ cabecera.etiquetaTecnica }}</p>
+    <h1 id="titulo-inicio" class="pagina__titulo">{{ cabecera.titulo }}</h1>
+    <p class="pagina__descripcion">{{ cabecera.subtitulo }}</p>
+  </header>
+
+  <section class="inicio__hero" aria-label="Resumen de estructura">
+    <div class="inicio__hero-contenido">
+      <span class="chip">EDICIÓN INAUGURAL · CLÁSICOS ANTERIORES A 1985</span>
+      <h2 class="inicio__hero-titulo">Estructura Base de Navegación</h2>
+      <p class="inicio__hero-texto">
+        Selecciona cualquier sección para comprobar el enrutamiento entre páginas, subrutas
+        preparadas y diseño base adaptado a móvil, tableta y escritorio.
+      </p>
+      <div class="pagina__acciones">
+        <a class="boton boton--primario" routerLink="/catalogo">Explorar catálogo</a>
+        <a class="boton boton--secundario" routerLink="/itinerario">Ver itinerario</a>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="titulo-accesos">
+    <h2 id="titulo-accesos" class="inicio__subtitulo">Mapa de Secciones Disponibles</h2>
+    <div class="pagina__grid">
+      @for (destino of accesosRapidos(); track destino.id) {
+        <article class="tarjeta inicio__tarjeta">
+          <div>
+            <p class="tarjeta__etiqueta">MÓDULO 0{{ destino.id }}</p>
+            <h3 class="tarjeta__titulo">{{ destino.etiqueta }}</h3>
+            <p class="tarjeta__texto">{{ destino.descripcion }}</p>
+          </div>
+          <a class="boton boton--crono" [routerLink]="destino.ruta">
+            Ir a {{ destino.etiqueta }}
+          </a>
+        </article>
+      }
+    </div>
+  </section>
+</section>

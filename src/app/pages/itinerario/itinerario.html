@@ -1,0 +1,28 @@
+<section class="pagina" aria-labelledby="titulo-itinerario">
+  <header class="pagina__cabecera">
+    <p class="pagina__etiqueta">{{ cabecera.etiquetaTecnica }}</p>
+    <h1 id="titulo-itinerario" class="pagina__titulo">{{ cabecera.titulo }}</h1>
+    <p class="pagina__descripcion">{{ cabecera.subtitulo }}</p>
+  </header>
+
+  <nav class="itinerario__subnav" aria-label="Subsecciones del itinerario">
+    @for (sub of subEnlaces(); track sub.id) {
+      <a
+        class="itinerario__pestana"
+        [routerLink]="sub.ruta"
+        routerLinkActive="activo"
+        ariaCurrentWhenActive="page"
+      >
+        {{ sub.etiqueta }}
+      </a>
+    }
+  </nav>
+
+  <div class="itinerario__contenido">
+    <router-outlet />
+  </div>
+
+  <div class="pagina__acciones">
+    <a class="boton boton--secundario" routerLink="/inicio">Volver a Inicio</a>
+  </div>
+</section>

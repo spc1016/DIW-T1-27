@@ -1,0 +1,31 @@
+<section class="pagina" aria-labelledby="titulo-catalogo">
+  <header class="pagina__cabecera">
+    <p class="pagina__etiqueta">{{ cabecera.etiquetaTecnica }}</p>
+    <h1 id="titulo-catalogo" class="pagina__titulo">{{ cabecera.titulo }}</h1>
+    <p class="pagina__descripcion">{{ cabecera.subtitulo }}</p>
+  </header>
+
+  <div class="pagina__grid">
+    @for (vehiculo of muestras; track vehiculo.id) {
+      <article class="tarjeta catalogo__tarjeta">
+        <div>
+          <p class="tarjeta__etiqueta">{{ vehiculo.categoria }}</p>
+          <h2 class="tarjeta__titulo">{{ vehiculo.nombre }}</h2>
+          <p class="tarjeta__texto">{{ vehiculo.resumen }}</p>
+        </div>
+        <div class="catalogo__acciones">
+          <a class="boton boton--primario" [routerLink]="['/catalogo', vehiculo.id]">
+            Ver ficha #{{ vehiculo.id }}
+          </a>
+          <button type="button" class="boton boton--crono" (click)="abrirDetalle(vehiculo.id)">
+            Acceso directo
+          </button>
+        </div>
+      </article>
+    }
+  </div>
+
+  <div class="pagina__acciones">
+    <a class="boton boton--secundario" routerLink="/inicio">Volver a Inicio</a>
+  </div>
+</section>

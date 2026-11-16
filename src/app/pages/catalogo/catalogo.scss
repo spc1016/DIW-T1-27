@@ -1,0 +1,16 @@
+@use 'variables' as *;
+
+.catalogo__tarjeta {
+  grid-column: span 4;
+
+  @media (min-width: $bp-desktop) {
+    grid-column: span 6;
+  }
+}
+
+.catalogo__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-sm;
+  margin-top: $space-sm;
+}

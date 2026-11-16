@@ -1,0 +1,59 @@
+@use 'variables' as *;
+
+.guia__bloque {
+  margin-bottom: $space-xl;
+}
+
+.guia__subtitulo {
+  margin: 0 0 $space-md;
+  font-family: $font-display;
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: $color-dial-charcoal;
+}
+
+.guia__color-tarjeta {
+  grid-column: span 4;
+
+  @media (min-width: $bp-desktop) {
+    grid-column: span 4;
+  }
+}
+
+.guia__swatch {
+  width: 100%;
+  height: 3.5rem;
+  border-radius: $radius-default;
+  border: $border-chamfer;
+}
+
+.guia__panel {
+  grid-column: span 4;
+
+  @media (min-width: $bp-desktop) {
+    grid-column: span 6;
+  }
+}
+
+.guia__display {
+  margin: 0;
+  font-family: $font-display;
+  font-size: 1.5rem;
+  color: $color-primary;
+}
+
+.guia__mono {
+  margin: 0;
+  font-family: $font-mono;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: $color-secondary;
+}
+
+.guia__controles {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $space-sm;
+}

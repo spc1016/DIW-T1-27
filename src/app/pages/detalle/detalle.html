@@ -1,0 +1,37 @@
+<section class="pagina" aria-labelledby="titulo-detalle">
+  <header class="pagina__cabecera">
+    <p class="pagina__etiqueta">{{ cabecera.etiquetaTecnica }}</p>
+    <h1 id="titulo-detalle" class="pagina__titulo">{{ cabecera.titulo }}</h1>
+    <p class="pagina__descripcion">{{ cabecera.subtitulo }}</p>
+  </header>
+
+  @if (numeroId(); as idValido) {
+    <article class="tarjeta detalle__tarjeta">
+      <p class="tarjeta__etiqueta">PARÁMETRO DE RUTA VERIFICADO</p>
+      <h2 class="tarjeta__titulo">{{ tituloFicha() }}</h2>
+      <p class="tarjeta__texto">
+        Este contenedor esqueleto recibirá próximamente la ficha histórica completa (año, categoría,
+        potencia e historial) para el vehículo con identificador {{ idValido }}.
+      </p>
+      <div class="pagina__acciones">
+        <a class="boton boton--primario" routerLink="/catalogo">Volver al Catálogo</a>
+        <button type="button" class="boton boton--crono" (click)="volverAlCatalogo()">
+          Regresar por Router
+        </button>
+      </div>
+    </article>
+  } @else {
+    <article class="tarjeta tarjeta--cuero detalle__tarjeta">
+      <p class="tarjeta__etiqueta">IDENTIFICADOR FUERA DE FORMATO</p>
+      <h2 class="tarjeta__titulo">{{ tituloFicha() }}</h2>
+      <p class="tarjeta__texto">
+        El identificador proporcionado en la URL no corresponde a un dorsal numérico válido en esta
+        vista previa.
+      </p>
+      <div class="pagina__acciones">
+        <a class="boton boton--primario" routerLink="/catalogo">Volver al Catálogo</a>
+        <a class="boton boton--secundario" routerLink="/inicio">Ir a Inicio</a>
+      </div>
+    </article>
+  }
+</section>

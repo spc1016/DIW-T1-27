@@ -1,0 +1,47 @@
+<section class="pagina" aria-labelledby="titulo-guia">
+  <header class="pagina__cabecera">
+    <p class="pagina__etiqueta">{{ cabecera.etiquetaTecnica }}</p>
+    <h1 id="titulo-guia" class="pagina__titulo">{{ cabecera.titulo }}</h1>
+    <p class="pagina__descripcion">{{ cabecera.subtitulo }}</p>
+  </header>
+
+  <section class="guia__bloque" aria-labelledby="titulo-paleta">
+    <h2 id="titulo-paleta" class="guia__subtitulo">Paleta Base de Marca</h2>
+    <div class="pagina__grid">
+      @for (muestra of paleta; track muestra.token) {
+        <article class="tarjeta guia__color-tarjeta">
+          <div class="guia__swatch" [style.background-color]="muestra.hex" aria-hidden="true"></div>
+          <p class="tarjeta__etiqueta">{{ muestra.hex }} · {{ muestra.token }}</p>
+          <h3 class="tarjeta__titulo">{{ muestra.nombre }}</h3>
+          <p class="tarjeta__texto">{{ muestra.uso }}</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="guia__bloque" aria-labelledby="titulo-tipografia">
+    <h2 id="titulo-tipografia" class="guia__subtitulo">Jerarquía Tipográfica y Controles Base</h2>
+    <div class="pagina__grid">
+      <article class="tarjeta guia__panel">
+        <p class="tarjeta__etiqueta">TIPOGRAFÍA</p>
+        <h3 class="guia__display">Playfair Display · Titulares Editoriales</h3>
+        <p class="tarjeta__texto">
+          Chivo · Texto operativo legible en fichas técnicas, descripciones e itinerarios.
+        </p>
+        <p class="guia__mono">SPACE MONO · CRONOMETRAJE 00:42:18 · ETIQUETAS TÉCNICAS</p>
+      </article>
+
+      <article class="tarjeta tarjeta--cuero guia__panel">
+        <p class="tarjeta__etiqueta">BOTONES Y ETIQUETAS</p>
+        <div class="guia__controles">
+          <span class="chip">Rally Regularidad</span>
+          <div class="pagina__acciones">
+            <a class="boton boton--primario" routerLink="/inicio">Primario Green</a>
+            <a class="boton boton--secundario" routerLink="/catalogo">Secundario Leather</a>
+            <a class="boton boton--crono" routerLink="/itinerario">Pulsador Crono</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</section>

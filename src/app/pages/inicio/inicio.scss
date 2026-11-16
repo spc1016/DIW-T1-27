@@ -1,0 +1,48 @@
+@use 'variables' as *;
+
+.inicio__hero {
+  margin-bottom: $space-xl;
+  padding: $space-lg;
+  background-color: $color-parchment-dark;
+  border: $border-chamfer;
+  border-left: 4px solid $color-primary-container;
+  border-radius: $radius-default;
+  box-shadow: $shadow-card;
+}
+
+.inicio__hero-contenido {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $space-sm;
+}
+
+.inicio__hero-titulo {
+  margin: $space-xs 0 0;
+  font-family: $font-display;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: $color-primary;
+}
+
+.inicio__hero-texto {
+  margin: 0;
+  max-width: 64ch;
+  color: $color-on-surface-variant;
+}
+
+.inicio__subtitulo {
+  margin: 0 0 $space-md;
+  font-family: $font-display;
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: $color-dial-charcoal;
+}
+
+.inicio__tarjeta {
+  grid-column: span 4;
+
+  @media (min-width: $bp-desktop) {
+    grid-column: span 6;
+  }
+}

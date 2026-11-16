@@ -1,0 +1,39 @@
+@use 'variables' as *;
+
+.itinerario__subnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-sm;
+  margin-bottom: $space-lg;
+}
+
+.itinerario__pestana {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: $space-xs $space-md;
+  border: $border-chamfer;
+  border-radius: $radius-default;
+  background-color: $color-surface-container-lowest;
+  color: $color-primary;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $color-parchment-dark;
+  }
+
+  &.activo {
+    background-color: $color-primary-container;
+    border-color: $color-primary-enamel-border;
+    color: $color-on-primary;
+  }
+}
+
+.itinerario__contenido {
+  max-width: 52rem;
+}
