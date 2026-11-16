@@ -12,28 +12,32 @@
   align-items: center;
   min-height: 48px;
   padding: $space-xs $space-md;
-  border: $border-chamfer;
+  border: 1px solid $color-chrome-dark;
   border-radius: $radius-default;
-  background-color: $color-surface-container-lowest;
-  color: $color-primary;
+  background-color: $color-surface-container-low;
+  color: $color-on-surface;
   font-family: $font-mono;
-  font-size: 0.75rem;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
+  transition:
+    background-color $duration-mechanical $ease-mechanical,
+    color $duration-mechanical $ease-mechanical;
 
   &:hover {
-    background-color: $color-parchment-dark;
+    background-color: $color-surface-container;
   }
 
   &.activo {
-    background-color: $color-primary-container;
-    border-color: $color-primary-enamel-border;
-    color: $color-on-primary;
+    background-color: $color-secondary;
+    border-color: $color-secondary-border;
+    box-shadow: $shadow-leather-stitch;
+    color: $color-on-secondary;
   }
 }
 
 .itinerario__contenido {
-  max-width: 52rem;
+  width: 100%;
 }

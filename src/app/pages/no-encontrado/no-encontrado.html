@@ -5,18 +5,32 @@
     <p class="pagina__descripcion">{{ cabecera.subtitulo }}</p>
   </header>
 
-  <article class="tarjeta tarjeta--cuero no-encontrado__tarjeta">
-    <p class="tarjeta__etiqueta">CONTROL DE RUTA · DESVÍO</p>
-    <h2 class="tarjeta__titulo">Retoma el recorrido oficial desde la portada</h2>
-    <p class="tarjeta__texto">
-      Comprueba la dirección introducida o utiliza los botones de retorno para regresar de forma
-      segura a una sección válida.
-    </p>
-    <div class="pagina__acciones">
-      <a class="boton boton--primario" routerLink="/inicio">Volver a Inicio</a>
-      <button type="button" class="boton boton--crono" (click)="volverAlInicio()">
-        Ir a portada por Router
-      </button>
+  <article class="chrome-bezel no-encontrado__tarjeta">
+    <div class="placa-dorsal enamel-bordeaux no-encontrado__placa">
+      <span class="placa-dorsal__remache placa-dorsal__remache--tl" aria-hidden="true"></span>
+      <span class="placa-dorsal__remache placa-dorsal__remache--tr" aria-hidden="true"></span>
+      <span class="placa-dorsal__remache placa-dorsal__remache--bl" aria-hidden="true"></span>
+      <span class="placa-dorsal__remache placa-dorsal__remache--br" aria-hidden="true"></span>
+      <p class="placa-dorsal__evento">CONTROL HORARIO FUERA DE RUTA</p>
+      <p class="placa-dorsal__numero">404</p>
+    </div>
+
+    <div class="no-encontrado__cuerpo">
+      <div class="no-encontrado__estado">
+        <span class="testigo testigo--burdeos" aria-hidden="true"></span>
+        <span class="etiqueta-grabada">DESVÍO DETECTADO · SECTOR NO HOMOLOGADO</span>
+      </div>
+      <h2 class="tarjeta__titulo">Retoma el recorrido oficial desde la portada</h2>
+      <p class="tarjeta__texto">
+        Comprueba la dirección introducida o utiliza los pulsadores de retorno para regresar de
+        forma segura a una sección válida del rally.
+      </p>
+      <div class="pagina__acciones">
+        <a class="pulsador pulsador--primario" routerLink="/inicio">Volver a Inicio</a>
+        <button type="button" class="pulsador pulsador--burdeos" (click)="volverAlInicio()">
+          Ir a Portada por Router
+        </button>
+      </div>
     </div>
   </article>
 </section>

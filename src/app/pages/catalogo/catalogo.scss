@@ -2,10 +2,12 @@
 
 .catalogo__tarjeta {
   grid-column: span 4;
+}
 
-  @media (min-width: $bp-desktop) {
-    grid-column: span 6;
-  }
+.catalogo__cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
 }
 
 .catalogo__acciones {

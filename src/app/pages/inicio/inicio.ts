@@ -12,10 +12,10 @@ export class Inicio {
   private readonly navegacionService = inject(NavegacionService);
 
   protected readonly cabecera: PageShellMeta = {
-    etiquetaTecnica: 'SECCIÓN 01 · PORTADA OFICIAL',
+    etiquetaTecnica: 'SECCIÓN 01 · PORTADA CONCOURS EDITION',
     titulo: 'I Rally & Concentración Histórica Classic Motor',
     subtitulo:
-      'Esqueleto inicial del portal oficial. Desde aquí puedes recorrer las secciones principales del evento mientras preparamos cada módulo en detalle.',
+      'Tablero central y rutómetro base del evento. Navega por cada módulo desde la cabina de mando respetando la precisión clásica de regularidad.',
   };
 
   protected readonly accesosRapidos = computed(() =>

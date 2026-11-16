@@ -1,5 +1,61 @@
 @use 'variables' as *;
 
-.inscripcion__aviso {
-  max-width: 48rem;
+.inscripcion__carpeta {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  padding: $space-lg;
+}
+
+.inscripcion__carpeta-etiqueta {
+  color: $color-secondary-container;
+}
+
+.inscripcion__carpeta-titulo {
+  margin: 0;
+  font-family: $font-display;
+  font-size: 22px;
+  font-weight: 600;
+  color: $color-on-secondary;
+}
+
+.inscripcion__carpeta-texto {
+  margin: 0;
+  font-size: 14px;
+  line-height: 22px;
+  color: $color-secondary-container;
+}
+
+.inscripcion__estado {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-xs;
+  margin-top: auto;
+  padding-top: $space-sm;
+}
+
+.inscripcion__hoja {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+  padding: $space-lg;
+}
+
+.inscripcion__requisitos {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $color-outline-variant;
+  background-color: $color-surface-container-low;
+}
+
+.inscripcion__fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $space-sm $space-md;
+  border-bottom: 1px solid $color-outline-variant;
+
+  &:last-child {
+    border-bottom: none;
+  }
 }

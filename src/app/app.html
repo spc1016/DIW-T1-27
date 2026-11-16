@@ -3,10 +3,17 @@
 <header class="cabecera">
   <div class="cabecera__contenedor">
     <a class="cabecera__marca" routerLink="/inicio" (click)="cerrarMenu()">
-      <span class="cabecera__emblema" aria-hidden="true">CM</span>
+      <span class="cabecera__emblema" aria-hidden="true">
+        <svg class="icono-tecnico" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="13" r="8" />
+          <line x1="12" y1="13" x2="15.5" y2="9.5" />
+          <line x1="10" y1="2.5" x2="14" y2="2.5" />
+          <line x1="12" y1="2.5" x2="12" y2="5" />
+        </svg>
+      </span>
       <span class="cabecera__identidad">
         <span class="cabecera__titulo">Classic Motor Club</span>
-        <span class="cabecera__subtitulo">I Rally &amp; Concentración Histórica</span>
+        <span class="cabecera__subtitulo">I Rally &amp; Concentración Histórica · Concours</span>
       </span>
     </a>
 
@@ -17,7 +24,12 @@
       aria-controls="menu-principal"
       (click)="alternarMenu()"
     >
-      {{ menuAbierto() ? 'Cerrar' : 'Menú' }}
+      <svg class="icono-tecnico" viewBox="0 0 24 24" aria-hidden="true">
+        <line x1="4" y1="7" x2="20" y2="7" />
+        <line x1="4" y1="12" x2="20" y2="12" />
+        <line x1="4" y1="17" x2="20" y2="17" />
+      </svg>
+      <span>{{ menuAbierto() ? 'Cerrar' : 'Menú' }}</span>
     </button>
 
     <nav
@@ -52,9 +64,12 @@
 
 <footer class="pie">
   <div class="pie__contenedor">
-    <p class="pie__texto">
-      I Rally &amp; Concentración Histórica Classic Motor · Estructura base de navegación
-    </p>
+    <div class="pie__estado">
+      <span class="testigo testigo--verde" aria-hidden="true"></span>
+      <p class="pie__texto">
+        SISTEMA CONCOURS V2.0.0 · I RALLY &amp; CONCENTRACIÓN HISTÓRICA CLASSIC MOTOR
+      </p>
+    </div>
     <nav class="pie__nav" aria-label="Navegación rápida del pie">
       <ul class="pie__lista">
         @for (item of enlacesPrincipales(); track item.id) {

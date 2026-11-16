@@ -12,12 +12,8 @@
   top: $space-sm;
   z-index: 100;
   padding: $space-sm $space-md;
-  background-color: $color-warning-brass;
-  color: $color-dial-charcoal;
-  font-family: $font-mono;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-decoration: none;
+  background-color: $color-brass-gold;
+  color: $color-dial-obsidian;
   border-radius: $radius-default;
 
   &:focus {
@@ -25,18 +21,29 @@
   }
 }
 
+.cabecera__salto,
+.cabecera__boton-menu,
+.cabecera__enlace,
+.pie__enlace,
+.pie__texto {
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
 .cabecera {
-  background-color: $color-primary;
-  border-bottom: 3px solid $color-secondary-leather;
+  background: linear-gradient(180deg, $color-primary-top 0%, $color-primary 100%);
+  border-bottom: 4px solid $color-secondary;
+  box-shadow: inset 0 -1px 0 rgba(242, 222, 201, 0.35);
   color: $color-on-primary;
 }
 
-.cabecera__contenedor {
+.cabecera__contenedor,
+.pie__contenedor {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: $space-md;
   max-width: $max-content-width;
   margin-inline: auto;
   padding: $space-sm $margin-mobile;
@@ -48,6 +55,13 @@
   @media (min-width: $bp-desktop) {
     padding: $space-md $margin-desktop;
   }
+}
+
+.cabecera__contenedor {
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-md;
 }
 
 .cabecera__marca {
@@ -63,16 +77,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 40px;
+  height: 40px;
   border-radius: $radius-full;
-  border: 2px solid $color-warning-brass;
-  background-color: $color-primary-container;
-  font-family: $font-mono;
-  font-size: 0.875rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: $color-secondary-fixed;
+  border: 2px solid $color-chrome-mid;
+  background: radial-gradient(circle at 50% 30%, $color-dial-center 0%, $color-dial-obsidian 100%);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+  color: $color-brass-gold;
 }
 
 .cabecera__identidad {
@@ -82,15 +93,17 @@
 
 .cabecera__titulo {
   font-family: $font-display;
-  font-size: 1.125rem;
+  font-size: 20px;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 24px;
 }
 
 .cabecera__subtitulo {
   font-family: $font-mono;
-  font-size: 0.6875rem;
-  letter-spacing: 0.08em;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 12px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: $color-on-primary-container;
 }
@@ -99,19 +112,19 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: $space-xs;
   min-width: 48px;
   min-height: 48px;
   padding: $space-xs $space-md;
-  border: 1px solid $color-on-primary-container;
+  border: 1px solid $color-chrome-dark;
   border-radius: $radius-default;
-  background-color: $color-primary-container;
-  color: $color-on-primary;
-  font-family: $font-mono;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  background: linear-gradient(180deg, $color-pusher-top 0%, $color-pusher-bottom 100%);
+  color: $color-dial-obsidian;
   cursor: pointer;
+
+  &:active {
+    transform: translateY(1.5px);
+  }
 
   @media (min-width: $bp-tablet) {
     display: none;
@@ -132,20 +145,25 @@
   }
 }
 
-.cabecera__lista {
+.cabecera__lista,
+.pie__lista {
   display: flex;
-  flex-direction: column;
-  gap: $space-xs;
   list-style: none;
   margin: 0;
-  padding: $space-xs 0 0;
+  padding: 0;
+}
+
+.cabecera__lista {
+  flex-direction: column;
+  gap: $space-xs;
+  padding-top: $space-xs;
 
   @media (min-width: $bp-tablet) {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     gap: $space-sm;
-    padding: 0;
+    padding-top: 0;
   }
 }
 
@@ -156,20 +174,12 @@
   padding: $space-xs $space-md;
   border-radius: $radius-default;
   border: 1px solid transparent;
-  color: $color-primary-fixed;
-  font-family: $font-mono;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition:
-    background-color 0.15s ease,
-    border-color 0.15s ease;
+  color: $color-on-primary;
+  transition: background-color $duration-mechanical $ease-mechanical;
 
   @media (min-width: $bp-tablet) {
     min-height: 40px;
-    padding: $space-xs $space-sm;
+    padding: $space-xs 12px;
   }
 
   &:hover {
@@ -178,8 +188,9 @@
   }
 
   &.activo {
-    background-color: $color-secondary-leather;
-    border-color: $color-warning-brass;
+    background-color: $color-secondary;
+    border-color: $color-secondary-border;
+    box-shadow: inset 0 0 0 1px rgba(242, 222, 201, 0.35);
     color: $color-on-secondary;
   }
 }
@@ -189,61 +200,51 @@
 }
 
 .pie {
-  background-color: $color-dial-charcoal;
-  border-top: 2px solid $color-brushed-steel;
-  color: $color-inverse-on-surface;
+  background: radial-gradient(circle at 50% 0%, $color-dial-charcoal 0%, $color-dial-obsidian 100%);
+  border-top: 2px solid $color-chrome-mid;
+  color: $color-on-dial;
 }
 
 .pie__contenedor {
-  display: flex;
   flex-direction: column;
   gap: $space-sm;
-  max-width: $max-content-width;
-  margin-inline: auto;
-  padding: $space-lg $margin-mobile;
+  padding-block: $space-lg;
 
   @media (min-width: $bp-tablet) {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: $space-lg $margin-tablet;
   }
+}
 
-  @media (min-width: $bp-desktop) {
-    padding: $space-lg $margin-desktop;
-  }
+.pie__estado {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-sm;
 }
 
 .pie__texto {
   margin: 0;
-  font-family: $font-mono;
-  font-size: 0.75rem;
-  letter-spacing: 0.06em;
-  color: $color-polished-steel;
+  color: $color-on-dial-muted;
 }
 
 .pie__lista {
-  display: flex;
   flex-wrap: wrap;
   gap: $space-md;
-  list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 .pie__enlace {
   display: inline-flex;
   align-items: center;
   min-height: 48px;
-  color: $color-secondary-fixed;
-  font-size: 0.875rem;
-  text-decoration: none;
+  color: $color-on-dial;
 
   @media (min-width: $bp-tablet) {
     min-height: auto;
   }
 
   &:hover {
+    color: $color-brass-gold;
     text-decoration: underline;
   }
 }

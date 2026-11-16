@@ -1,8 +1,78 @@
-<article class="tarjeta tarjeta--cuero">
-  <p class="tarjeta__etiqueta">SUBRUTA · /itinerario/recorrido</p>
-  <h2 class="tarjeta__titulo">Recorrido y Tramos Cronometrados (Esqueleto)</h2>
-  <p class="tarjeta__texto">
-    Espacio reservado para el detalle de tramos de regularidad, puntos de paso y mapa oficial del
-    recorrido.
-  </p>
+<article class="chrome-bezel recorrido__tarjeta">
+  <div class="recorrido__cabecera">
+    <div>
+      <p class="etiqueta-grabada">SUBRUTA · /ITINERARIO/RECORRIDO</p>
+      <h2 class="tarjeta__titulo">Recorrido y Tramos Cronometrados</h2>
+    </div>
+    <span class="recorrido__estado">
+      <span class="testigo testigo--ambar" aria-hidden="true"></span>
+      <span class="etiqueta-micro">TRAMO ACTIVO TC-02</span>
+    </span>
+  </div>
+
+  <div class="vernier">
+    <div class="vernier__cabecera">
+      <span class="etiqueta-micro">INDICADOR VERNIER DE REFERENCIA</span>
+      <span class="etiqueta-grabada numero-tabular">-0.1s · ADELANTO LEVE</span>
+    </div>
+    <div class="vernier__pista" aria-hidden="true">
+      <div class="vernier__zona-adelanto"></div>
+      <span class="vernier__cero">0.0s</span>
+      <div class="vernier__zona-retraso"></div>
+      <span class="vernier__aguja vernier__aguja--adelanto"></span>
+    </div>
+    <div class="vernier__leyenda">
+      <span>ADELANTO</span>
+      <span>IDEAL</span>
+      <span>RETRASO</span>
+    </div>
+  </div>
+
+  <table class="rutometro" aria-label="Tabla de tramos cronometrados">
+    <thead>
+      <tr>
+        <th>Viñeta</th>
+        <th>Tramo</th>
+        <th>Dist. Total</th>
+        <th>Parcial</th>
+        <th>Media</th>
+        <th>Hora Teórica</th>
+        <th>Desviación</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (tramo of tramos; track tramo.vineta) {
+        <tr [class.rutometro__fila--activa]="tramo.activo">
+          <td class="numero-tabular">
+            <span class="rutometro__etiqueta-movil">VIÑETA</span>
+            {{ tramo.vineta }}
+          </td>
+          <td>
+            <span class="rutometro__etiqueta-movil">TRAMO</span>
+            {{ tramo.tramo }}
+          </td>
+          <td class="numero-tabular">
+            <span class="rutometro__etiqueta-movil">DIST. TOTAL</span>
+            {{ tramo.distTotal }}
+          </td>
+          <td class="numero-tabular">
+            <span class="rutometro__etiqueta-movil">PARCIAL</span>
+            {{ tramo.parcial }}
+          </td>
+          <td class="numero-tabular">
+            <span class="rutometro__etiqueta-movil">MEDIA</span>
+            {{ tramo.media }}
+          </td>
+          <td class="numero-tabular">
+            <span class="rutometro__etiqueta-movil">HORA TEÓRICA</span>
+            {{ tramo.horaTeorica }}
+          </td>
+          <td class="numero-tabular">
+            <span class="rutometro__etiqueta-movil">DESVIACIÓN</span>
+            {{ tramo.desviacion }}
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
 </article>

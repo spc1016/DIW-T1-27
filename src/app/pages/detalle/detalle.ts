@@ -1,6 +1,7 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { PageShellMeta } from '../../navegacion-service';
+import { VehiculoService } from '../../vehiculo-service';
 
 @Component({
   selector: 'app-detalle',
@@ -10,6 +11,7 @@ import { PageShellMeta } from '../../navegacion-service';
 })
 export class Detalle {
   private readonly router = inject(Router);
+  private readonly vehiculoService = inject(VehiculoService);
 
   readonly id = input.required<string>();
 
@@ -17,20 +19,26 @@ export class Detalle {
     etiquetaTecnica: 'FICHA DE VEHÍCULO · RUTA DINÁMICA :ID',
     titulo: 'Detalle del Vehículo Clásico',
     subtitulo:
-      'Vista esqueleto enlazada mediante parámetro de ruta y Signals (withComponentInputBinding).',
+      'Placa identificativa esmaltada y lectura reactiva del parámetro de ruta mediante Signals.',
   };
 
-  protected readonly numeroId = computed(() => {
-    const valor = Number(this.id());
-    return Number.isInteger(valor) && valor > 0 ? valor : null;
+  protected readonly vehiculo = computed(() => {
+    const idNumerico = Number(this.id());
+    if (!Number.isInteger(idNumerico) || idNumerico <= 0) {
+      return undefined;
+    }
+
+    return this.vehiculoService.obtenerPorId(idNumerico);
   });
 
-  protected readonly tituloFicha = computed(() => {
-    const num = this.numeroId();
-    return num !== null
-      ? `Ficha técnica esqueleto · Dorsal #${num}`
-      : `Identificador no numérico recibido: "${this.id()}"`;
+  protected readonly siguienteId = computed(() => {
+    const actual = this.vehiculo()?.id ?? 1;
+    return this.vehiculoService.idSiguiente(actual);
   });
+
+  protected irASiguiente(): void {
+    void this.router.navigate(['/catalogo', this.siguienteId()]);
+  }
 
   protected volverAlCatalogo(): void {
     void this.router.navigateByUrl('/catalogo');

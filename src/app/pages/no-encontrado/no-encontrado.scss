@@ -1,5 +1,25 @@
 @use 'variables' as *;
 
 .no-encontrado__tarjeta {
-  max-width: 44rem;
+  display: grid;
+  gap: $space-lg;
+  max-width: 52rem;
+  padding: $space-lg;
+
+  @media (min-width: $bp-tablet) {
+    grid-template-columns: 220px 1fr;
+    align-items: center;
+  }
+}
+
+.no-encontrado__cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}
+
+.no-encontrado__estado {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-xs;
 }

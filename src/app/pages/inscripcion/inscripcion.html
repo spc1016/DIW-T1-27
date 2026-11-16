@@ -5,16 +5,42 @@
     <p class="pagina__descripcion">{{ cabecera.subtitulo }}</p>
   </header>
 
-  <article class="tarjeta tarjeta--cuero inscripcion__aviso">
-    <p class="tarjeta__etiqueta">ESTADO DEL MÓDULO · ESQUELETO INICIAL</p>
-    <h2 class="tarjeta__titulo">Formulario de Inscripción Pendiente de Siguiente Fase</h2>
-    <p class="tarjeta__texto">
-      Esta página confirma la ruta /inscripcion en el mapa de navegación del sitio. En la próxima
-      iteración se incorporarán los campos reactivos y validaciones reglamentarias.
-    </p>
-    <div class="pagina__acciones">
-      <a class="boton boton--primario" routerLink="/catalogo">Consultar catálogo</a>
-      <a class="boton boton--crono" routerLink="/inicio">Volver a Inicio</a>
-    </div>
-  </article>
+  <div class="pagina__grid">
+    <article class="leather-panel cockpit__secundaria inscripcion__carpeta">
+      <p class="etiqueta-micro inscripcion__carpeta-etiqueta">CARPETA REGLAMENTARIA</p>
+      <h2 class="inscripcion__carpeta-titulo">Documentación de Equipo</h2>
+      <p class="inscripcion__carpeta-texto">
+        Piloto, copiloto y vehículo histórico fabricado antes de 1985 con ficha FIVA o equivalente.
+      </p>
+      <div class="inscripcion__estado">
+        <span class="testigo testigo--ambar" aria-hidden="true"></span>
+        <span class="etiqueta-micro">FORMULARIO EN PRÓXIMA FASE</span>
+      </div>
+    </article>
+
+    <article class="chrome-bezel cockpit__principal inscripcion__hoja">
+      <p class="etiqueta-grabada">HOJA DE VERIFICACIÓN · ESTADO DEL MÓDULO</p>
+      <h2 class="tarjeta__titulo">Formulario de Inscripción Pendiente de Siguiente Fase</h2>
+      <p class="tarjeta__texto">
+        Esta vista confirma la ruta /inscripcion bajo la estética Concours Edition v2.0.0. En la
+        próxima iteración se integrarán los campos reactivos y validaciones reglamentarias.
+      </p>
+
+      <div class="inscripcion__requisitos">
+        <div class="inscripcion__fila">
+          <span class="etiqueta-grabada">CATEGORÍA PERMITIDA</span>
+          <span class="numero-tabular">HASTA 1985</span>
+        </div>
+        <div class="inscripcion__fila">
+          <span class="etiqueta-grabada">CUPOS DE PARQUE</span>
+          <span class="numero-tabular">050 DORSALES</span>
+        </div>
+      </div>
+
+      <div class="pagina__acciones">
+        <a class="pulsador pulsador--primario" routerLink="/catalogo">Consultar Catálogo</a>
+        <a class="pulsador" routerLink="/inicio">Volver a Inicio</a>
+      </div>
+    </article>
+  </div>
 </section>

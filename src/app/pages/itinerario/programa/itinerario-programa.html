@@ -1,8 +1,60 @@
-<article class="tarjeta">
-  <p class="tarjeta__etiqueta">SUBRUTA · /itinerario/programa</p>
-  <h2 class="tarjeta__titulo">Programa Oficial por Jornadas (Esqueleto)</h2>
-  <p class="tarjeta__texto">
-    Espacio reservado para la cronología oficial de verificaciones técnicas, salida protocolaria y
-    entrega de trofeos del rally.
-  </p>
+<article class="chrome-bezel programa__tarjeta">
+  <div class="programa__cabecera">
+    <div>
+      <p class="etiqueta-grabada">SUBRUTA · /ITINERARIO/PROGRAMA</p>
+      <h2 class="tarjeta__titulo">Programa Oficial y Controles Horarios (CH)</h2>
+    </div>
+    <span class="programa__estado">
+      <span class="testigo testigo--verde" aria-hidden="true"></span>
+      <span class="etiqueta-micro">HOJA DE RUTA IMPRESA</span>
+    </span>
+  </div>
+
+  <table class="rutometro" aria-label="Programa oficial por controles horarios">
+    <thead>
+      <tr>
+        <th>Viñeta</th>
+        <th>Actividad / Control</th>
+        <th>Dist. Total</th>
+        <th>Parcial</th>
+        <th>Media</th>
+        <th>Hora Teórica</th>
+        <th>Desviación</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (control of controles; track control.vineta) {
+        <tr [class.rutometro__fila--activa]="control.activo">
+          <td class="numero-tabular">
+            <span class="rutometro__etiqueta-movil">VIÑETA</span>
+            {{ control.vineta }}
+          </td>
+          <td>
+            <span class="rutometro__etiqueta-movil">CONTROL</span>
+            {{ control.tramo }}
+          </td>
+          <td class="numero-tabular">
+            <span class="rutometro__etiqueta-movil">DIST. TOTAL</span>
+            {{ control.distTotal }}
+          </td>
+          <td class="numero-tabular">
+            <span class="rutometro__etiqueta-movil">PARCIAL</span>
+            {{ control.parcial }}
+          </td>
+          <td class="numero-tabular">
+            <span class="rutometro__etiqueta-movil">MEDIA</span>
+            {{ control.media }}
+          </td>
+          <td class="numero-tabular">
+            <span class="rutometro__etiqueta-movil">HORA TEÓRICA</span>
+            {{ control.horaTeorica }}
+          </td>
+          <td class="numero-tabular">
+            <span class="rutometro__etiqueta-movil">DESVIACIÓN</span>
+            {{ control.desviacion }}
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
 </article>

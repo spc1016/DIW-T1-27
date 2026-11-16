@@ -6,41 +6,228 @@
   </header>
 
   <section class="guia__bloque" aria-labelledby="titulo-paleta">
-    <h2 id="titulo-paleta" class="guia__subtitulo">Paleta Base de Marca</h2>
+    <div class="guia__cabecera-bloque">
+      <h2 id="titulo-paleta" class="guia__subtitulo">
+        Sistema Cromático (Proporción 60 / 25 / 10 / 5)
+      </h2>
+      <span class="sello-tecnico">SIN SOMBRAS DIFUSAS · SIN GLASSMORPHISM</span>
+    </div>
     <div class="pagina__grid">
       @for (muestra of paleta; track muestra.token) {
-        <article class="tarjeta guia__color-tarjeta">
+        <article class="chrome-bezel guia__color-tarjeta">
           <div class="guia__swatch" [style.background-color]="muestra.hex" aria-hidden="true"></div>
-          <p class="tarjeta__etiqueta">{{ muestra.hex }} · {{ muestra.token }}</p>
+          <p class="etiqueta-micro">{{ muestra.proporcion }} · {{ muestra.hex }}</p>
           <h3 class="tarjeta__titulo">{{ muestra.nombre }}</h3>
+          <p class="etiqueta-grabada">{{ muestra.token }}</p>
           <p class="tarjeta__texto">{{ muestra.uso }}</p>
         </article>
       }
     </div>
   </section>
 
-  <section class="guia__bloque" aria-labelledby="titulo-tipografia">
-    <h2 id="titulo-tipografia" class="guia__subtitulo">Jerarquía Tipográfica y Controles Base</h2>
+  <section class="guia__bloque" aria-labelledby="titulo-materiales">
+    <h2 id="titulo-materiales" class="guia__subtitulo">Acabados de Materiales Físicos</h2>
     <div class="pagina__grid">
-      <article class="tarjeta guia__panel">
-        <p class="tarjeta__etiqueta">TIPOGRAFÍA</p>
-        <h3 class="guia__display">Playfair Display · Titulares Editoriales</h3>
+      <article class="chrome-bezel guia__material">
+        <p class="etiqueta-grabada">.CHROME-BEZEL</p>
+        <h3 class="tarjeta__titulo">Bisel Cromado Cepillado</h3>
         <p class="tarjeta__texto">
-          Chivo · Texto operativo legible en fichas técnicas, descripciones e itinerarios.
+          Contenedores de instrumentos y fichas principales con doble filete interno.
         </p>
-        <p class="guia__mono">SPACE MONO · CRONOMETRAJE 00:42:18 · ETIQUETAS TÉCNICAS</p>
       </article>
 
-      <article class="tarjeta tarjeta--cuero guia__panel">
-        <p class="tarjeta__etiqueta">BOTONES Y ETIQUETAS</p>
-        <div class="guia__controles">
-          <span class="chip">Rally Regularidad</span>
-          <div class="pagina__acciones">
-            <a class="boton boton--primario" routerLink="/inicio">Primario Green</a>
-            <a class="boton boton--secundario" routerLink="/catalogo">Secundario Leather</a>
-            <a class="boton boton--crono" routerLink="/itinerario">Pulsador Crono</a>
+      <article class="instrument-dial guia__material">
+        <p class="etiqueta-grabada">.INSTRUMENT-DIAL</p>
+        <h3 class="guia__titulo-claro">Esfera Oscura Jaeger</h3>
+        <p class="guia__texto-claro">
+          Módulo de cronometraje negro mate con lectura de alto contraste.
+        </p>
+        <p class="guia__dial-cifra numero-tabular">00:14:08.5</p>
+      </article>
+
+      <article class="leather-panel guia__material">
+        <p class="etiqueta-grabada">.LEATHER-PANEL</p>
+        <h3 class="guia__titulo-claro">Placa de Cuero Cosido</h3>
+        <p class="guia__texto-claro">
+          Doble inset que emula el pespunte de hilo claro paralelo al borde.
+        </p>
+      </article>
+
+      <article class="enamel-green guia__material">
+        <p class="etiqueta-grabada">.ENAMEL-GREEN</p>
+        <h3 class="guia__titulo-claro">Esmalte Verde Carreras</h3>
+        <p class="guia__texto-claro">
+          Cabeceras institucionales, sellos oficiales y controles primarios.
+        </p>
+      </article>
+
+      <article class="enamel-bordeaux guia__material">
+        <p class="etiqueta-grabada">.ENAMEL-BORDEAUX</p>
+        <h3 class="guia__titulo-claro">Esmalte Burdeos Oxblood</h3>
+        <p class="guia__texto-claro">
+          Ediciones Concours, alertas de control horario y penalizaciones.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="guia__bloque" aria-labelledby="titulo-tipografia">
+    <h2 id="titulo-tipografia" class="guia__subtitulo">Jerarquía Tipográfica (10 Niveles)</h2>
+    <div class="chrome-bezel guia__tabla-tipo">
+      @for (escala of escalasTipograficas; track escala.nombre) {
+        <div class="guia__fila-tipo">
+          <div>
+            <p class="etiqueta-grabada">{{ escala.nombre }}</p>
+            <p class="tarjeta__texto">{{ escala.especificacion }}</p>
+          </div>
+          <p [class]="escala.clase">{{ escala.ejemplo }}</p>
+        </div>
+      }
+    </div>
+  </section>
+
+  <section class="guia__bloque" aria-labelledby="titulo-instrumentos">
+    <h2 id="titulo-instrumentos" class="guia__subtitulo">
+      Componentes de Regularidad e Interacción
+    </h2>
+    <div class="pagina__grid">
+      <article class="chrome-bezel guia__panel-mitad">
+        <p class="etiqueta-grabada">PULSADORES MECÁNICOS Y TESTIGOS 8PX</p>
+        <div class="guia__controles-fila">
+          <button type="button" class="pulsador" (click)="alternarTestigo()">
+            Testigo: {{ testigoActivo() ? 'Encendido' : 'Apagado' }}
+          </button>
+          <a class="pulsador pulsador--primario" routerLink="/inicio">Start / Inicio</a>
+          <a class="pulsador pulsador--cuero" routerLink="/itinerario">Cuero / Itinerario</a>
+          <a class="pulsador pulsador--burdeos" routerLink="/catalogo">Burdeos / Catálogo</a>
+          <button type="button" class="pulsador pulsador--corona" aria-label="Pulsador corona">
+            TOP
+          </button>
+        </div>
+        <div class="guia__testigos">
+          <span class="guia__testigo-item">
+            <span
+              class="testigo"
+              [class.testigo--verde]="testigoActivo()"
+              aria-hidden="true"
+            ></span>
+            <span class="etiqueta-micro">CRONO {{ testigoActivo() ? 'ACTIVO' : 'REPOSO' }}</span>
+          </span>
+          <span class="guia__testigo-item">
+            <span class="testigo testigo--ambar" aria-hidden="true"></span>
+            <span class="etiqueta-micro">ADELANTO</span>
+          </span>
+          <span class="guia__testigo-item">
+            <span class="testigo testigo--burdeos" aria-hidden="true"></span>
+            <span class="etiqueta-micro">CONTROL CH</span>
+          </span>
+        </div>
+      </article>
+
+      <article class="chrome-bezel guia__panel-mitad">
+        <p class="etiqueta-grabada">ESCALA VERNIER DE REGULARIDAD</p>
+        <div class="vernier">
+          <div class="vernier__cabecera">
+            <span class="etiqueta-micro">LECTURA DE DESVIACIÓN</span>
+            <span class="etiqueta-grabada numero-tabular">{{ etiquetaVernier() }}</span>
+          </div>
+          <div class="vernier__pista" aria-hidden="true">
+            <div class="vernier__zona-adelanto"></div>
+            <span class="vernier__cero">0.0s</span>
+            <div class="vernier__zona-retraso"></div>
+            <span
+              class="vernier__aguja"
+              [class.vernier__aguja--adelanto]="estadoVernier() === 'adelanto'"
+              [class.vernier__aguja--penalizacion]="estadoVernier() === 'penalizacion'"
+            ></span>
+          </div>
+          <div class="vernier__leyenda">
+            <span>ADELANTO</span>
+            <span>IDEAL</span>
+            <span>RETRASO</span>
           </div>
         </div>
+        <div class="guia__controles-fila">
+          <button type="button" class="pulsador" (click)="cambiarEstadoVernier('adelanto')">
+            Simular Adelanto
+          </button>
+          <button
+            type="button"
+            class="pulsador pulsador--primario"
+            (click)="cambiarEstadoVernier('optimo')"
+          >
+            Centrar 0.0s
+          </button>
+          <button
+            type="button"
+            class="pulsador pulsador--burdeos"
+            (click)="cambiarEstadoVernier('penalizacion')"
+          >
+            Simular Retraso
+          </button>
+        </div>
+      </article>
+
+      <article class="chrome-bezel guia__panel-completo">
+        <p class="etiqueta-grabada">PLACA DE DORSAL CON REMACHES METÁLICOS Y RUTÓMETRO IMPRESO</p>
+        <div class="guia__placa-wrap">
+          <div class="placa-dorsal enamel-green">
+            <span class="placa-dorsal__remache placa-dorsal__remache--tl" aria-hidden="true"></span>
+            <span class="placa-dorsal__remache placa-dorsal__remache--tr" aria-hidden="true"></span>
+            <span class="placa-dorsal__remache placa-dorsal__remache--bl" aria-hidden="true"></span>
+            <span class="placa-dorsal__remache placa-dorsal__remache--br" aria-hidden="true"></span>
+            <p class="placa-dorsal__evento">I Rally Classic Motor</p>
+            <p class="placa-dorsal__numero">014</p>
+          </div>
+        </div>
+
+        <table class="rutometro" aria-label="Ejemplo de tabla de rutómetro">
+          <thead>
+            <tr>
+              <th>Viñeta</th>
+              <th>Tramo</th>
+              <th>Dist. Total</th>
+              <th>Parcial</th>
+              <th>Media</th>
+              <th>Hora Teórica</th>
+              <th>Desviación</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (fila of filasRutometro; track fila.vineta) {
+              <tr [class.rutometro__fila--activa]="fila.activo">
+                <td class="numero-tabular">
+                  <span class="rutometro__etiqueta-movil">VIÑETA</span>
+                  {{ fila.vineta }}
+                </td>
+                <td>
+                  <span class="rutometro__etiqueta-movil">TRAMO</span>
+                  {{ fila.tramo }}
+                </td>
+                <td class="numero-tabular">
+                  <span class="rutometro__etiqueta-movil">DIST. TOTAL</span>
+                  {{ fila.distTotal }}
+                </td>
+                <td class="numero-tabular">
+                  <span class="rutometro__etiqueta-movil">PARCIAL</span>
+                  {{ fila.parcial }}
+                </td>
+                <td class="numero-tabular">
+                  <span class="rutometro__etiqueta-movil">MEDIA</span>
+                  {{ fila.media }}
+                </td>
+                <td class="numero-tabular">
+                  <span class="rutometro__etiqueta-movil">HORA TEÓRICA</span>
+                  {{ fila.horaTeorica }}
+                </td>
+                <td class="numero-tabular">
+                  <span class="rutometro__etiqueta-movil">DESVIACIÓN</span>
+                  {{ fila.desviacion }}
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
       </article>
     </div>
   </section>

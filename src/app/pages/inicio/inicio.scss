@@ -1,48 +1,121 @@
 @use 'variables' as *;
 
-.inicio__hero {
-  margin-bottom: $space-xl;
-  padding: $space-lg;
-  background-color: $color-parchment-dark;
-  border: $border-chamfer;
-  border-left: 4px solid $color-primary-container;
-  border-radius: $radius-default;
-  box-shadow: $shadow-card;
-}
-
-.inicio__hero-contenido {
+.inicio__tablero,
+.inicio__lateral {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  gap: $space-md;
+}
+
+.inicio__presentacion {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+  padding: $space-lg;
+}
+
+.inicio__cabecera-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
   gap: $space-sm;
 }
 
+.inicio__estado-piloto {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-xs;
+}
+
 .inicio__hero-titulo {
-  margin: $space-xs 0 0;
+  margin: 0;
   font-family: $font-display;
-  font-size: 1.5rem;
+  font-size: 26px;
   font-weight: 600;
+  line-height: 32px;
   color: $color-primary;
 }
 
 .inicio__hero-texto {
   margin: 0;
-  max-width: 64ch;
+  max-width: 62ch;
   color: $color-on-surface-variant;
 }
 
-.inicio__subtitulo {
-  margin: 0 0 $space-md;
-  font-family: $font-display;
-  font-size: 1.375rem;
-  font-weight: 600;
-  color: $color-dial-charcoal;
+.inicio__dial {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+  padding: $space-md $space-lg;
+
+  @media (min-width: $bp-tablet) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
-.inicio__tarjeta {
-  grid-column: span 4;
+.inicio__dial-etiqueta {
+  color: $color-on-dial-muted;
+}
 
-  @media (min-width: $bp-desktop) {
-    grid-column: span 6;
+.inicio__dial-hora {
+  margin: $space-xs 0 0;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: -0.04em;
+  color: $color-on-dial;
+
+  @media (min-width: $bp-tablet) {
+    font-size: 48px;
+    line-height: 52px;
   }
+}
+
+.inicio__dial-datos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-lg;
+}
+
+.inicio__dial-valor {
+  margin: $space-xs 0 0;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  color: $color-brass-gold;
+}
+
+.inicio__carpeta {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+  padding: $space-md;
+}
+
+.inicio__carpeta-etiqueta {
+  color: $color-secondary-container;
+}
+
+.inicio__carpeta-titulo {
+  margin: 0;
+  font-family: $font-display;
+  font-size: 20px;
+  font-weight: 600;
+  color: $color-on-secondary;
+}
+
+.inicio__carpeta-texto {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: $color-secondary-container;
+}
+
+.inicio__lista-modulos {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
 }

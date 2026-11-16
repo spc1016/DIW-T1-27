@@ -4,56 +4,164 @@
   margin-bottom: $space-xl;
 }
 
+.guia__cabecera-bloque {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: $space-sm;
+  margin-bottom: $space-md;
+}
+
 .guia__subtitulo {
   margin: 0 0 $space-md;
   font-family: $font-display;
-  font-size: 1.375rem;
+  font-size: 26px;
   font-weight: 600;
-  color: $color-dial-charcoal;
+  line-height: 32px;
+  color: $color-on-surface;
 }
 
-.guia__color-tarjeta {
+.guia__color-tarjeta,
+.guia__material {
   grid-column: span 4;
-
-  @media (min-width: $bp-desktop) {
-    grid-column: span 4;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+  padding: $space-md;
 }
 
 .guia__swatch {
   width: 100%;
-  height: 3.5rem;
-  border-radius: $radius-default;
-  border: $border-chamfer;
+  height: 48px;
+  border-radius: $radius-xs;
+  border: 1px solid $color-chrome-dark;
 }
 
-.guia__panel {
+.guia__titulo-claro {
+  margin: 0;
+  font-family: $font-display;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  color: $color-on-dial;
+}
+
+.guia__texto-claro {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: $color-on-dial;
+}
+
+.guia__dial-cifra {
+  margin: $space-xs 0 0;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 32px;
+  color: $color-brass-gold;
+}
+
+.guia__tabla-tipo {
+  padding: $space-md;
+}
+
+.guia__fila-tipo {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+  padding-block: $space-sm;
+  border-bottom: 1px solid $color-outline-variant;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.guia__tipo--hero {
+  margin: 0;
+  font-family: $font-display;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 38px;
+  color: $color-primary;
+
+  @media (min-width: $bp-tablet) {
+    font-size: 44px;
+    line-height: 50px;
+  }
+}
+
+.guia__tipo--titulo {
+  margin: 0;
+  font-family: $font-display;
+  font-size: 22px;
+  font-weight: 600;
+  color: $color-on-surface;
+}
+
+.guia__tipo--crono {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 36px;
+  color: $color-dial-obsidian;
+}
+
+.guia__tipo--cuerpo {
+  margin: 0;
+  font-size: 17px;
+  line-height: 26px;
+  color: $color-on-surface-variant;
+}
+
+.guia__panel-mitad {
   grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+  padding: $space-md;
 
   @media (min-width: $bp-desktop) {
     grid-column: span 6;
   }
 }
 
-.guia__display {
-  margin: 0;
-  font-family: $font-display;
-  font-size: 1.5rem;
-  color: $color-primary;
-}
-
-.guia__mono {
-  margin: 0;
-  font-family: $font-mono;
-  font-size: 0.875rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: $color-secondary;
-}
-
-.guia__controles {
+.guia__panel-completo {
+  grid-column: span 4;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  gap: $space-md;
+  padding: $space-md;
+
+  @media (min-width: $bp-tablet) {
+    grid-column: span 8;
+  }
+
+  @media (min-width: $bp-desktop) {
+    grid-column: span 12;
+  }
+}
+
+.guia__controles-fila {
+  display: flex;
+  flex-wrap: wrap;
   gap: $space-sm;
+}
+
+.guia__testigos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-md;
+  padding-top: $space-xs;
+}
+
+.guia__testigo-item {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-xs;
+}
+
+.guia__placa-wrap {
+  max-width: 260px;
 }

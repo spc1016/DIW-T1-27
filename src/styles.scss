@@ -14,11 +14,11 @@ html {
 body {
   margin: 0;
   min-height: 100dvh;
-  background-color: $color-parchment-light;
-  color: $color-on-background;
+  background-color: $color-surface;
+  color: $color-on-surface;
   font-family: $font-body;
-  font-size: 0.9375rem;
-  line-height: 1.6;
+  font-size: 14px;
+  line-height: 22px;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -34,21 +34,107 @@ img {
 }
 
 // =============================================================================
-// Shared BEM Layout & Component Primitives (Mobile-First 4 / 8 / 12 Columns)
+// Tipografía Instrumental & Tabular (tnum + zero)
+// =============================================================================
+
+.numero-tabular {
+  font-family: $font-mono;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings:
+    'tnum' 1,
+    'zero' 1;
+}
+
+.etiqueta-grabada {
+  margin: 0;
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.etiqueta-micro {
+  margin: 0;
+  font-family: $font-mono;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.icono-tecnico {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+
+// =============================================================================
+// Acabados de Materiales Físicos (Concours Edition v2.0.0)
+// =============================================================================
+
+.chrome-bezel {
+  background-color: $color-surface-bright;
+  border: 1px solid $color-chrome-bezel-border;
+  border-radius: $radius-default;
+  box-shadow: $shadow-chrome-bezel;
+}
+
+.instrument-dial {
+  background: radial-gradient(circle at 50% 30%, $color-dial-center 0%, $color-dial-obsidian 100%);
+  color: $color-on-dial;
+  border: 2px solid $color-chrome-mid;
+  border-radius: $radius-default;
+  box-shadow: $shadow-instrument-dial;
+}
+
+.leather-panel {
+  background-color: $color-secondary;
+  color: $color-on-secondary;
+  border: 1px solid $color-secondary-border;
+  border-radius: $radius-default;
+  box-shadow: $shadow-leather-stitch;
+}
+
+.enamel-green {
+  background: linear-gradient(180deg, $color-primary-top 0%, $color-primary 100%);
+  border: 1px solid $color-primary-border;
+  border-radius: $radius-default;
+  box-shadow: $shadow-enamel-highlight;
+  color: $color-on-primary;
+}
+
+.enamel-bordeaux {
+  background: linear-gradient(180deg, $color-bordeaux-top 0%, $color-bordeaux 100%);
+  border: 1px solid $color-bordeaux-border;
+  border-radius: $radius-default;
+  box-shadow: $shadow-enamel-highlight;
+  color: $color-on-bordeaux;
+}
+
+// =============================================================================
+// Retícula Cockpit Mobile-First (4 / 8 / 12 columnas · máx 1320px)
 // =============================================================================
 
 .pagina {
   width: 100%;
   max-width: $max-content-width;
   margin-inline: auto;
-  padding: $space-lg $margin-mobile $space-xl;
+  padding: $space-lg $margin-mobile $space-2xl;
 
   @media (min-width: $bp-tablet) {
-    padding: $space-xl $margin-tablet;
+    padding: $space-xl $margin-tablet $space-2xl;
   }
 
   @media (min-width: $bp-desktop) {
-    padding: $space-xl $margin-desktop;
+    padding: $space-xl $margin-desktop $space-2xl;
   }
 }
 
@@ -61,9 +147,10 @@ img {
 .pagina__etiqueta {
   margin: 0 0 $space-xs;
   font-family: $font-mono;
-  font-size: 0.75rem;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  line-height: 14px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: $color-secondary;
 }
@@ -71,27 +158,24 @@ img {
 .pagina__titulo {
   margin: 0 0 $space-sm;
   font-family: $font-display;
-  font-size: 1.75rem;
+  font-size: 28px;
   font-weight: 600;
-  line-height: 1.25;
+  line-height: 34px;
+  letter-spacing: -0.015em;
   color: $color-primary;
 
   @media (min-width: $bp-tablet) {
-    font-size: 2.5rem;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
+    font-size: 38px;
+    line-height: 44px;
   }
 }
 
 .pagina__descripcion {
   margin: 0;
   max-width: 68ch;
-  font-size: 1rem;
+  font-size: 17px;
+  line-height: 26px;
   color: $color-on-surface-variant;
-
-  @media (min-width: $bp-tablet) {
-    font-size: 1.125rem;
-  }
 }
 
 .pagina__grid {
@@ -117,115 +201,467 @@ img {
   margin-top: $space-lg;
 }
 
+.cockpit__principal {
+  grid-column: span 4;
+
+  @media (min-width: $bp-tablet) {
+    grid-column: span 8;
+  }
+
+  @media (min-width: $bp-desktop) {
+    grid-column: span 8;
+  }
+}
+
+.cockpit__secundaria {
+  grid-column: span 4;
+
+  @media (min-width: $bp-tablet) {
+    grid-column: span 8;
+  }
+
+  @media (min-width: $bp-desktop) {
+    grid-column: span 4;
+  }
+}
+
+// =============================================================================
+// Tarjetas y Pulsadores Mecánicos
+// =============================================================================
+
 .tarjeta {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: $space-sm;
   padding: $space-md;
-  background-color: $color-surface-container-lowest;
-  border: $border-chamfer;
-  border-top: 3px solid $color-primary-container;
+  background-color: $color-surface-bright;
+  border: 1px solid $color-chrome-bezel-border;
+  border-top: 3px solid $color-primary;
   border-radius: $radius-default;
-  box-shadow: $shadow-card;
+  box-shadow: $shadow-chrome-bezel;
 
   &--cuero {
-    border-top-color: $color-secondary-leather;
+    border-top-color: $color-secondary;
+  }
+
+  &--burdeos {
+    border-top-color: $color-bordeaux;
   }
 
   &__etiqueta {
     margin: 0;
     font-family: $font-mono;
-    font-size: 0.6875rem;
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.08em;
+    line-height: 14px;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: $color-brushed-steel;
+    color: $color-chrome-dark;
   }
 
   &__titulo {
     margin: 0;
     font-family: $font-display;
-    font-size: 1.375rem;
+    font-size: 20px;
     font-weight: 600;
-    line-height: 1.3;
-    color: $color-dial-charcoal;
+    line-height: 26px;
+    color: $color-on-surface;
   }
 
   &__texto {
     margin: 0;
-    font-size: 0.9375rem;
+    font-size: 14px;
+    line-height: 22px;
     color: $color-on-surface-variant;
   }
 }
 
-.boton {
+.pulsador {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: $space-xs;
+  gap: $space-sm;
   min-height: 48px;
   padding: $space-sm $space-md;
   border-radius: $radius-default;
-  border: 1px solid transparent;
+  border: 1px solid $color-chrome-dark;
+  background: linear-gradient(180deg, $color-pusher-top 0%, $color-pusher-bottom 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  color: $color-dial-obsidian;
   font-family: $font-mono;
-  font-size: 0.75rem;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  line-height: 14px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
   transition:
-    background-color 0.15s ease,
-    transform 0.1s ease;
+    transform $duration-mechanical $ease-mechanical,
+    background-color $duration-mechanical $ease-mechanical,
+    box-shadow $duration-mechanical $ease-mechanical;
+
+  &:hover {
+    background: linear-gradient(180deg, $color-surface-container-lowest 0%, $color-chrome-mid 100%);
+  }
 
   &:active {
-    transform: scale(0.98);
+    transform: translateY(1.5px);
+    box-shadow: $shadow-pusher-active;
   }
 
   &--primario {
-    background-color: $color-primary-container;
-    border-color: $color-primary-enamel-border;
+    background: linear-gradient(180deg, $color-primary-top 0%, $color-primary 100%);
+    border-color: $color-primary-border;
+    box-shadow: $shadow-enamel-highlight;
     color: $color-on-primary;
 
     &:hover {
-      background-color: $color-primary-hover;
+      background: $color-primary-hover;
     }
   }
 
-  &--secundario {
-    background-color: $color-secondary-leather;
-    border-color: $color-on-secondary-fixed-variant;
+  &--cuero {
+    background: $color-secondary;
+    border-color: $color-secondary-border;
+    box-shadow: $shadow-enamel-highlight;
     color: $color-on-secondary;
 
     &:hover {
-      background-color: $color-secondary;
+      background: $color-secondary-hover;
     }
   }
 
-  &--crono {
-    background: linear-gradient(180deg, $color-surface-container-lowest 0%, $color-pusher-end 100%);
-    border: $border-chamfer;
-    box-shadow: $shadow-chamfer-highlight;
-    color: $color-dial-charcoal;
+  &--burdeos {
+    background: linear-gradient(180deg, $color-bordeaux-top 0%, $color-bordeaux 100%);
+    border-color: $color-bordeaux-border;
+    box-shadow: $shadow-enamel-highlight;
+    color: $color-on-bordeaux;
 
     &:hover {
-      background: $color-surface-container;
+      background: $color-bordeaux-hover;
+    }
+  }
+
+  &--corona {
+    min-width: 48px;
+    border-radius: $radius-full;
+    padding: $space-sm;
+  }
+}
+
+.sello-tecnico {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: $space-xs $space-sm;
+  border: 1px solid $color-outline-variant;
+  border-radius: $radius-xs;
+  background-color: $color-surface-container-low;
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $color-primary;
+}
+
+// =============================================================================
+// Placa de Dorsal con Remaches Metálicos (.placa-dorsal)
+// =============================================================================
+
+.placa-dorsal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $space-xs;
+  padding: $space-md $space-lg;
+  border-radius: $radius-xs;
+  border: 2px solid $color-chrome-mid;
+  box-shadow: inset 0 0 0 2px rgba(246, 243, 236, 0.28);
+  text-align: center;
+
+  &__evento {
+    margin: 0;
+    font-family: $font-display;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  &__numero {
+    margin: 0;
+    font-family: $font-mono;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings:
+      'tnum' 1,
+      'zero' 1;
+  }
+
+  &__remache {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: $radius-full;
+    background: radial-gradient(
+      circle at 30% 30%,
+      $color-surface-container-lowest 0%,
+      $color-chrome-dark 100%
+    );
+    border: 1px solid $color-dial-obsidian;
+
+    &--tl {
+      top: 6px;
+      left: 6px;
+    }
+
+    &--tr {
+      top: 6px;
+      right: 6px;
+    }
+
+    &--bl {
+      bottom: 6px;
+      left: 6px;
+    }
+
+    &--br {
+      bottom: 6px;
+      right: 6px;
     }
   }
 }
 
-.chip {
-  display: inline-flex;
-  align-items: center;
-  padding: $space-xs $space-sm;
-  border-radius: $radius-default;
+// =============================================================================
+// Testigo Luminoso Piloto 8px (.testigo)
+// =============================================================================
+
+.testigo {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: $radius-full;
+  border: 1px solid $color-chrome-mid;
+  background-color: $color-status-neutral;
+  transition:
+    background-color $duration-mechanical $ease-mechanical,
+    box-shadow $duration-mechanical $ease-mechanical;
+
+  &--verde {
+    background-color: $color-status-optimal;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.45);
+  }
+
+  &--ambar {
+    background-color: $color-status-early;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5);
+  }
+
+  &--burdeos {
+    background-color: $color-status-penalty;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.4);
+  }
+}
+
+// =============================================================================
+// Escala Vernier de Desviación (.vernier)
+// =============================================================================
+
+.vernier {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  padding: $space-md;
+  background-color: $color-surface-container-low;
   border: 1px solid $color-outline-variant;
-  background-color: $color-parchment-dark;
-  font-family: $font-mono;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: $color-primary;
+  border-radius: $radius-default;
+
+  &__cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $space-sm;
+  }
+
+  &__pista {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    height: 28px;
+    border: 1px solid $color-chrome-dark;
+    border-radius: $radius-xs;
+    background-color: $color-surface-bright;
+    overflow: hidden;
+  }
+
+  &__zona-adelanto {
+    height: 100%;
+    border-right: 1px solid $color-outline-variant;
+    background-color: rgba(181, 115, 36, 0.16);
+  }
+
+  &__cero {
+    padding-inline: $space-sm;
+    font-family: $font-mono;
+    font-size: 11px;
+    font-weight: 700;
+    color: $color-primary;
+    border-left: 2px solid $color-brass-gold;
+    border-right: 2px solid $color-brass-gold;
+  }
+
+  &__zona-retraso {
+    height: 100%;
+    border-left: 1px solid $color-outline-variant;
+    background-color: rgba(140, 29, 36, 0.16);
+  }
+
+  &__aguja {
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    width: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $color-primary;
+    transition:
+      left $duration-mechanical $ease-mechanical,
+      background-color $duration-mechanical $ease-mechanical;
+
+    &--adelanto {
+      left: 24%;
+      background-color: $color-status-early;
+    }
+
+    &--penalizacion {
+      left: 76%;
+      background-color: $color-status-penalty;
+    }
+  }
+
+  &__leyenda {
+    display: flex;
+    justify-content: space-between;
+    font-family: $font-mono;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: $color-on-surface-variant;
+  }
+}
+
+// =============================================================================
+// Tablas de Rutómetro Responsivas (<768px tarjetas / >=768px tabla impresa)
+// =============================================================================
+
+.rutometro {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: $color-surface-bright;
+
+  thead {
+    display: none;
+
+    @media (min-width: $bp-tablet) {
+      display: table-header-group;
+    }
+  }
+
+  tbody {
+    display: grid;
+    gap: $space-sm;
+
+    @media (min-width: $bp-tablet) {
+      display: table-row-group;
+    }
+  }
+
+  tr {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: $space-xs $space-md;
+    padding: $space-md;
+    border: 1px solid $color-outline-variant;
+    border-left: 3px solid $color-chrome-mid;
+    border-radius: $radius-default;
+    background-color: $color-surface-bright;
+
+    @media (min-width: $bp-tablet) {
+      display: table-row;
+      border: none;
+      border-bottom: 1px solid $color-outline-variant;
+      border-radius: 0;
+      padding: 0;
+    }
+
+    &.rutometro__fila--activa {
+      border-left: 4px solid $color-primary;
+      background-color: $color-surface-container-low;
+
+      @media (min-width: $bp-tablet) {
+        background-color: $color-surface-bright;
+      }
+    }
+  }
+
+  th {
+    padding: $space-sm $space-md;
+    background-color: $color-surface-container;
+    border-bottom: 1px solid $color-outline-variant;
+    text-align: left;
+    font-family: $font-mono;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $color-on-surface-variant;
+  }
+
+  td {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 14px;
+    line-height: 20px;
+
+    @media (min-width: $bp-tablet) {
+      display: table-cell;
+      padding: $space-sm $space-md;
+      vertical-align: middle;
+    }
+  }
+
+  &__etiqueta-movil {
+    font-family: $font-mono;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: $color-chrome-dark;
+
+    @media (min-width: $bp-tablet) {
+      display: none;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

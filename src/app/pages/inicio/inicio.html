@@ -5,36 +5,89 @@
     <p class="pagina__descripcion">{{ cabecera.subtitulo }}</p>
   </header>
 
-  <section class="inicio__hero" aria-label="Resumen de estructura">
-    <div class="inicio__hero-contenido">
-      <span class="chip">EDICIÓN INAUGURAL · CLÁSICOS ANTERIORES A 1985</span>
-      <h2 class="inicio__hero-titulo">Estructura Base de Navegación</h2>
-      <p class="inicio__hero-texto">
-        Selecciona cualquier sección para comprobar el enrutamiento entre páginas, subrutas
-        preparadas y diseño base adaptado a móvil, tableta y escritorio.
-      </p>
-      <div class="pagina__acciones">
-        <a class="boton boton--primario" routerLink="/catalogo">Explorar catálogo</a>
-        <a class="boton boton--secundario" routerLink="/itinerario">Ver itinerario</a>
-      </div>
-    </div>
-  </section>
+  <div class="pagina__grid">
+    <section class="cockpit__principal inicio__tablero" aria-label="Instrumentación principal">
+      <article class="chrome-bezel inicio__presentacion">
+        <div class="inicio__cabecera-card">
+          <span class="sello-tecnico">EDICIÓN INAUGURAL · ANTERIORES A 1985</span>
+          <span class="inicio__estado-piloto">
+            <span class="testigo testigo--verde" aria-hidden="true"></span>
+            <span class="etiqueta-micro">CRONO ENLACE</span>
+          </span>
+        </div>
+        <h2 class="inicio__hero-titulo">Cabina de Navegación y Regularidad Histórica</h2>
+        <p class="inicio__hero-texto">
+          Diseño inspirado en los rutómetros de papel de alto gramaje y los cronómetros Jaeger y
+          Heuer Master-Time de los rallies clásicos europeos.
+        </p>
 
-  <section aria-labelledby="titulo-accesos">
-    <h2 id="titulo-accesos" class="inicio__subtitulo">Mapa de Secciones Disponibles</h2>
-    <div class="pagina__grid">
-      @for (destino of accesosRapidos(); track destino.id) {
-        <article class="tarjeta inicio__tarjeta">
+        <div class="instrument-dial inicio__dial">
           <div>
-            <p class="tarjeta__etiqueta">MÓDULO 0{{ destino.id }}</p>
-            <h3 class="tarjeta__titulo">{{ destino.etiqueta }}</h3>
-            <p class="tarjeta__texto">{{ destino.descripcion }}</p>
+            <p class="etiqueta-micro inicio__dial-etiqueta">CRONÓMETRO MAESTRO DE REFERENCIA</p>
+            <p class="inicio__dial-hora numero-tabular">00:42:18.0</p>
           </div>
-          <a class="boton boton--crono" [routerLink]="destino.ruta">
-            Ir a {{ destino.etiqueta }}
+          <div class="inicio__dial-datos">
+            <div>
+              <p class="etiqueta-micro inicio__dial-etiqueta">MEDIA IMPUESTA</p>
+              <p class="inicio__dial-valor numero-tabular">48.5 KM/H</p>
+            </div>
+            <div>
+              <p class="etiqueta-micro inicio__dial-etiqueta">ODO PARCIAL</p>
+              <p class="inicio__dial-valor numero-tabular">014.20 KM</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="vernier">
+          <div class="vernier__cabecera">
+            <span class="etiqueta-micro">ESCALA VERNIER DE TRAMO</span>
+            <span class="etiqueta-grabada numero-tabular">0.0s · EN CONTROL</span>
+          </div>
+          <div class="vernier__pista" aria-hidden="true">
+            <div class="vernier__zona-adelanto"></div>
+            <span class="vernier__cero">0.0s</span>
+            <div class="vernier__zona-retraso"></div>
+            <span class="vernier__aguja"></span>
+          </div>
+        </div>
+
+        <div class="pagina__acciones">
+          <a class="pulsador pulsador--primario" routerLink="/catalogo">
+            <svg class="icono-tecnico" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="6" width="18" height="12" rx="1" />
+              <line x1="7" y1="10" x2="17" y2="10" />
+              <line x1="7" y1="14" x2="13" y2="14" />
+            </svg>
+            Explorar Catálogo
           </a>
-        </article>
-      }
-    </div>
-  </section>
+          <a class="pulsador pulsador--cuero" routerLink="/itinerario">Ver Itinerario</a>
+          <a class="pulsador" routerLink="/guia-estilo">Guía de Estilo</a>
+        </div>
+      </article>
+    </section>
+
+    <aside class="cockpit__secundaria inicio__lateral" aria-label="Registro de secciones">
+      <article class="leather-panel inicio__carpeta">
+        <p class="etiqueta-micro inicio__carpeta-etiqueta">RUTÓMETRO DEL PORTAL</p>
+        <h2 class="inicio__carpeta-titulo">Controles Disponibles</h2>
+        <p class="inicio__carpeta-texto">
+          Acceso directo a las vistas oficiales del evento manteniendo coherencia cromática
+          60/25/10/5.
+        </p>
+      </article>
+
+      <div class="inicio__lista-modulos">
+        @for (destino of accesosRapidos(); track destino.id) {
+          <article class="tarjeta inicio__modulo">
+            <div>
+              <p class="tarjeta__etiqueta">MÓDULO 0{{ destino.id }}</p>
+              <h3 class="tarjeta__titulo">{{ destino.etiqueta }}</h3>
+              <p class="tarjeta__texto">{{ destino.descripcion }}</p>
+            </div>
+            <a class="pulsador" [routerLink]="destino.ruta">Abrir {{ destino.etiqueta }}</a>
+          </article>
+        }
+      </div>
+    </aside>
+  </div>
 </section>

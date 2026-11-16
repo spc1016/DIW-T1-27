@@ -3,3 +3,24 @@
 :host {
   display: block;
 }
+
+.recorrido__tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+  padding: $space-lg;
+}
+
+.recorrido__cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: $space-sm;
+}
+
+.recorrido__estado {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-xs;
+}

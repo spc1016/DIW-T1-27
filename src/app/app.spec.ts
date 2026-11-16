@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { provideRouter, Router } from '@angular/router';
-import { withComponentInputBinding } from '@angular/router';
+import { provideRouter, Router, withComponentInputBinding } from '@angular/router';
 import { App } from './app';
 import { routes } from './app.routes';
 
@@ -17,7 +16,7 @@ describe('App', () => {
     expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('debe renderizar la cabecera semántica, el menú principal de 5 enlaces y el pie de página', async () => {
+  it('debe renderizar la cabecera semántica, iconos técnicos ocultos a AT, el menú principal y el pie oscuro con testigo', async () => {
     const fixture = TestBed.createComponent(App);
     const router = TestBed.inject(Router);
     await router.navigateByUrl('/inicio');
@@ -30,7 +29,11 @@ describe('App', () => {
     );
     expect(compiled.querySelector('header.cabecera')).toBeTruthy();
     expect(compiled.querySelector('main#contenido-principal')).toBeTruthy();
-    expect(compiled.querySelector('footer.pie')).toBeTruthy();
+    expect(compiled.querySelector('footer.pie .testigo--verde')).toBeTruthy();
+
+    const svgs = compiled.querySelectorAll('header svg.icono-tecnico');
+    expect(svgs.length).toBeGreaterThan(0);
+    svgs.forEach((svg) => expect(svg.getAttribute('aria-hidden')).toBe('true'));
 
     const navLinks = compiled.querySelectorAll('.cabecera__enlace');
     expect(navLinks.length).toBe(5);
