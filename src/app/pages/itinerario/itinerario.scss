@@ -3,38 +3,33 @@
 .itinerario__subnav {
   display: flex;
   flex-wrap: wrap;
-  gap: $space-sm;
+  gap: $space-md;
   margin-bottom: $space-lg;
+  border-bottom: 1px solid $color-filete-tinta;
 }
 
 .itinerario__pestana {
   display: inline-flex;
   align-items: center;
   min-height: 48px;
-  padding: $space-xs $space-md;
-  border: 1px solid $color-chrome-dark;
-  border-radius: $radius-default;
-  background-color: $color-surface-container-low;
-  color: $color-on-surface;
-  font-family: $font-mono;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  padding: $space-xs $space-sm;
+  border-bottom: 2px solid transparent;
+  color: $color-tinta;
+  font-family: $font-label;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   text-decoration: none;
-  transition:
-    background-color $duration-mechanical $ease-mechanical,
-    color $duration-mechanical $ease-mechanical;
+  transition: border-color 140ms $ease-suave;
 
   &:hover {
-    background-color: $color-surface-container;
+    border-bottom-color: $color-verde-carreras;
   }
 
   &.activo {
-    background-color: $color-secondary;
-    border-color: $color-secondary-border;
-    box-shadow: $shadow-leather-stitch;
-    color: $color-on-secondary;
+    border-bottom-color: $color-cuero-conac;
+    color: $color-verde-carreras;
   }
 }
 

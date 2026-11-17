@@ -5,22 +5,5 @@
 }
 
 .programa__tarjeta {
-  display: flex;
-  flex-direction: column;
-  gap: $space-md;
-  padding: $space-lg;
-}
-
-.programa__cabecera {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: $space-sm;
-}
-
-.programa__estado {
-  display: inline-flex;
-  align-items: center;
-  gap: $space-xs;
+  grid-column: span 4;
 }

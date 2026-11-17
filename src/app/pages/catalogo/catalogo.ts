@@ -14,10 +14,10 @@ export class Catalogo {
   private readonly vehiculoService = inject(VehiculoService);
 
   protected readonly cabecera: PageShellMeta = {
-    etiquetaTecnica: 'SECCIÓN 02 · PARQUE CERRADO CONCOURS',
-    titulo: 'Catálogo de Vehículos Clásicos',
+    etiquetaTecnica: 'PARQUE CERRADO · VEHÍCULOS CLÁSICOS 1925–1975',
+    titulo: 'Catálogo de Vehículos Admitidos',
     subtitulo:
-      'Muestras con biseles cromados y placas de dorsal con remaches metálicos para validar la navegación hacia las fichas técnicas.',
+      'Relación oficial de dorsales verificados por los comisarios técnicos antes de la salida.',
   };
 
   protected readonly muestras = computed(() => this.vehiculoService.obtenerTodas());

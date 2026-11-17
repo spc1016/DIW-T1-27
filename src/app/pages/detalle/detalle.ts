@@ -16,10 +16,9 @@ export class Detalle {
   readonly id = input.required<string>();
 
   protected readonly cabecera: PageShellMeta = {
-    etiquetaTecnica: 'FICHA DE VEHÍCULO · RUTA DINÁMICA :ID',
-    titulo: 'Detalle del Vehículo Clásico',
-    subtitulo:
-      'Placa identificativa esmaltada y lectura reactiva del parámetro de ruta mediante Signals.',
+    etiquetaTecnica: 'FICHA DE PARQUE CERRADO · RUTA :ID',
+    titulo: 'Ficha Técnica de Dorsal',
+    subtitulo: 'Lectura reactiva del dorsal asignado y estado de verificación técnica.',
   };
 
   protected readonly vehiculo = computed(() => {

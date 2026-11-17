@@ -6,51 +6,57 @@
   </header>
 
   @if (vehiculo(); as v) {
-    <article class="chrome-bezel detalle__ficha">
-      <div
-        class="placa-dorsal detalle__placa"
-        [class.enamel-green]="v.acabadoPlaca === 'verde'"
-        [class.enamel-bordeaux]="v.acabadoPlaca === 'burdeos'"
-      >
-        <span class="placa-dorsal__remache placa-dorsal__remache--tl" aria-hidden="true"></span>
-        <span class="placa-dorsal__remache placa-dorsal__remache--tr" aria-hidden="true"></span>
-        <span class="placa-dorsal__remache placa-dorsal__remache--bl" aria-hidden="true"></span>
-        <span class="placa-dorsal__remache placa-dorsal__remache--br" aria-hidden="true"></span>
-        <p class="placa-dorsal__evento">{{ v.categoria }}</p>
-        <p class="placa-dorsal__numero">{{ v.dorsal }}</p>
+    <article class="marco-sobrio detalle__ficha">
+      <div class="detalle__identificador">
+        <span
+          class="dorsal-circular"
+          [class.dorsal-circular--burdeos]="v.tono === 'burdeos'"
+          [attr.aria-label]="'Dorsal ' + v.dorsal"
+        >
+          {{ v.dorsal }}
+        </span>
+        <span
+          class="placa-semantica"
+          [class.placa-semantica--verde]="v.tono === 'verde'"
+          [class.placa-semantica--burdeos]="v.tono === 'burdeos'"
+        >
+          {{ v.categoria }}
+        </span>
       </div>
 
       <div class="detalle__contenido">
-        <p class="etiqueta-grabada numero-tabular">
-          DORSAL #{{ v.dorsal }} · AÑO {{ v.anio }} · ID #{{ v.id }}
+        <p class="etiqueta-ed1 numero-tabular">
+          DORSAL {{ v.dorsal }} · AÑO {{ v.anio }} · REGISTRO {{ v.id }}
         </p>
-        <h2 class="detalle__modelo">{{ v.modelo }}</h2>
-        <p class="tarjeta__texto">{{ v.resumen }}</p>
+        <h2 class="detalle__modelo titulo-cursiva">{{ v.modelo }}</h2>
+        <p class="detalle__texto">{{ v.resumen }}</p>
+
+        <hr class="filete-cromo" aria-hidden="true" />
 
         <div class="pagina__acciones">
-          <a class="pulsador pulsador--primario" routerLink="/catalogo">Volver al Catálogo</a>
-          <button type="button" class="pulsador pulsador--cuero" (click)="irASiguiente()">
+          <a class="boton boton--primario" routerLink="/catalogo">Volver al Catálogo</a>
+          <button type="button" class="boton boton--secundario" (click)="irASiguiente()">
             Siguiente Dorsal
           </button>
-          <button type="button" class="pulsador" (click)="volverAlCatalogo()">
+          <button type="button" class="boton boton--terciario" (click)="volverAlCatalogo()">
             Regresar por Router
           </button>
         </div>
       </div>
     </article>
   } @else {
-    <article class="enamel-bordeaux detalle__aviso">
-      <p class="etiqueta-grabada">CONTROL DE PARQUE · IDENTIFICADOR NO VÁLIDO</p>
-      <h2 class="detalle__aviso-titulo">
-        Identificador no numérico o sin ficha asignada: "{{ id() }}"
+    <article class="panel-directo detalle__aviso">
+      <p class="etiqueta-ed1 detalle__aviso-etiqueta">CONTROL DE PARQUE · DORSAL NO REGISTRADO</p>
+      <h2 class="detalle__aviso-titulo titulo-cursiva">
+        Identificador fuera de lista oficial: "{{ id() }}"
       </h2>
       <p class="detalle__aviso-texto">
-        El dorsal indicado no figura en la muestra activa de parque cerrado. Regresa al catálogo
-        para seleccionar una unidad homologada.
+        El dorsal indicado no consta en el parque cerrado vigente. Consulte la relación oficial en
+        el catálogo.
       </p>
       <div class="pagina__acciones">
-        <a class="pulsador" routerLink="/catalogo">Volver al Catálogo</a>
-        <a class="pulsador pulsador--cuero" routerLink="/inicio">Ir a Inicio</a>
+        <a class="boton boton--secundario" routerLink="/catalogo">Volver al Catálogo</a>
+        <a class="boton boton--primario" routerLink="/inicio">Regresar a Portada</a>
       </div>
     </article>
   }

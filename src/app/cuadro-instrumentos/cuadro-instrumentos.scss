@@ -1,0 +1,181 @@
+@use 'variables' as *;
+
+.instrumento {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+}
+
+.instrumento__cuerpo {
+  display: grid;
+  gap: $space-lg;
+  align-items: center;
+
+  @media (min-width: $bp-tablet) {
+    grid-template-columns: 200px 1fr;
+  }
+}
+
+.instrumento__esfera {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 196px;
+  height: 196px;
+  margin-inline: auto;
+  padding: 4px;
+  border-radius: $radius-circular;
+  background: $gradiente-cromo;
+}
+
+.instrumento__esfera-interior {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: $space-md;
+  border-radius: $radius-circular;
+  background-color: $color-marfil;
+  border: 1px solid $color-tinta;
+}
+
+.instrumento__marca {
+  margin-top: $space-sm;
+  font-family: $font-label;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: $color-tinta;
+}
+
+.instrumento__cero {
+  position: absolute;
+  top: 6px;
+  font-family: $font-label;
+  font-size: 11px;
+  font-weight: 600;
+  color: $color-verde-carreras;
+}
+
+.instrumento__aguja {
+  position: absolute;
+  bottom: 50%;
+  left: calc(50% - 1.5px);
+  width: 3px;
+  height: 68px;
+  background-color: $color-burdeos;
+  transform-origin: bottom center;
+  transition: transform 280ms $ease-aguja;
+}
+
+.instrumento__eje {
+  position: absolute;
+  top: calc(50% - 6px);
+  left: calc(50% - 6px);
+  width: 12px;
+  height: 12px;
+  border-radius: $radius-circular;
+  background-color: $color-tinta;
+}
+
+.instrumento__lectura-dial {
+  font-family: $font-display;
+  font-size: 20px;
+  font-weight: 600;
+  color: $color-tinta;
+}
+
+.instrumento__tripmaster {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+  padding: $space-lg;
+  border-radius: $radius-control;
+  background-color: $color-tinta;
+  color: $color-marfil;
+}
+
+.instrumento__trip-cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: $space-sm;
+  padding-bottom: $space-sm;
+  border-bottom: 1px solid rgba(238, 232, 220, 0.18);
+}
+
+.instrumento__trip-titulo {
+  font-family: $font-label;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $color-cuero-conac;
+}
+
+.instrumento__estado {
+  font-family: $font-label;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  &--ok {
+    color: $color-tolerancia-ok;
+  }
+
+  &--fuera {
+    color: $color-tolerancia-fuera;
+  }
+}
+
+.instrumento__metricas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: $space-md;
+  margin: 0;
+}
+
+.instrumento__celda {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+}
+
+.instrumento__dt {
+  font-family: $font-label;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: $color-marfil;
+  opacity: 0.78;
+}
+
+.instrumento__dd {
+  margin: 0;
+  font-family: $font-label;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.05;
+  color: $color-marfil;
+
+  &--ok {
+    color: $color-tolerancia-ok;
+  }
+
+  &--fuera {
+    color: $color-tolerancia-fuera;
+  }
+}
+
+.instrumento__controles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-sm;
+}

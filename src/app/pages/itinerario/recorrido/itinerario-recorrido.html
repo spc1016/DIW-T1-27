@@ -1,78 +1,56 @@
-<article class="chrome-bezel recorrido__tarjeta">
-  <div class="recorrido__cabecera">
+<div class="recorrido__bloques">
+  <article class="panel-directo recorrido__directo">
     <div>
-      <p class="etiqueta-grabada">SUBRUTA · /ITINERARIO/RECORRIDO</p>
-      <h2 class="tarjeta__titulo">Recorrido y Tramos Cronometrados</h2>
+      <p class="etiqueta-ed1 recorrido__etiqueta-burdeos">SEGUIMIENTO EN DIRECTO · TRAMO 3</p>
+      <h2 class="recorrido__titulo titulo-cursiva">Control Secreto · Puerto de Navacerrada</h2>
+      <p class="recorrido__texto numero-tabular">
+        Salida del tramo 3 a las 09:40. Media impuesta: 42 km/h. Buena ruta.
+      </p>
     </div>
-    <span class="recorrido__estado">
-      <span class="testigo testigo--ambar" aria-hidden="true"></span>
-      <span class="etiqueta-micro">TRAMO ACTIVO TC-02</span>
-    </span>
-  </div>
+    <span class="placa-semantica recorrido__estado-directo">EN CURSO · ±0,1 S</span>
+  </article>
 
-  <div class="vernier">
-    <div class="vernier__cabecera">
-      <span class="etiqueta-micro">INDICADOR VERNIER DE REFERENCIA</span>
-      <span class="etiqueta-grabada numero-tabular">-0.1s · ADELANTO LEVE</span>
-    </div>
-    <div class="vernier__pista" aria-hidden="true">
-      <div class="vernier__zona-adelanto"></div>
-      <span class="vernier__cero">0.0s</span>
-      <div class="vernier__zona-retraso"></div>
-      <span class="vernier__aguja vernier__aguja--adelanto"></span>
-    </div>
-    <div class="vernier__leyenda">
-      <span>ADELANTO</span>
-      <span>IDEAL</span>
-      <span>RETRASO</span>
-    </div>
-  </div>
-
-  <table class="rutometro" aria-label="Tabla de tramos cronometrados">
-    <thead>
-      <tr>
-        <th>Viñeta</th>
-        <th>Tramo</th>
-        <th>Dist. Total</th>
-        <th>Parcial</th>
-        <th>Media</th>
-        <th>Hora Teórica</th>
-        <th>Desviación</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (tramo of tramos; track tramo.vineta) {
-        <tr [class.rutometro__fila--activa]="tramo.activo">
-          <td class="numero-tabular">
-            <span class="rutometro__etiqueta-movil">VIÑETA</span>
-            {{ tramo.vineta }}
-          </td>
-          <td>
-            <span class="rutometro__etiqueta-movil">TRAMO</span>
-            {{ tramo.tramo }}
-          </td>
-          <td class="numero-tabular">
-            <span class="rutometro__etiqueta-movil">DIST. TOTAL</span>
-            {{ tramo.distTotal }}
-          </td>
-          <td class="numero-tabular">
-            <span class="rutometro__etiqueta-movil">PARCIAL</span>
-            {{ tramo.parcial }}
-          </td>
-          <td class="numero-tabular">
-            <span class="rutometro__etiqueta-movil">MEDIA</span>
-            {{ tramo.media }}
-          </td>
-          <td class="numero-tabular">
-            <span class="rutometro__etiqueta-movil">HORA TEÓRICA</span>
-            {{ tramo.horaTeorica }}
-          </td>
-          <td class="numero-tabular">
-            <span class="rutometro__etiqueta-movil">DESVIACIÓN</span>
-            {{ tramo.desviacion }}
-          </td>
+  <article class="marco-sobrio recorrido__tabla-marco">
+    <p class="etiqueta-ed1">CLASIFICACIÓN PROVISIONAL · TIEMPOS A LA DÉCIMA</p>
+    <table class="tabla-clasificacion" aria-label="Clasificación provisional de regularidad">
+      <thead>
+        <tr>
+          <th class="tabla-clasificacion__num">Pos.</th>
+          <th class="tabla-clasificacion__num">Dorsal</th>
+          <th>Equipo</th>
+          <th>Vehículo</th>
+          <th class="tabla-clasificacion__num">Desviación</th>
         </tr>
-      }
-    </tbody>
-  </table>
-</article>
+      </thead>
+      <tbody>
+        @for (fila of filas; track fila.dorsal) {
+          <tr [class.tabla-clasificacion__lider]="fila.esLider">
+            <td class="tabla-clasificacion__num">
+              <span class="tabla-clasificacion__movil">POS.</span>
+              {{ fila.posicion }}
+            </td>
+            <td class="tabla-clasificacion__num">
+              <span class="tabla-clasificacion__movil">DORSAL</span>
+              {{ fila.dorsal }}
+            </td>
+            <td>
+              <span class="tabla-clasificacion__movil">EQUIPO</span>
+              {{ fila.equipo }}
+            </td>
+            <td>
+              <span class="tabla-clasificacion__movil">VEHÍCULO</span>
+              {{ fila.vehiculo }}
+            </td>
+            <td
+              class="tabla-clasificacion__num"
+              [class.tabla-clasificacion__penalizacion]="fila.penalizado"
+            >
+              <span class="tabla-clasificacion__movil">DESVIACIÓN</span>
+              {{ fila.desviacion }}
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </article>
+</div>

@@ -1,176 +1,151 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { CuadroInstrumentos } from '../../cuadro-instrumentos/cuadro-instrumentos';
 import { PageShellMeta } from '../../navegacion-service';
 
-interface MuestraColorConcours {
+interface MuestraColorEd1 {
+  rol: string;
   nombre: string;
   hex: string;
-  token: string;
   proporcion: string;
   uso: string;
 }
 
-interface MuestraTipografia {
-  nombre: string;
-  especificacion: string;
+interface MuestraTipografiaEd1 {
+  nivel: string;
+  familia: string;
+  tamano: string;
   clase: string;
   ejemplo: string;
 }
 
-interface TramoMuestra {
-  vineta: string;
-  tramo: string;
-  distTotal: string;
-  parcial: string;
-  media: string;
-  horaTeorica: string;
+interface FilaClasificacion {
+  posicion: string;
+  dorsal: string;
+  equipo: string;
+  vehiculo: string;
   desviacion: string;
-  activo: boolean;
+  esLider: boolean;
+  penalizado: boolean;
 }
-
-type EstadoVernier = 'optimo' | 'adelanto' | 'penalizacion';
 
 @Component({
   selector: 'app-guia-estilo',
-  imports: [RouterLink],
+  imports: [RouterLink, CuadroInstrumentos],
   templateUrl: './guia-estilo.html',
   styleUrl: './guia-estilo.scss',
 })
 export class GuiaEstilo {
   protected readonly cabecera: PageShellMeta = {
-    etiquetaTecnica: 'SECCIÓN 05 · CONCOURS EDITION V2.0.0',
-    titulo: 'Guía de Estilo del Club',
+    etiquetaTecnica: 'MANUAL DE IDENTIDAD · ED. I (1925–1975)',
+    titulo: 'Guía de estilos · Regularidad Clásica',
     subtitulo:
-      'Muestrario vivo del sistema Historic Rally & Classic Chronometer: proporción cromática 60/25/10/5, tipografía tabular, acabados físicos y componentes de regularidad.',
+      'El tiempo exacto, con la elegancia de antes. Sistema de cinco colores, acabado cromado, tipografía de carrocero y biblioteca oficial de componentes.',
   };
 
-  protected readonly estadoVernier = signal<EstadoVernier>('optimo');
-  protected readonly testigoActivo = signal(true);
-
-  protected readonly etiquetaVernier = computed(() => {
-    switch (this.estadoVernier()) {
-      case 'adelanto':
-        return '-0.4s · ADELANTO';
-      case 'penalizacion':
-        return '+0.8s · PENALIZACIÓN';
-      default:
-        return '0.0s · REGULARIDAD ÓPTIMA';
-    }
-  });
-
-  protected readonly paleta: readonly MuestraColorConcours[] = [
+  protected readonly paleta: readonly MuestraColorEd1[] = [
     {
-      nombre: 'Papel de Rutómetro',
-      hex: '#F6F3EC',
-      token: '$color-surface',
-      proporcion: '60% BASE',
-      uso: 'Lienzo principal ahuesado que reduce fatiga visual bajo luz solar en cabina.',
+      rol: 'Neutro claro',
+      nombre: 'Marfil',
+      hex: '#EEE8DC',
+      proporcion: '52%',
+      uso: 'Fondo principal de página y esferas analógicas de reloj.',
     },
     {
-      nombre: 'Dial Jaeger Obsidian',
-      hex: '#141715',
-      token: '$color-dial-obsidian',
-      proporcion: '25% ESTRUCTURA',
-      uso: 'Esferas de cronómetro oscuro, tinta carbón y pie institucional.',
+      rol: 'Primario',
+      nombre: 'Verde carreras',
+      hex: '#1F3B2D',
+      proporcion: '26%',
+      uso: 'Cabeceras, acciones principales y tarjetas de tramos.',
     },
     {
-      nombre: 'Cromo Cepillado',
-      hex: '#B8C0C8',
-      token: '$color-chrome-mid',
-      proporcion: '25% ESTRUCTURA',
-      uso: 'Biseles metálicos, remaches de dorsal y filetes de instrumentación.',
+      rol: 'Neutro oscuro',
+      nombre: 'Tinta',
+      hex: '#141816',
+      proporcion: '12%',
+      uso: 'Tipografía principal, tripmaster digital y pie de página.',
     },
     {
-      nombre: 'British Racing Green',
-      hex: '#0A3622',
-      token: '$color-primary',
-      proporcion: '10% PRIMARIO',
-      uso: 'Cabecera principal, placas esmaltadas, pulsadores de validación y fila activa.',
+      rol: 'Acento',
+      nombre: 'Cuero coñac',
+      hex: '#A36A3A',
+      proporcion: '6%',
+      uso: 'Etiquetas (eyebrows), estados de foco, detalles de costura y fila líder.',
     },
     {
-      nombre: 'Cuero Cognac (Connolly)',
-      hex: '#824B24',
-      token: '$color-secondary',
-      proporcion: '5% NOBLE',
-      uso: 'Navegación secundaria activa, carpetas reglamentarias y pespunte cosido.',
-    },
-    {
-      nombre: 'Vintage Bordeaux (Oxblood)',
-      hex: '#631D26',
-      token: '$color-bordeaux',
-      proporcion: '5% NOBLE',
-      uso: 'Distinciones Concours, placas especiales, alertas de penalización y control 404.',
-    },
-    {
-      nombre: 'Latón Calibrado',
-      hex: '#B58938',
-      token: '$color-brass-gold',
-      proporcion: 'DETALLE',
-      uso: 'Marcadores centrales de cero vernier, corona del emblema e indicador de foco.',
+      rol: 'Acento',
+      nombre: 'Burdeos',
+      hex: '#6B1F2A',
+      proporcion: '4%',
+      uso: 'Penalizaciones, alertas, estados fuera de tolerancia y directos.',
     },
   ];
 
-  protected readonly escalasTipograficas: readonly MuestraTipografia[] = [
+  protected readonly escalaTipografica: readonly MuestraTipografiaEd1[] = [
     {
-      nombre: 'display-hero / headline-lg',
-      especificacion: 'Playfair Display · 56px / 38px · 700 / 600',
-      clase: 'guia__tipo--hero',
-      ejemplo: 'TC-04: Col de Turini',
+      nivel: 'Display',
+      familia: 'Bodoni Moda · 40px–88px · 500',
+      tamano: '1.05–1.15',
+      clase: 'guia__display',
+      ejemplo: 'Rally Histórico de Regularidad',
     },
     {
-      nombre: 'headline-md / headline-sm',
-      especificacion: 'Playfair Display · 26px / 20px · 600',
-      clase: 'guia__tipo--titulo',
-      ejemplo: 'Verificaciones Técnicas y Parque Cerrado',
+      nivel: 'H2',
+      familia: 'Bodoni Moda · 32px–52px',
+      tamano: '1.1',
+      clase: 'guia__h2',
+      ejemplo: 'Laca, piel y metal',
     },
     {
-      nombre: 'chrono-hero / chrono-gauge',
-      especificacion: 'Space Mono · 48px / 28px · 700 · "tnum" 1, "zero" 1',
-      clase: 'guia__tipo--crono numero-tabular',
-      ejemplo: '00:42:18.0',
+      nivel: 'H3 (Cursiva emocional)',
+      familia: 'Bodoni Moda · 26px · italic',
+      tamano: '1.15',
+      clase: 'guia__h3 titulo-cursiva',
+      ejemplo: 'TC-03 · Subida al Puerto de Navacerrada',
     },
     {
-      nombre: 'body-lg / body-md',
-      especificacion: 'Chivo · 17px / 14px · 400',
-      clase: 'guia__tipo--cuerpo',
-      ejemplo: 'Mantener media impuesta de 48.5 km/h hasta el Control Horario CH-03.',
+      nivel: 'Cuerpo',
+      familia: 'Barlow · 16px · 400',
+      tamano: '1.55',
+      clase: 'guia__cuerpo',
+      ejemplo: 'Salida del tramo 3 a las 09:40. Media impuesta: 42 km/h. Buena ruta.',
     },
     {
-      nombre: 'label-engraved / label-micro',
-      especificacion: 'Space Mono · 11px / 9px · 700 · 0.12em–0.14em uppercase',
-      clase: 'etiqueta-grabada',
-      ejemplo: 'TIEMPO IDEAL · DESVIACIÓN · ODO PARCIAL 014.20 KM',
-    },
-  ];
-
-  protected readonly filasRutometro: readonly TramoMuestra[] = [
-    {
-      vineta: 'CH-01',
-      tramo: 'Salida Parque Cerrado · Plaza Mayor',
-      distTotal: '000.00 km',
-      parcial: '00.00 km',
-      media: '45.0 km/h',
-      horaTeorica: '09:00:00.0',
-      desviacion: '0.0s',
-      activo: false,
-    },
-    {
-      vineta: 'TC-02',
-      tramo: 'Puerto de Navacerrada · Vertiente Sur',
-      distTotal: '014.20 km',
-      parcial: '03.85 km',
-      media: '48.5 km/h',
-      horaTeorica: '09:17:34.2',
-      desviacion: '-0.1s',
-      activo: true,
+      nivel: 'Etiqueta + Tabular',
+      familia: 'Barlow Condensed · 11px–12px · 600 · +0.18em',
+      tamano: '1.25',
+      clase: 'etiqueta-ed1 numero-tabular',
+      ejemplo: 'DORSAL 14 · PARCIAL 14.20 KM · DESVIACIÓN +0.1 S',
     },
   ];
 
-  protected cambiarEstadoVernier(estado: EstadoVernier): void {
-    this.estadoVernier.set(estado);
-  }
-
-  protected alternarTestigo(): void {
-    this.testigoActivo.update((activo) => !activo);
-  }
+  protected readonly clasificacion: readonly FilaClasificacion[] = [
+    {
+      posicion: '1',
+      dorsal: '14',
+      equipo: 'M. Valdés / C. Serrano',
+      vehiculo: 'Porsche 911 Carrera RS',
+      desviacion: '0.2 s',
+      esLider: true,
+      penalizado: false,
+    },
+    {
+      posicion: '2',
+      dorsal: '27',
+      equipo: 'A. Prieto / E. Navarro',
+      vehiculo: 'Lancia Fulvia Coupé HF',
+      desviacion: '0.5 s',
+      esLider: false,
+      penalizado: false,
+    },
+    {
+      posicion: '3',
+      dorsal: '42',
+      equipo: 'J. Morales / R. Gil',
+      vehiculo: 'Alfa Romeo Giulia GTA',
+      desviacion: '1.8 s',
+      esLider: false,
+      penalizado: true,
+    },
+  ];
 }

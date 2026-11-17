@@ -10,45 +10,38 @@ describe('GuiaEstilo', () => {
     }).compileComponents();
   });
 
-  it('debe renderizar la paleta 60/25/10/5 y los cinco acabados materiales', () => {
+  it('debe renderizar los cinco colores oficiales, acabado cromado y biblioteca Ed. I completa', () => {
     const fixture = TestBed.createComponent(GuiaEstilo);
     fixture.detectChanges();
 
     const el = fixture.nativeElement as HTMLElement;
-    expect(el.textContent).toContain('British Racing Green');
-    expect(el.textContent).toContain('Vintage Bordeaux');
-    expect(el.querySelector('.chrome-bezel')).toBeTruthy();
-    expect(el.querySelector('.instrument-dial')).toBeTruthy();
-    expect(el.querySelector('.leather-panel')).toBeTruthy();
-    expect(el.querySelector('.enamel-green')).toBeTruthy();
-    expect(el.querySelector('.enamel-bordeaux')).toBeTruthy();
-    expect(el.querySelectorAll('.placa-dorsal__remache').length).toBe(4);
+    expect(el.textContent).toContain('Verde carreras');
+    expect(el.textContent).toContain('Cuero coñac');
+    expect(el.textContent).toContain('Burdeos');
+    expect(el.textContent).toContain('Marfil');
+    expect(el.textContent).toContain('Tinta');
+    expect(el.querySelector('app-cuadro-instrumentos')).toBeTruthy();
+    expect(el.querySelector('.boton--primario')).toBeTruthy();
+    expect(el.querySelector('.boton--secundario')).toBeTruthy();
+    expect(el.querySelector('.boton--terciario')).toBeTruthy();
+    expect(el.querySelector('.boton--alerta')).toBeTruthy();
+    expect(el.querySelector('.campo-carnet__entrada')).toBeTruthy();
+    expect(el.querySelectorAll('.dorsal-circular').length).toBe(2);
+    expect(el.querySelector('.tarjeta-tramo')).toBeTruthy();
+    expect(el.querySelector('.tabla-clasificacion__lider')).toBeTruthy();
   });
 
-  it('debe actualizar la escala vernier y conmutar el testigo luminoso de demostración', () => {
+  it('debe permitir simular lecturas del cuadro de instrumentos dentro de la guía', () => {
     const fixture = TestBed.createComponent(GuiaEstilo);
     fixture.detectChanges();
 
     const el = fixture.nativeElement as HTMLElement;
-    expect(el.textContent).toContain('0.0s · REGULARIDAD ÓPTIMA');
-
-    const botones = Array.from(el.querySelectorAll('button'));
-    const btnAdelanto = botones.find((b) => b.textContent?.includes('Simular Adelanto'));
-    const btnRetraso = botones.find((b) => b.textContent?.includes('Simular Retraso'));
-    const btnTestigo = botones.find((b) => b.textContent?.includes('Testigo:'));
-
-    btnAdelanto?.click();
+    const btnFuera = Array.from(el.querySelectorAll('button')).find((b) =>
+      b.textContent?.includes('Penalización'),
+    );
+    btnFuera?.click();
     fixture.detectChanges();
-    expect(el.textContent).toContain('-0.4s · ADELANTO');
-    expect(el.querySelector('.vernier__aguja--adelanto')).toBeTruthy();
 
-    btnRetraso?.click();
-    fixture.detectChanges();
-    expect(el.textContent).toContain('+0.8s · PENALIZACIÓN');
-    expect(el.querySelector('.vernier__aguja--penalizacion')).toBeTruthy();
-
-    btnTestigo?.click();
-    fixture.detectChanges();
-    expect(btnTestigo?.textContent).toContain('Apagado');
+    expect(el.textContent).toContain('FUERA DE TOLERANCIA');
   });
 });

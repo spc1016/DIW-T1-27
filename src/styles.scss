@@ -14,11 +14,12 @@ html {
 body {
   margin: 0;
   min-height: 100dvh;
-  background-color: $color-surface;
-  color: $color-on-surface;
+  background-color: $color-marfil;
+  color: $color-tinta;
   font-family: $font-body;
-  font-size: 14px;
-  line-height: 22px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -34,35 +35,36 @@ img {
 }
 
 // =============================================================================
-// Tipografía Instrumental & Tabular (tnum + zero)
+// Tipografía, Numerales Tabulares y Trazos Técnicos Ed. I
 // =============================================================================
 
 .numero-tabular {
-  font-family: $font-mono;
-  font-variant-numeric: tabular-nums;
-  font-feature-settings:
-    'tnum' 1,
-    'zero' 1;
+  font-variant-numeric: tabular-nums lining-nums;
 }
 
-.etiqueta-grabada {
+.etiqueta-ed1 {
   margin: 0;
-  font-family: $font-mono;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 14px;
-  letter-spacing: 0.12em;
+  font-family: $font-label;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
+  color: $color-cuero-conac;
 }
 
-.etiqueta-micro {
+.titulo-cursiva {
+  font-family: $font-display;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.filete-cromo {
+  height: 2px;
+  width: 100%;
+  border: 0;
   margin: 0;
-  font-family: $font-mono;
-  font-size: 9px;
-  font-weight: 700;
-  line-height: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  background: $gradiente-cromo;
 }
 
 .icono-tecnico {
@@ -77,50 +79,7 @@ img {
 }
 
 // =============================================================================
-// Acabados de Materiales Físicos (Concours Edition v2.0.0)
-// =============================================================================
-
-.chrome-bezel {
-  background-color: $color-surface-bright;
-  border: 1px solid $color-chrome-bezel-border;
-  border-radius: $radius-default;
-  box-shadow: $shadow-chrome-bezel;
-}
-
-.instrument-dial {
-  background: radial-gradient(circle at 50% 30%, $color-dial-center 0%, $color-dial-obsidian 100%);
-  color: $color-on-dial;
-  border: 2px solid $color-chrome-mid;
-  border-radius: $radius-default;
-  box-shadow: $shadow-instrument-dial;
-}
-
-.leather-panel {
-  background-color: $color-secondary;
-  color: $color-on-secondary;
-  border: 1px solid $color-secondary-border;
-  border-radius: $radius-default;
-  box-shadow: $shadow-leather-stitch;
-}
-
-.enamel-green {
-  background: linear-gradient(180deg, $color-primary-top 0%, $color-primary 100%);
-  border: 1px solid $color-primary-border;
-  border-radius: $radius-default;
-  box-shadow: $shadow-enamel-highlight;
-  color: $color-on-primary;
-}
-
-.enamel-bordeaux {
-  background: linear-gradient(180deg, $color-bordeaux-top 0%, $color-bordeaux 100%);
-  border: 1px solid $color-bordeaux-border;
-  border-radius: $radius-default;
-  box-shadow: $shadow-enamel-highlight;
-  color: $color-on-bordeaux;
-}
-
-// =============================================================================
-// Retícula Cockpit Mobile-First (4 / 8 / 12 columnas · máx 1320px)
+// Retícula Mobile-First (4 / 8 / 12 columnas · máx 1320px)
 // =============================================================================
 
 .pagina {
@@ -141,41 +100,38 @@ img {
 .pagina__cabecera {
   margin-bottom: $space-lg;
   padding-bottom: $space-md;
-  border-bottom: 1px solid $color-outline-variant;
+  border-bottom: 1px solid $color-filete-tinta;
 }
 
 .pagina__etiqueta {
   margin: 0 0 $space-xs;
-  font-family: $font-mono;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 14px;
-  letter-spacing: 0.12em;
+  font-family: $font-label;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: $color-secondary;
+  color: $color-cuero-conac;
 }
 
 .pagina__titulo {
   margin: 0 0 $space-sm;
   font-family: $font-display;
-  font-size: 28px;
-  font-weight: 600;
-  line-height: 34px;
-  letter-spacing: -0.015em;
-  color: $color-primary;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.1;
+  color: $color-tinta;
 
   @media (min-width: $bp-tablet) {
-    font-size: 38px;
-    line-height: 44px;
+    font-size: 46px;
   }
 }
 
 .pagina__descripcion {
   margin: 0;
-  max-width: 68ch;
-  font-size: 17px;
-  line-height: 26px;
-  color: $color-on-surface-variant;
+  max-width: 66ch;
+  font-size: 16px;
+  line-height: 1.55;
+  color: $color-tinta;
 }
 
 .pagina__grid {
@@ -201,373 +157,263 @@ img {
   margin-top: $space-lg;
 }
 
-.cockpit__principal {
-  grid-column: span 4;
-
-  @media (min-width: $bp-tablet) {
-    grid-column: span 8;
-  }
-
-  @media (min-width: $bp-desktop) {
-    grid-column: span 8;
-  }
-}
-
-.cockpit__secundaria {
-  grid-column: span 4;
-
-  @media (min-width: $bp-tablet) {
-    grid-column: span 8;
-  }
-
-  @media (min-width: $bp-desktop) {
-    grid-column: span 4;
-  }
-}
-
 // =============================================================================
-// Tarjetas y Pulsadores Mecánicos
+// Biblioteca de Componentes Ed. I
 // =============================================================================
 
-.tarjeta {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: $space-sm;
-  padding: $space-md;
-  background-color: $color-surface-bright;
-  border: 1px solid $color-chrome-bezel-border;
-  border-top: 3px solid $color-primary;
-  border-radius: $radius-default;
-  box-shadow: $shadow-chrome-bezel;
-
-  &--cuero {
-    border-top-color: $color-secondary;
-  }
-
-  &--burdeos {
-    border-top-color: $color-bordeaux;
-  }
-
-  &__etiqueta {
-    margin: 0;
-    font-family: $font-mono;
-    font-size: 11px;
-    font-weight: 700;
-    line-height: 14px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: $color-chrome-dark;
-  }
-
-  &__titulo {
-    margin: 0;
-    font-family: $font-display;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 26px;
-    color: $color-on-surface;
-  }
-
-  &__texto {
-    margin: 0;
-    font-size: 14px;
-    line-height: 22px;
-    color: $color-on-surface-variant;
-  }
+.marco-sobrio {
+  padding: $space-lg;
+  background-color: $color-marfil;
+  border: 1px solid $color-filete-tinta;
+  border-radius: $radius-control;
 }
 
-.pulsador {
+.panel-directo {
+  padding: $space-lg;
+  background-color: $color-burdeos;
+  color: $color-marfil;
+  border: 1px solid $color-burdeos;
+  border-radius: $radius-control;
+}
+
+.boton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: $space-sm;
   min-height: 48px;
-  padding: $space-sm $space-md;
-  border-radius: $radius-default;
-  border: 1px solid $color-chrome-dark;
-  background: linear-gradient(180deg, $color-pusher-top 0%, $color-pusher-bottom 100%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
-  color: $color-dial-obsidian;
-  font-family: $font-mono;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 14px;
-  letter-spacing: 0.12em;
+  padding: 13px 22px;
+  border-radius: $radius-placa;
+  border: 1px solid transparent;
+  font-family: $font-label;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
   transition:
-    transform $duration-mechanical $ease-mechanical,
-    background-color $duration-mechanical $ease-mechanical,
-    box-shadow $duration-mechanical $ease-mechanical;
-
-  &:hover {
-    background: linear-gradient(180deg, $color-surface-container-lowest 0%, $color-chrome-mid 100%);
-  }
-
-  &:active {
-    transform: translateY(1.5px);
-    box-shadow: $shadow-pusher-active;
-  }
+    background-color 140ms $ease-suave,
+    border-color 140ms $ease-suave,
+    opacity 140ms $ease-suave;
 
   &--primario {
-    background: linear-gradient(180deg, $color-primary-top 0%, $color-primary 100%);
-    border-color: $color-primary-border;
-    box-shadow: $shadow-enamel-highlight;
-    color: $color-on-primary;
+    background-color: $color-verde-carreras;
+    border-color: $color-verde-carreras;
+    color: $color-marfil;
 
     &:hover {
-      background: $color-primary-hover;
+      opacity: 0.92;
     }
+  }
+
+  &--secundario {
+    background: $gradiente-cromo;
+    border-color: $color-tinta;
+    color: $color-tinta;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &--terciario {
+    background-color: transparent;
+    border-color: $color-verde-carreras;
+    color: $color-verde-carreras;
+
+    &:hover {
+      background-color: $color-tinte-verde;
+    }
+  }
+
+  &--alerta {
+    background-color: $color-burdeos;
+    border-color: $color-burdeos;
+    color: $color-marfil;
+
+    &:hover {
+      opacity: 0.92;
+    }
+  }
+}
+
+// Formularios: Estética Carnet de ruta
+.campo-carnet {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+
+  &__etiqueta {
+    font-family: $font-label;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: $color-cuero-conac;
+  }
+
+  &__entrada {
+    width: 100%;
+    min-height: 48px;
+    padding: $space-sm 0;
+    border: none;
+    border-bottom: 1px solid $color-tinta;
+    border-radius: 0;
+    background-color: transparent;
+    color: $color-tinta;
+    font-family: $font-body;
+    font-size: 16px;
+    line-height: 1.5;
+    transition: border-color 140ms $ease-suave;
+
+    &::placeholder {
+      color: $color-tinta;
+      opacity: 0.55;
+    }
+
+    &:focus {
+      outline: none;
+      border-bottom: 2px solid $color-cuero-conac;
+    }
+  }
+}
+
+// Placas rectangulares (12–16% tinte) y Dorsales circulares (72px, borde 3px)
+.placa-semantica {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: $radius-placa;
+  font-family: $font-label;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  &--verde {
+    background-color: $color-tinte-verde;
+    color: $color-verde-carreras;
   }
 
   &--cuero {
-    background: $color-secondary;
-    border-color: $color-secondary-border;
-    box-shadow: $shadow-enamel-highlight;
-    color: $color-on-secondary;
-
-    &:hover {
-      background: $color-secondary-hover;
-    }
+    background-color: $color-tinte-cuero;
+    color: $color-tinta;
   }
 
   &--burdeos {
-    background: linear-gradient(180deg, $color-bordeaux-top 0%, $color-bordeaux 100%);
-    border-color: $color-bordeaux-border;
-    box-shadow: $shadow-enamel-highlight;
-    color: $color-on-bordeaux;
-
-    &:hover {
-      background: $color-bordeaux-hover;
-    }
-  }
-
-  &--corona {
-    min-width: 48px;
-    border-radius: $radius-full;
-    padding: $space-sm;
+    background-color: $color-tinte-burdeos;
+    color: $color-burdeos;
   }
 }
 
-.sello-tecnico {
+.dorsal-circular {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: $space-xs $space-sm;
-  border: 1px solid $color-outline-variant;
-  border-radius: $radius-xs;
-  background-color: $color-surface-container-low;
-  font-family: $font-mono;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 14px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: $color-primary;
-}
-
-// =============================================================================
-// Placa de Dorsal con Remaches Metálicos (.placa-dorsal)
-// =============================================================================
-
-.placa-dorsal {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  gap: $space-xs;
-  padding: $space-md $space-lg;
-  border-radius: $radius-xs;
-  border: 2px solid $color-chrome-mid;
-  box-shadow: inset 0 0 0 2px rgba(246, 243, 236, 0.28);
-  text-align: center;
-
-  &__evento {
-    margin: 0;
-    font-family: $font-display;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-  }
-
-  &__numero {
-    margin: 0;
-    font-family: $font-mono;
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 40px;
-    letter-spacing: -0.02em;
-    font-variant-numeric: tabular-nums;
-    font-feature-settings:
-      'tnum' 1,
-      'zero' 1;
-  }
-
-  &__remache {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    border-radius: $radius-full;
-    background: radial-gradient(
-      circle at 30% 30%,
-      $color-surface-container-lowest 0%,
-      $color-chrome-dark 100%
-    );
-    border: 1px solid $color-dial-obsidian;
-
-    &--tl {
-      top: 6px;
-      left: 6px;
-    }
-
-    &--tr {
-      top: 6px;
-      right: 6px;
-    }
-
-    &--bl {
-      bottom: 6px;
-      left: 6px;
-    }
-
-    &--br {
-      bottom: 6px;
-      right: 6px;
-    }
-  }
-}
-
-// =============================================================================
-// Testigo Luminoso Piloto 8px (.testigo)
-// =============================================================================
-
-.testigo {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: $radius-full;
-  border: 1px solid $color-chrome-mid;
-  background-color: $color-status-neutral;
-  transition:
-    background-color $duration-mechanical $ease-mechanical,
-    box-shadow $duration-mechanical $ease-mechanical;
-
-  &--verde {
-    background-color: $color-status-optimal;
-    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.45);
-  }
-
-  &--ambar {
-    background-color: $color-status-early;
-    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5);
-  }
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  border-radius: $radius-circular;
+  border: 3px solid $color-verde-carreras;
+  background-color: $color-marfil;
+  color: $color-tinta;
+  font-family: $font-display;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums lining-nums;
 
   &--burdeos {
-    background-color: $color-status-penalty;
-    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.4);
+    border-color: $color-burdeos;
+    color: $color-burdeos;
   }
 }
 
-// =============================================================================
-// Escala Vernier de Desviación (.vernier)
-// =============================================================================
-
-.vernier {
+// Tarjetas de tramo (Verde carreras, cabecera en cursiva, placa cromada y 3 columnas)
+.tarjeta-tramo {
   display: flex;
   flex-direction: column;
-  gap: $space-sm;
-  padding: $space-md;
-  background-color: $color-surface-container-low;
-  border: 1px solid $color-outline-variant;
-  border-radius: $radius-default;
+  gap: $space-md;
+  padding: $space-lg;
+  background-color: $color-verde-carreras;
+  color: $color-marfil;
+  border-radius: $radius-control;
 
   &__cabecera {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     gap: $space-sm;
   }
 
-  &__pista {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    height: 28px;
-    border: 1px solid $color-chrome-dark;
-    border-radius: $radius-xs;
-    background-color: $color-surface-bright;
-    overflow: hidden;
-  }
-
-  &__zona-adelanto {
-    height: 100%;
-    border-right: 1px solid $color-outline-variant;
-    background-color: rgba(181, 115, 36, 0.16);
-  }
-
-  &__cero {
-    padding-inline: $space-sm;
-    font-family: $font-mono;
+  &__codigo {
+    margin: 0 0 $space-xs;
+    font-family: $font-label;
     font-size: 11px;
-    font-weight: 700;
-    color: $color-primary;
-    border-left: 2px solid $color-brass-gold;
-    border-right: 2px solid $color-brass-gold;
-  }
-
-  &__zona-retraso {
-    height: 100%;
-    border-left: 1px solid $color-outline-variant;
-    background-color: rgba(140, 29, 36, 0.16);
-  }
-
-  &__aguja {
-    position: absolute;
-    top: 2px;
-    bottom: 2px;
-    width: 4px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: $color-primary;
-    transition:
-      left $duration-mechanical $ease-mechanical,
-      background-color $duration-mechanical $ease-mechanical;
-
-    &--adelanto {
-      left: 24%;
-      background-color: $color-status-early;
-    }
-
-    &--penalizacion {
-      left: 76%;
-      background-color: $color-status-penalty;
-    }
-  }
-
-  &__leyenda {
-    display: flex;
-    justify-content: space-between;
-    font-family: $font-mono;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
+    font-weight: 600;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: $color-on-surface-variant;
+    color: $color-tolerancia-ok;
+  }
+
+  &__titulo {
+    margin: 0;
+    font-family: $font-display;
+    font-style: italic;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.15;
+    color: $color-marfil;
+  }
+
+  &__estado {
+    padding: 4px 10px;
+    border: 2px solid transparent;
+    border-image: $gradiente-cromo 1;
+    font-family: $font-label;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: $color-marfil;
+  }
+
+  &__metricas {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: $space-sm;
+    padding-top: $space-md;
+    border-top: 1px solid rgba(238, 232, 220, 0.24);
+  }
+
+  &__dato {
+    margin: 2px 0 0;
+    font-family: $font-label;
+    font-size: 18px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums lining-nums;
+    color: $color-marfil;
+  }
+
+  &__etiqueta {
+    margin: 0;
+    font-family: $font-label;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: $color-marfil;
+    opacity: 0.8;
   }
 }
 
-// =============================================================================
-// Tablas de Rutómetro Responsivas (<768px tarjetas / >=768px tabla impresa)
-// =============================================================================
-
-.rutometro {
+// Tablas de clasificación (alineación derecha, líder 10% cuero, penalizaciones burdeos)
+.tabla-clasificacion {
   width: 100%;
   border-collapse: collapse;
-  background-color: $color-surface-bright;
 
   thead {
     display: none;
@@ -591,64 +437,71 @@ img {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: $space-xs $space-md;
     padding: $space-md;
-    border: 1px solid $color-outline-variant;
-    border-left: 3px solid $color-chrome-mid;
-    border-radius: $radius-default;
-    background-color: $color-surface-bright;
+    border: 1px solid $color-filete-tinta;
+    border-radius: $radius-control;
 
     @media (min-width: $bp-tablet) {
       display: table-row;
       border: none;
-      border-bottom: 1px solid $color-outline-variant;
+      border-bottom: 1px solid $color-filete-tinta;
       border-radius: 0;
       padding: 0;
     }
 
-    &.rutometro__fila--activa {
-      border-left: 4px solid $color-primary;
-      background-color: $color-surface-container-low;
-
-      @media (min-width: $bp-tablet) {
-        background-color: $color-surface-bright;
-      }
+    &.tabla-clasificacion__lider {
+      background-color: $color-lider-cuero;
     }
   }
 
   th {
     padding: $space-sm $space-md;
-    background-color: $color-surface-container;
-    border-bottom: 1px solid $color-outline-variant;
-    text-align: left;
-    font-family: $font-mono;
+    border-bottom: 2px solid $color-tinta;
+    font-family: $font-label;
     font-size: 11px;
-    font-weight: 700;
-    line-height: 14px;
-    letter-spacing: 0.12em;
+    font-weight: 600;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: $color-on-surface-variant;
+    text-align: left;
+    color: $color-tinta;
+
+    &.tabla-clasificacion__num {
+      text-align: right;
+    }
   }
 
   td {
     display: flex;
     flex-direction: column;
     gap: 2px;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 16px;
 
     @media (min-width: $bp-tablet) {
       display: table-cell;
       padding: $space-sm $space-md;
       vertical-align: middle;
     }
+
+    &.tabla-clasificacion__num {
+      font-variant-numeric: tabular-nums lining-nums;
+
+      @media (min-width: $bp-tablet) {
+        text-align: right;
+      }
+    }
+
+    &.tabla-clasificacion__penalizacion {
+      color: $color-burdeos;
+      font-weight: 600;
+    }
   }
 
-  &__etiqueta-movil {
-    font-family: $font-mono;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
+  &__movil {
+    font-family: $font-label;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: $color-chrome-dark;
+    color: $color-cuero-conac;
 
     @media (min-width: $bp-tablet) {
       display: none;

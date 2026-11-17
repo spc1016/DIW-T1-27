@@ -1,61 +1,72 @@
 @use 'variables' as *;
 
-.inscripcion__carpeta {
+.inscripcion__formulario {
+  grid-column: span 4;
   display: flex;
   flex-direction: column;
-  gap: $space-sm;
-  padding: $space-lg;
+  gap: $space-lg;
+
+  @media (min-width: $bp-tablet) {
+    grid-column: span 8;
+  }
+
+  @media (min-width: $bp-desktop) {
+    grid-column: span 8;
+  }
 }
 
-.inscripcion__carpeta-etiqueta {
-  color: $color-secondary-container;
-}
-
-.inscripcion__carpeta-titulo {
-  margin: 0;
-  font-family: $font-display;
-  font-size: 22px;
-  font-weight: 600;
-  color: $color-on-secondary;
-}
-
-.inscripcion__carpeta-texto {
-  margin: 0;
-  font-size: 14px;
-  line-height: 22px;
-  color: $color-secondary-container;
-}
-
-.inscripcion__estado {
-  display: inline-flex;
+.inscripcion__cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
-  gap: $space-xs;
-  margin-top: auto;
-  padding-top: $space-sm;
+  gap: $space-sm;
 }
 
-.inscripcion__hoja {
+.inscripcion__campos {
+  display: grid;
+  gap: $space-md;
+}
+
+.inscripcion__normas {
+  grid-column: span 4;
   display: flex;
   flex-direction: column;
   gap: $space-md;
-  padding: $space-lg;
+
+  @media (min-width: $bp-tablet) {
+    grid-column: span 8;
+  }
+
+  @media (min-width: $bp-desktop) {
+    grid-column: span 4;
+  }
 }
 
-.inscripcion__requisitos {
+.inscripcion__titulo {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.15;
+}
+
+.inscripcion__texto {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.inscripcion__datos {
   display: flex;
   flex-direction: column;
-  border: 1px solid $color-outline-variant;
-  background-color: $color-surface-container-low;
+  border-top: 1px solid $color-filete-tinta;
 }
 
-.inscripcion__fila {
+.inscripcion__dato-fila {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: $space-sm $space-md;
-  border-bottom: 1px solid $color-outline-variant;
-
-  &:last-child {
-    border-bottom: none;
-  }
+  padding-block: $space-sm;
+  border-bottom: 1px solid $color-filete-tinta;
+  font-family: $font-label;
+  font-size: 13px;
+  letter-spacing: 0.14em;
 }

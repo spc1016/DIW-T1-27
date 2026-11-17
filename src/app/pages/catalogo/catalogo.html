@@ -7,34 +7,35 @@
 
   <div class="pagina__grid">
     @for (vehiculo of muestras(); track vehiculo.id) {
-      <article
-        class="tarjeta catalogo__tarjeta"
-        [class.tarjeta--burdeos]="vehiculo.acabadoPlaca === 'burdeos'"
-      >
-        <div
-          class="placa-dorsal"
-          [class.enamel-green]="vehiculo.acabadoPlaca === 'verde'"
-          [class.enamel-bordeaux]="vehiculo.acabadoPlaca === 'burdeos'"
-        >
-          <span class="placa-dorsal__remache placa-dorsal__remache--tl" aria-hidden="true"></span>
-          <span class="placa-dorsal__remache placa-dorsal__remache--tr" aria-hidden="true"></span>
-          <span class="placa-dorsal__remache placa-dorsal__remache--bl" aria-hidden="true"></span>
-          <span class="placa-dorsal__remache placa-dorsal__remache--br" aria-hidden="true"></span>
-          <p class="placa-dorsal__evento">{{ vehiculo.categoria }}</p>
-          <p class="placa-dorsal__numero">{{ vehiculo.dorsal }}</p>
+      <article class="marco-sobrio catalogo__tarjeta">
+        <div class="catalogo__cabecera-ficha">
+          <span
+            class="dorsal-circular"
+            [class.dorsal-circular--burdeos]="vehiculo.tono === 'burdeos'"
+            [attr.aria-label]="'Dorsal ' + vehiculo.dorsal"
+          >
+            {{ vehiculo.dorsal }}
+          </span>
+          <span
+            class="placa-semantica"
+            [class.placa-semantica--verde]="vehiculo.tono === 'verde'"
+            [class.placa-semantica--burdeos]="vehiculo.tono === 'burdeos'"
+          >
+            {{ vehiculo.categoria }}
+          </span>
         </div>
 
         <div class="catalogo__cuerpo">
-          <p class="tarjeta__etiqueta numero-tabular">HOMOLOGACIÓN · {{ vehiculo.anio }}</p>
-          <h2 class="tarjeta__titulo">{{ vehiculo.modelo }}</h2>
-          <p class="tarjeta__texto">{{ vehiculo.resumen }}</p>
+          <p class="etiqueta-ed1 numero-tabular">AÑO DE HOMOLOGACIÓN · {{ vehiculo.anio }}</p>
+          <h2 class="catalogo__modelo titulo-cursiva">{{ vehiculo.modelo }}</h2>
+          <p class="catalogo__resumen">{{ vehiculo.resumen }}</p>
         </div>
 
         <div class="catalogo__acciones">
-          <a class="pulsador pulsador--primario" [routerLink]="['/catalogo', vehiculo.id]">
-            Ver Ficha #{{ vehiculo.dorsal }}
+          <a class="boton boton--primario" [routerLink]="['/catalogo', vehiculo.id]">
+            Ver Ficha Dorsal {{ vehiculo.dorsal }}
           </a>
-          <button type="button" class="pulsador" (click)="abrirDetalle(vehiculo.id)">
+          <button type="button" class="boton boton--secundario" (click)="abrirDetalle(vehiculo.id)">
             Abrir por Router
           </button>
         </div>
@@ -43,6 +44,6 @@
   </div>
 
   <div class="pagina__acciones">
-    <a class="pulsador pulsador--cuero" routerLink="/inicio">Volver a Inicio</a>
+    <a class="boton boton--terciario" routerLink="/inicio">Regresar a Portada</a>
   </div>
 </section>

@@ -6,41 +6,73 @@
   </header>
 
   <div class="pagina__grid">
-    <article class="leather-panel cockpit__secundaria inscripcion__carpeta">
-      <p class="etiqueta-micro inscripcion__carpeta-etiqueta">CARPETA REGLAMENTARIA</p>
-      <h2 class="inscripcion__carpeta-titulo">Documentación de Equipo</h2>
-      <p class="inscripcion__carpeta-texto">
-        Piloto, copiloto y vehículo histórico fabricado antes de 1985 con ficha FIVA o equivalente.
-      </p>
-      <div class="inscripcion__estado">
-        <span class="testigo testigo--ambar" aria-hidden="true"></span>
-        <span class="etiqueta-micro">FORMULARIO EN PRÓXIMA FASE</span>
+    <article class="marco-sobrio inscripcion__formulario">
+      <div class="inscripcion__cabecera">
+        <span class="etiqueta-ed1">HOJA DE INSCRIPCIÓN · MUESTRA VISUAL</span>
+        <span class="placa-semantica placa-semantica--cuero">FASE PRELIMINAR</span>
       </div>
-    </article>
 
-    <article class="chrome-bezel cockpit__principal inscripcion__hoja">
-      <p class="etiqueta-grabada">HOJA DE VERIFICACIÓN · ESTADO DEL MÓDULO</p>
-      <h2 class="tarjeta__titulo">Formulario de Inscripción Pendiente de Siguiente Fase</h2>
-      <p class="tarjeta__texto">
-        Esta vista confirma la ruta /inscripcion bajo la estética Concours Edition v2.0.0. En la
-        próxima iteración se integrarán los campos reactivos y validaciones reglamentarias.
-      </p>
-
-      <div class="inscripcion__requisitos">
-        <div class="inscripcion__fila">
-          <span class="etiqueta-grabada">CATEGORÍA PERMITIDA</span>
-          <span class="numero-tabular">HASTA 1985</span>
+      <div class="inscripcion__campos">
+        <div class="campo-carnet">
+          <label class="campo-carnet__etiqueta" for="inscripcion-piloto">PILOTO Y COPILOTO</label>
+          <input
+            id="inscripcion-piloto"
+            class="campo-carnet__entrada"
+            type="text"
+            placeholder="M. Valdés / C. Serrano"
+          />
         </div>
-        <div class="inscripcion__fila">
-          <span class="etiqueta-grabada">CUPOS DE PARQUE</span>
-          <span class="numero-tabular">050 DORSALES</span>
+
+        <div class="campo-carnet">
+          <label class="campo-carnet__etiqueta" for="inscripcion-vehiculo">
+            VEHÍCULO Y AÑO (1925–1975)
+          </label>
+          <input
+            id="inscripcion-vehiculo"
+            class="campo-carnet__entrada"
+            type="text"
+            placeholder="Porsche 911 Carrera RS · 1973"
+          />
+        </div>
+
+        <div class="campo-carnet">
+          <label class="campo-carnet__etiqueta" for="inscripcion-fiva"
+            >PASAPORTE FIVA / DORSAL</label
+          >
+          <input
+            id="inscripcion-fiva"
+            class="campo-carnet__entrada numero-tabular"
+            type="text"
+            placeholder="FIVA-1973-014"
+          />
         </div>
       </div>
+
+      <hr class="filete-cromo" aria-hidden="true" />
 
       <div class="pagina__acciones">
-        <a class="pulsador pulsador--primario" routerLink="/catalogo">Consultar Catálogo</a>
-        <a class="pulsador" routerLink="/inicio">Volver a Inicio</a>
+        <a class="boton boton--primario" routerLink="/catalogo">Consultar Parque Cerrado</a>
+        <a class="boton boton--terciario" routerLink="/inicio">Regresar a Portada</a>
       </div>
     </article>
+
+    <aside class="marco-sobrio inscripcion__normas" aria-label="Requisitos de verificación">
+      <p class="etiqueta-ed1">REGLAMENTO DE ADMISIÓN</p>
+      <h2 class="inscripcion__titulo titulo-cursiva">Condiciones Generales</h2>
+      <p class="inscripcion__texto">
+        Se admiten vehículos históricos fabricados entre 1925 y 1975 equipados con cronometraje
+        admitido por la organización.
+      </p>
+      <div class="inscripcion__datos numero-tabular">
+        <div class="inscripcion__dato-fila">
+          <span>PRECISIÓN EXIGIDA</span>
+          <strong>±0,1 s</strong>
+        </div>
+        <div class="inscripcion__dato-fila">
+          <span>CUPOS DE PARQUE</span>
+          <strong>50 DORSALES</strong>
+        </div>
+      </div>
+    </aside>
   </div>
 </section>

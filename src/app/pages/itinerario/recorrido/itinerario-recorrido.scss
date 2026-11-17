@@ -4,23 +4,43 @@
   display: block;
 }
 
-.recorrido__tarjeta {
+.recorrido__bloques {
   display: flex;
   flex-direction: column;
-  gap: $space-md;
-  padding: $space-lg;
+  gap: $space-lg;
 }
 
-.recorrido__cabecera {
+.recorrido__directo {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: $space-sm;
+  gap: $space-md;
 }
 
-.recorrido__estado {
-  display: inline-flex;
-  align-items: center;
-  gap: $space-xs;
+.recorrido__etiqueta-burdeos {
+  color: $color-tolerancia-fuera;
+}
+
+.recorrido__titulo {
+  margin: $space-xs 0;
+  font-size: 26px;
+  line-height: 1.15;
+  color: $color-marfil;
+}
+
+.recorrido__texto {
+  margin: 0;
+  color: $color-marfil;
+}
+
+.recorrido__estado-directo {
+  background-color: $color-tinta;
+  color: $color-tolerancia-fuera;
+}
+
+.recorrido__tabla-marco {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
 }

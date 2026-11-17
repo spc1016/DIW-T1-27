@@ -12,10 +12,10 @@ export class NoEncontrado {
   private readonly router = inject(Router);
 
   protected readonly cabecera: PageShellMeta = {
-    etiquetaTecnica: 'ERROR 404 · RUTA NO RECONOCIDA',
+    etiquetaTecnica: 'CONTROL HORARIO · FUERA DE RECORRIDO',
     titulo: 'Página no encontrada',
     subtitulo:
-      'La dirección solicitada no corresponde a ninguna sección del portal del I Rally & Concentración Histórica Classic Motor.',
+      'El punto de paso solicitado no figura en el rutómetro oficial. Retome el itinerario desde la portada.',
   };
 
   protected volverAlInicio(): void {

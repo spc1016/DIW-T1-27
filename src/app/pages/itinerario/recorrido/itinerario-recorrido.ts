@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 
-interface TramoRecorrido {
-  vineta: string;
-  tramo: string;
-  distTotal: string;
-  parcial: string;
-  media: string;
-  horaTeorica: string;
+interface FilaClasificacion {
+  posicion: string;
+  dorsal: string;
+  equipo: string;
+  vehiculo: string;
   desviacion: string;
-  activo: boolean;
+  esLider: boolean;
+  penalizado: boolean;
 }
 
 @Component({
@@ -18,26 +17,33 @@ interface TramoRecorrido {
   styleUrl: './itinerario-recorrido.scss',
 })
 export class ItinerarioRecorrido {
-  protected readonly tramos: readonly TramoRecorrido[] = [
+  protected readonly filas: readonly FilaClasificacion[] = [
     {
-      vineta: 'TC-01',
-      tramo: 'Puerto de la Cruz Verde · Enlace Norte',
-      distTotal: '018.40 km',
-      parcial: '06.20 km',
-      media: '49.8 km/h',
-      horaTeorica: '09:22:10.4',
-      desviacion: '0.0s',
-      activo: false,
+      posicion: '1',
+      dorsal: '14',
+      equipo: 'M. Valdés / C. Serrano',
+      vehiculo: 'Porsche 911 Carrera RS',
+      desviacion: '0.2 s',
+      esLider: true,
+      penalizado: false,
     },
     {
-      vineta: 'TC-02',
-      tramo: 'Col de Turini · Sector Regularidad',
-      distTotal: '034.90 km',
-      parcial: '16.50 km',
-      media: '48.5 km/h',
-      horaTeorica: '09:42:35.0',
-      desviacion: '-0.1s',
-      activo: true,
+      posicion: '2',
+      dorsal: '27',
+      equipo: 'A. Prieto / E. Navarro',
+      vehiculo: 'Lancia Fulvia Coupé HF',
+      desviacion: '0.5 s',
+      esLider: false,
+      penalizado: false,
+    },
+    {
+      posicion: '3',
+      dorsal: '42',
+      equipo: 'J. Morales / R. Gil',
+      vehiculo: 'Alfa Romeo Giulia GTA',
+      desviacion: '1.8 s',
+      esLider: false,
+      penalizado: true,
     },
   ];
 }

@@ -16,7 +16,7 @@ describe('App', () => {
     expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('debe renderizar la cabecera semántica, iconos técnicos ocultos a AT, el menú principal y el pie oscuro con testigo', async () => {
+  it('debe renderizar la cabecera Verde carreras con filete cromado, iconos técnicos y pie en tono Ed. I', async () => {
     const fixture = TestBed.createComponent(App);
     const router = TestBed.inject(Router);
     await router.navigateByUrl('/inicio');
@@ -27,9 +27,11 @@ describe('App', () => {
     expect(compiled.querySelector('a.cabecera__salto')?.getAttribute('href')).toBe(
       '#contenido-principal',
     );
-    expect(compiled.querySelector('header.cabecera')).toBeTruthy();
-    expect(compiled.querySelector('main#contenido-principal')).toBeTruthy();
-    expect(compiled.querySelector('footer.pie .testigo--verde')).toBeTruthy();
+    expect(compiled.querySelector('header.cabecera .filete-cromo')).toBeTruthy();
+    expect(compiled.querySelector('footer.pie .filete-cromo')).toBeTruthy();
+    expect(compiled.querySelector('footer.pie')?.textContent).toContain(
+      'El tiempo exacto, con la elegancia de antes.',
+    );
 
     const svgs = compiled.querySelectorAll('header svg.icono-tecnico');
     expect(svgs.length).toBeGreaterThan(0);

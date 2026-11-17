@@ -3,11 +3,10 @@
 .no-encontrado__tarjeta {
   display: grid;
   gap: $space-lg;
-  max-width: 52rem;
-  padding: $space-lg;
+  max-width: 50rem;
 
   @media (min-width: $bp-tablet) {
-    grid-template-columns: 220px 1fr;
+    grid-template-columns: auto 1fr;
     align-items: center;
   }
 }
@@ -18,8 +17,18 @@
   gap: $space-sm;
 }
 
-.no-encontrado__estado {
-  display: inline-flex;
-  align-items: center;
-  gap: $space-xs;
+.no-encontrado__etiqueta {
+  color: $color-tolerancia-fuera;
+}
+
+.no-encontrado__titulo {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.15;
+  color: $color-marfil;
+}
+
+.no-encontrado__texto {
+  margin: 0;
+  color: $color-marfil;
 }

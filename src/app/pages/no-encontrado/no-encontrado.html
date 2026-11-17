@@ -5,30 +5,24 @@
     <p class="pagina__descripcion">{{ cabecera.subtitulo }}</p>
   </header>
 
-  <article class="chrome-bezel no-encontrado__tarjeta">
-    <div class="placa-dorsal enamel-bordeaux no-encontrado__placa">
-      <span class="placa-dorsal__remache placa-dorsal__remache--tl" aria-hidden="true"></span>
-      <span class="placa-dorsal__remache placa-dorsal__remache--tr" aria-hidden="true"></span>
-      <span class="placa-dorsal__remache placa-dorsal__remache--bl" aria-hidden="true"></span>
-      <span class="placa-dorsal__remache placa-dorsal__remache--br" aria-hidden="true"></span>
-      <p class="placa-dorsal__evento">CONTROL HORARIO FUERA DE RUTA</p>
-      <p class="placa-dorsal__numero">404</p>
+  <article class="panel-directo no-encontrado__tarjeta">
+    <div class="no-encontrado__dorsal-wrap">
+      <span class="dorsal-circular dorsal-circular--burdeos" aria-label="Código 404">404</span>
     </div>
 
     <div class="no-encontrado__cuerpo">
-      <div class="no-encontrado__estado">
-        <span class="testigo testigo--burdeos" aria-hidden="true"></span>
-        <span class="etiqueta-grabada">DESVÍO DETECTADO · SECTOR NO HOMOLOGADO</span>
-      </div>
-      <h2 class="tarjeta__titulo">Retoma el recorrido oficial desde la portada</h2>
-      <p class="tarjeta__texto">
-        Comprueba la dirección introducida o utiliza los pulsadores de retorno para regresar de
-        forma segura a una sección válida del rally.
+      <p class="etiqueta-ed1 no-encontrado__etiqueta">AVISO DE COMISARIO · RUTA NO HOMOLOGADA</p>
+      <h2 class="no-encontrado__titulo titulo-cursiva">
+        Regrese al control de salida para continuar la prueba.
+      </h2>
+      <p class="no-encontrado__texto">
+        Verifique la dirección introducida o utilice los accesos siguientes para volver a la portada
+        general.
       </p>
       <div class="pagina__acciones">
-        <a class="pulsador pulsador--primario" routerLink="/inicio">Volver a Inicio</a>
-        <button type="button" class="pulsador pulsador--burdeos" (click)="volverAlInicio()">
-          Ir a Portada por Router
+        <a class="boton boton--secundario" routerLink="/inicio">Volver a Portada</a>
+        <button type="button" class="boton boton--primario" (click)="volverAlInicio()">
+          Ir a Inicio por Router
         </button>
       </div>
     </div>

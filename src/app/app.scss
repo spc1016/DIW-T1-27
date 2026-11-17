@@ -12,9 +12,9 @@
   top: $space-sm;
   z-index: 100;
   padding: $space-sm $space-md;
-  background-color: $color-brass-gold;
-  color: $color-dial-obsidian;
-  border-radius: $radius-default;
+  background-color: $color-cuero-conac;
+  color: $color-marfil;
+  border-radius: $radius-placa;
 
   &:focus {
     left: $space-md;
@@ -26,19 +26,17 @@
 .cabecera__enlace,
 .pie__enlace,
 .pie__texto {
-  font-family: $font-mono;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-family: $font-label;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   text-decoration: none;
 }
 
 .cabecera {
-  background: linear-gradient(180deg, $color-primary-top 0%, $color-primary 100%);
-  border-bottom: 4px solid $color-secondary;
-  box-shadow: inset 0 -1px 0 rgba(242, 222, 201, 0.35);
-  color: $color-on-primary;
+  background-color: $color-verde-carreras;
+  color: $color-marfil;
 }
 
 .cabecera__contenedor,
@@ -73,17 +71,16 @@
   text-decoration: none;
 }
 
-.cabecera__emblema {
+.cabecera__bisel {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: $radius-full;
-  border: 2px solid $color-chrome-mid;
-  background: radial-gradient(circle at 50% 30%, $color-dial-center 0%, $color-dial-obsidian 100%);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
-  color: $color-brass-gold;
+  width: 38px;
+  height: 38px;
+  border-radius: $radius-circular;
+  border: 2px solid $color-cuero-conac;
+  background-color: $color-marfil;
+  color: $color-tinta;
 }
 
 .cabecera__identidad {
@@ -94,18 +91,17 @@
 .cabecera__titulo {
   font-family: $font-display;
   font-size: 20px;
-  font-weight: 700;
-  line-height: 24px;
+  font-weight: 500;
+  line-height: 1.1;
 }
 
 .cabecera__subtitulo {
-  font-family: $font-mono;
-  font-size: 9px;
-  font-weight: 700;
-  line-height: 12px;
-  letter-spacing: 0.14em;
+  font-family: $font-label;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: $color-on-primary-container;
+  color: $color-tolerancia-ok;
 }
 
 .cabecera__boton-menu {
@@ -116,15 +112,11 @@
   min-width: 48px;
   min-height: 48px;
   padding: $space-xs $space-md;
-  border: 1px solid $color-chrome-dark;
-  border-radius: $radius-default;
-  background: linear-gradient(180deg, $color-pusher-top 0%, $color-pusher-bottom 100%);
-  color: $color-dial-obsidian;
+  border: 1px solid $color-tinta;
+  border-radius: $radius-placa;
+  background: $gradiente-cromo;
+  color: $color-tinta;
   cursor: pointer;
-
-  &:active {
-    transform: translateY(1.5px);
-  }
 
   @media (min-width: $bp-tablet) {
     display: none;
@@ -172,10 +164,9 @@
   align-items: center;
   min-height: 48px;
   padding: $space-xs $space-md;
-  border-radius: $radius-default;
-  border: 1px solid transparent;
-  color: $color-on-primary;
-  transition: background-color $duration-mechanical $ease-mechanical;
+  border-bottom: 2px solid transparent;
+  color: $color-marfil;
+  transition: border-color 140ms $ease-suave;
 
   @media (min-width: $bp-tablet) {
     min-height: 40px;
@@ -183,15 +174,12 @@
   }
 
   &:hover {
-    background-color: $color-primary-hover;
-    border-color: $color-on-primary-container;
+    border-bottom-color: $color-marfil;
   }
 
   &.activo {
-    background-color: $color-secondary;
-    border-color: $color-secondary-border;
-    box-shadow: inset 0 0 0 1px rgba(242, 222, 201, 0.35);
-    color: $color-on-secondary;
+    border-bottom-color: $color-cuero-conac;
+    color: $color-marfil;
   }
 }
 
@@ -200,9 +188,8 @@
 }
 
 .pie {
-  background: radial-gradient(circle at 50% 0%, $color-dial-charcoal 0%, $color-dial-obsidian 100%);
-  border-top: 2px solid $color-chrome-mid;
-  color: $color-on-dial;
+  background-color: $color-tinta;
+  color: $color-marfil;
 }
 
 .pie__contenedor {
@@ -217,15 +204,10 @@
   }
 }
 
-.pie__estado {
-  display: inline-flex;
-  align-items: center;
-  gap: $space-sm;
-}
-
 .pie__texto {
   margin: 0;
-  color: $color-on-dial-muted;
+  color: $color-marfil;
+  opacity: 0.88;
 }
 
 .pie__lista {
@@ -237,14 +219,13 @@
   display: inline-flex;
   align-items: center;
   min-height: 48px;
-  color: $color-on-dial;
+  color: $color-marfil;
 
   @media (min-width: $bp-tablet) {
     min-height: auto;
   }
 
   &:hover {
-    color: $color-brass-gold;
-    text-decoration: underline;
+    color: $color-cuero-conac;
   }
 }

@@ -4,12 +4,18 @@
   display: grid;
   gap: $space-lg;
   max-width: 56rem;
-  padding: $space-lg;
 
   @media (min-width: $bp-tablet) {
-    grid-template-columns: 240px 1fr;
-    align-items: center;
+    grid-template-columns: 180px 1fr;
+    align-items: start;
   }
+}
+
+.detalle__identificador {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $space-sm;
 }
 
 .detalle__contenido {
@@ -20,11 +26,15 @@
 
 .detalle__modelo {
   margin: 0;
-  font-family: $font-display;
-  font-size: 26px;
-  font-weight: 600;
-  line-height: 32px;
-  color: $color-primary;
+  font-size: 32px;
+  line-height: 1.1;
+  color: $color-tinta;
+}
+
+.detalle__texto {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
 }
 
 .detalle__aviso {
@@ -32,18 +42,19 @@
   flex-direction: column;
   gap: $space-sm;
   max-width: 48rem;
-  padding: $space-lg;
+}
+
+.detalle__aviso-etiqueta {
+  color: $color-tolerancia-fuera;
 }
 
 .detalle__aviso-titulo {
   margin: 0;
-  font-family: $font-display;
-  font-size: 24px;
-  font-weight: 600;
-  color: $color-on-bordeaux;
+  font-size: 26px;
+  color: $color-marfil;
 }
 
 .detalle__aviso-texto {
   margin: 0;
-  color: $color-on-bordeaux;
+  color: $color-marfil;
 }

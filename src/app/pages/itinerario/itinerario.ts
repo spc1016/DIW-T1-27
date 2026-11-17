@@ -12,10 +12,10 @@ export class Itinerario {
   private readonly navegacionService = inject(NavegacionService);
 
   protected readonly cabecera: PageShellMeta = {
-    etiquetaTecnica: 'SECCIÓN 03 · RUTÓMETRO OFICIAL',
-    titulo: 'Itinerario y Horarios del Rally',
+    etiquetaTecnica: 'RUTÓMETRO OFICIAL · TRAMOS Y CLASIFICACIÓN',
+    titulo: 'Itinerario, Tramos y Directo',
     subtitulo:
-      'Sección con subrutas anidadas (children) y salida secundaria para alternar entre el programa oficial y los tramos del recorrido.',
+      'Consulte los tramos de regularidad con sus medias impuestas o acceda al seguimiento en directo y la clasificación provisional.',
   };
 
   protected readonly subEnlaces = computed(() => this.navegacionService.obtenerTodas('itinerario'));

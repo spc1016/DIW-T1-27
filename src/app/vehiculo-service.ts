@@ -6,7 +6,7 @@ export interface VehiculoMuestra {
   modelo: string;
   anio: number;
   categoria: string;
-  acabadoPlaca: 'verde' | 'burdeos';
+  tono: 'verde' | 'burdeos';
   resumen: string;
 }
 
@@ -17,33 +17,33 @@ export class VehiculoService {
   private readonly coleccion: readonly VehiculoMuestra[] = [
     {
       id: 1,
-      dorsal: '014',
+      dorsal: '14',
       modelo: 'Porsche 911 Carrera RS 2.7',
       anio: 1973,
-      categoria: 'GT HISTÓRICO',
-      acabadoPlaca: 'verde',
+      categoria: 'GRAN TURISMO',
+      tono: 'verde',
       resumen:
-        'Unidad homologada Grupo 4 con instrumentación doble mecánica y carrocería aligerada de serie.',
+        'Unidad homologada con doble cronometraje mecánico y pasaporte técnico histórico vigente.',
     },
     {
       id: 2,
-      dorsal: '027',
+      dorsal: '27',
       modelo: 'Lancia Fulvia Coupé 1.6 HF',
       anio: 1972,
-      categoria: 'TURISMO CLÁSICO',
-      acabadoPlaca: 'burdeos',
+      categoria: 'TURISMO HISTÓRICO',
+      tono: 'burdeos',
       resumen:
-        'Configuración Monte-Carlo Historique con tracción delantera, motor V4 estrecho y preparación regularidad.',
+        'Preparación de regularidad clásica para tramos de montaña con media impuesta de 42 km/h.',
     },
     {
       id: 3,
-      dorsal: '042',
+      dorsal: '42',
       modelo: 'Alfa Romeo Giulia Sprint GTA',
       anio: 1967,
-      categoria: 'CONCOURS',
-      acabadoPlaca: 'burdeos',
+      categoria: 'SPORT CLÁSICO',
+      tono: 'verde',
       resumen:
-        'Ejemplar de carrocería de aluminio Peraluman 25 con acabado de época y cronometraje analógico.',
+        'Carrocería ligera de época verificada por los comisarios técnicos en parque cerrado.',
     },
   ];
 
@@ -56,7 +56,7 @@ export class VehiculoService {
     return this.coleccion.filter(
       (vehiculo) =>
         vehiculo.categoria.toLowerCase().includes(termino) ||
-        vehiculo.acabadoPlaca.toLowerCase() === termino ||
+        vehiculo.tono.toLowerCase() === termino ||
         vehiculo.modelo.toLowerCase().includes(termino),
     );
   }

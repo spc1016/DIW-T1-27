@@ -1,0 +1,78 @@
+<section class="instrumento" aria-label="Cuadro de instrumentos de regularidad">
+  <div class="instrumento__cuerpo">
+    <div
+      class="instrumento__esfera"
+      role="img"
+      [attr.aria-label]="'Cronómetro analógico: ' + lecturaActual().etiqueta"
+    >
+      <div class="instrumento__esfera-interior">
+        <span class="instrumento__marca">CRONÓMETRO ±0,1 s</span>
+        <span class="instrumento__cero numero-tabular">0.0</span>
+        <span
+          class="instrumento__aguja"
+          [style.transform]="'rotate(' + lecturaActual().anguloAguja + 'deg)'"
+        ></span>
+        <span class="instrumento__eje"></span>
+        <span class="instrumento__lectura-dial numero-tabular">
+          {{ lecturaActual().desviacionSeg }} s
+        </span>
+      </div>
+    </div>
+
+    <div class="instrumento__tripmaster">
+      <div class="instrumento__trip-cabecera">
+        <span class="instrumento__trip-titulo">TRIPMASTER · TRAMO 3</span>
+        <span
+          class="instrumento__estado numero-tabular"
+          [class.instrumento__estado--ok]="lecturaActual().enTolerancia"
+          [class.instrumento__estado--fuera]="!lecturaActual().enTolerancia"
+        >
+          {{
+            lecturaActual().enTolerancia
+              ? 'DENTRO DE TOLERANCIA (±0,5 s)'
+              : 'FUERA DE TOLERANCIA (> ±0,5 s)'
+          }}
+        </span>
+      </div>
+
+      <dl class="instrumento__metricas">
+        <div class="instrumento__celda">
+          <dt class="instrumento__dt">PARCIAL (KM)</dt>
+          <dd class="instrumento__dd numero-tabular">{{ lecturaActual().parcialKm }}</dd>
+        </div>
+        <div class="instrumento__celda">
+          <dt class="instrumento__dt">MEDIA IMPUESTA (KM/H)</dt>
+          <dd class="instrumento__dd numero-tabular">{{ lecturaActual().mediaImpuesta }}</dd>
+        </div>
+        <div class="instrumento__celda">
+          <dt class="instrumento__dt">MEDIA REAL (KM/H)</dt>
+          <dd class="instrumento__dd numero-tabular">{{ lecturaActual().mediaReal }}</dd>
+        </div>
+        <div class="instrumento__celda">
+          <dt class="instrumento__dt">DESVIACIÓN (S)</dt>
+          <dd
+            class="instrumento__dd numero-tabular"
+            [class.instrumento__dd--ok]="lecturaActual().enTolerancia"
+            [class.instrumento__dd--fuera]="!lecturaActual().enTolerancia"
+          >
+            {{ lecturaActual().desviacionSeg }}
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="instrumento__controles" role="group" aria-label="Selector de lectura de demostración">
+    @for (opcion of lecturas; track opcion.id) {
+      <button
+        type="button"
+        class="boton"
+        [class.boton--primario]="lecturaId() === opcion.id"
+        [class.boton--terciario]="lecturaId() !== opcion.id"
+        (click)="seleccionarLectura(opcion.id)"
+      >
+        {{ opcion.etiqueta }}
+      </button>
+    }
+  </div>
+</section>

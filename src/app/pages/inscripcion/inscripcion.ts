@@ -10,9 +10,9 @@ import { PageShellMeta } from '../../navegacion-service';
 })
 export class Inscripcion {
   protected readonly cabecera: PageShellMeta = {
-    etiquetaTecnica: 'SECCIÓN 04 · VERIFICACIONES ADMINISTRATIVAS',
-    titulo: 'Inscripción de Participantes',
+    etiquetaTecnica: 'CARNET DE RUTA · VERIFICACIONES ADMINISTRATIVAS',
+    titulo: 'Inscripción de Equipo y Vehículo',
     subtitulo:
-      'Vista esqueleto reservada para el futuro formulario de inscripción de piloto, copiloto y vehículo histórico.',
+      'Presente los datos básicos del equipo. El envío reglamentario completo se habilitará en la fase de formularios reactivos.',
   };
 }

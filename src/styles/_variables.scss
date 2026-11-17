@@ -1,79 +1,39 @@
 // =============================================================================
-// Historic Rally & Classic Chronometer (Concours Edition v2.0.0) — Design Tokens
+// Guía de estilos · Regularidad Clásica (Manual de identidad · Ed. I)
 // =============================================================================
 
-// 1. Canvas & Paper Surfaces (Aged Parchment & Roadbook Stock — 60%)
-$color-surface: #f6f3ec;
-$color-background: #f6f3ec;
-$color-surface-dim: #e4dfd3;
-$color-surface-bright: #fcfbf7;
-$color-surface-container-lowest: #ffffff;
-$color-surface-container-low: #f0ece1;
-$color-surface-container: #e9e4d8;
-$color-surface-container-high: #dfd9ca;
-$color-surface-container-highest: #d4cdbb;
+// 1. Paleta Cromática Única (5 colores: Laca, Piel y Metal)
+$color-verde-carreras: #1f3b2d; // 26% Primario
+$color-cuero-conac: #a36a3a; // 6% Acento (eyebrows, foco, costuras)
+$color-burdeos: #6b1f2a; // 4% Acento (penalizaciones, alertas, directo)
+$color-marfil: #eee8dc; // 52% Neutro claro (fondo página y esferas)
+$color-tinta: #141816; // 12% Neutro oscuro (tipografía, tripmaster, pie)
 
-// 2. Dark Instrument Cluster Surfaces (Jaeger / Smiths Dial Enamel — 25%)
-$color-dial-obsidian: #141715;
-$color-dial-charcoal: #1e221f;
-$color-dial-slate: #2a302c;
-$color-dial-center: #222724;
+// 2. Acabado Cromado Metálico (5 paradas — solo filetes 2–3px, biseles y botones secundarios)
+$gradiente-cromo: linear-gradient(
+  180deg,
+  #f4f4f2 0%,
+  #b9bcbc 38%,
+  #6f7372 52%,
+  #d9dbda 70%,
+  #9a9e9d 100%
+);
 
-// 3. Ink & Typography
-$color-on-surface: #161917;
-$color-on-surface-variant: #454c47;
-$color-on-dial: #f4f1ea;
-$color-on-dial-muted: #9aa39c;
-$color-outline: #767e78;
-$color-outline-variant: #c5c0b4;
+// 3. Estados de Tolerancia (±0,5 s) y Tintes Normativos
+$color-tolerancia-ok: #9ec7a8;
+$color-tolerancia-fuera: #e3a0a8;
+$color-filete-tinta: rgba(20, 24, 22, 0.14);
+$color-lider-cuero: rgba(163, 106, 58, 0.1);
+$color-tinte-verde: rgba(31, 59, 45, 0.14);
+$color-tinte-cuero: rgba(163, 106, 58, 0.14);
+$color-tinte-burdeos: rgba(107, 31, 42, 0.14);
 
-// 4. Primary: British Racing Green (Connaught / Aston Martin Heritage — 10%)
-$color-primary: #0a3622;
-$color-primary-hover: #0f492e;
-$color-primary-top: #0e442b;
-$color-primary-border: #051f13;
-$color-on-primary: #f6f3ec;
-$color-primary-container: #134e33;
-$color-on-primary-container: #b8dec8;
+// 4. Familias Tipográficas
+$font-display: 'Bodoni Moda', Georgia, serif;
+$font-body: 'Barlow', 'Segoe UI', Roboto, sans-serif;
+$font-label: 'Barlow Condensed', 'Arial Narrow', sans-serif;
 
-// 5. Secondary: Saddle Leather & Cognac Tan (Connolly Hide — 5% Noble Accent)
-$color-secondary: #824b24;
-$color-secondary-hover: #99592b;
-$color-secondary-border: #593115;
-$color-on-secondary: #fcfbf7;
-$color-secondary-container: #f2dec9;
-$color-on-secondary-container: #4a2810;
-
-// 6. Accent / Heritage Variant: Vintage Bordeaux / Oxblood (5% Noble Accent)
-$color-bordeaux: #631d26;
-$color-bordeaux-hover: #7a242f;
-$color-bordeaux-top: #75222d;
-$color-bordeaux-border: #3d0f15;
-$color-on-bordeaux: #f6f3ec;
-$color-bordeaux-container: #f4dadf;
-$color-on-bordeaux-container: #3d0f15;
-
-// 7. Hardware: Brushed Chrome, Nickel & Brass
-$color-chrome-light: #e6e9ec;
-$color-chrome-mid: #b8c0c8;
-$color-chrome-dark: #7a848e;
-$color-chrome-bezel-border: #9aa3ac;
-$color-pusher-top: #f4f6f8;
-$color-pusher-bottom: #d5dce2;
-$color-brass-gold: #b58938;
-
-// 8. Semantic Telemetry States
-$color-status-optimal: #145335;
-$color-status-early: #b57324;
-$color-status-penalty: #8c1d24;
-$color-status-neutral: #5a635d;
-
-// 9. Typography Stacks
-$font-display: 'Playfair Display', Georgia, serif;
-$font-body: 'Chivo', 'Plus Jakarta Sans', 'Segoe UI', Roboto, sans-serif;
-$font-mono: 'Space Mono', 'JetBrains Mono', 'Courier New', monospace;
-
-// 10. Spacing & Cockpit Layout Rhythm (4px base unit)
+// 5. Retícula y Ritmo Espacial
 $space-xs: 4px;
 $space-sm: 8px;
 $space-md: 16px;
@@ -89,34 +49,15 @@ $gutter-desktop: 24px;
 $margin-desktop: 32px;
 $max-content-width: 1320px;
 
-// 11. Breakpoints (Mobile-First min-width)
+// 6. Breakpoints (Mobile-First min-width)
 $bp-tablet: 768px;
 $bp-desktop: 1024px;
 
-// 12. Radii (Anti-AI Rule: max 4px structural, 9999px dials/pushers/rivets/pilot lamps only)
-$radius-none: 0px;
-$radius-xs: 2px;
-$radius-sm: 3px;
-$radius-default: 4px;
-$radius-md: 6px;
-$radius-full: 9999px;
+// 7. Radios Mínimos y Curva de Muelle Mecánica
+$radius-placa: 2px;
+$radius-control: 4px;
+$radius-circular: 50%;
 
-// 13. Tactile Borders & Recessed Bezel Shadows (NO modern diffuse blurs)
-$shadow-chrome-bezel:
-  inset 0 1px 0 0 rgba(255, 255, 255, 0.9),
-  inset 0 0 0 2px $color-chrome-light,
-  0 1px 3px rgba(20, 23, 21, 0.12);
-$shadow-instrument-dial:
-  inset 0 3px 8px rgba(0, 0, 0, 0.65),
-  inset 0 0 0 1px rgba(255, 255, 255, 0.08),
-  0 2px 4px rgba(20, 23, 21, 0.2);
-$shadow-leather-stitch:
-  inset 0 0 0 3px $color-secondary,
-  inset 0 0 0 4px rgba(242, 222, 201, 0.35);
-$shadow-enamel-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.22);
-$shadow-pusher-active: inset 0 2px 4px rgba(0, 0, 0, 0.3);
-$focus-ring: 3px solid $color-brass-gold;
-
-// 14. Mechanical Motion
-$ease-mechanical: cubic-bezier(0.22, 1, 0.36, 1);
-$duration-mechanical: 140ms;
+$ease-aguja: cubic-bezier(0.4, 2.2, 0.6, 1);
+$ease-suave: cubic-bezier(0.22, 1, 0.36, 1);
+$focus-ring: 2px solid $color-cuero-conac;
