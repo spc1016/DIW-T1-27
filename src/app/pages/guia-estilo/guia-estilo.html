@@ -29,6 +29,19 @@
         </p>
       </article>
     </div>
+
+    <div class="pagina__grid guia__tokens-auxiliares">
+      @for (token of tokensAuxiliares; track token.valor) {
+        <article class="marco-sobrio guia__token">
+          <div class="guia__token-muestra" [class]="token.clase" aria-hidden="true">
+            <span class="numero-tabular">{{ token.valor }}</span>
+          </div>
+          <p class="etiqueta-ed1">{{ token.nombre }}</p>
+          <p class="guia__hex numero-tabular">{{ token.valor }}</p>
+          <p class="guia__nota">{{ token.regla }}</p>
+        </article>
+      }
+    </div>
   </section>
 
   <section class="guia__bloque" aria-labelledby="titulo-firma">

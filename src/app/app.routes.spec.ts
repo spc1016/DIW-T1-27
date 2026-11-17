@@ -43,11 +43,34 @@ describe('App Routes', () => {
 
   it('debe vincular el parámetro :id mediante Signal input en /catalogo/:id y gestionar dorsal inválido', async () => {
     const harness = await RouterTestingHarness.create('/catalogo/1');
+    const router = TestBed.inject(Router);
     expect(harness.routeNativeElement?.textContent).toContain('DORSAL 14');
     expect(harness.routeNativeElement?.textContent).toContain('Porsche 911 Carrera RS 2.7');
     expect(harness.routeNativeElement?.querySelector('.dorsal-circular')?.textContent?.trim()).toBe(
       '14',
     );
+
+    const pulsarSiguiente = async (): Promise<void> => {
+      const btnSiguiente = Array.from(
+        harness.routeNativeElement?.querySelectorAll('button') ?? [],
+      ).find((b) => b.textContent?.includes('Siguiente Dorsal'));
+      expect(btnSiguiente).toBeTruthy();
+      btnSiguiente?.click();
+      await harness.fixture.whenStable();
+      harness.detectChanges();
+    };
+
+    await pulsarSiguiente();
+    expect(router.url).toBe('/catalogo/2');
+    expect(harness.routeNativeElement?.textContent).toContain('DORSAL 27');
+
+    await pulsarSiguiente();
+    expect(router.url).toBe('/catalogo/3');
+    expect(harness.routeNativeElement?.textContent).toContain('DORSAL 42');
+
+    await pulsarSiguiente();
+    expect(router.url).toBe('/catalogo/1');
+    expect(harness.routeNativeElement?.textContent).toContain('DORSAL 14');
 
     await harness.navigateByUrl('/catalogo/abc');
     expect(harness.routeNativeElement?.textContent).toContain(

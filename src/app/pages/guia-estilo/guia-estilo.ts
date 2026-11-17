@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CuadroInstrumentos } from '../../cuadro-instrumentos/cuadro-instrumentos';
-import { PageShellMeta } from '../../navegacion-service';
+import { FilaClasificacion, PageShellMeta } from '../../navegacion-service';
 
 interface MuestraColorEd1 {
   rol: string;
@@ -11,22 +11,19 @@ interface MuestraColorEd1 {
   uso: string;
 }
 
+interface MuestraTokenAuxiliarEd1 {
+  nombre: string;
+  valor: string;
+  regla: string;
+  clase: string;
+}
+
 interface MuestraTipografiaEd1 {
   nivel: string;
   familia: string;
   tamano: string;
   clase: string;
   ejemplo: string;
-}
-
-interface FilaClasificacion {
-  posicion: string;
-  dorsal: string;
-  equipo: string;
-  vehiculo: string;
-  desviacion: string;
-  esLider: boolean;
-  penalizado: boolean;
 }
 
 @Component({
@@ -78,6 +75,33 @@ export class GuiaEstilo {
       hex: '#6B1F2A',
       proporcion: '4%',
       uso: 'Penalizaciones, alertas, estados fuera de tolerancia y directos.',
+    },
+  ];
+
+  protected readonly tokensAuxiliares: readonly MuestraTokenAuxiliarEd1[] = [
+    {
+      nombre: 'Tolerancia óptima (±0,5 s)',
+      valor: '#9EC7A8',
+      regla: 'Indicador de margen reglamentario sobre fondo tinta #141816 (contraste WCAG AA).',
+      clase: 'guia__token--ok',
+    },
+    {
+      nombre: 'Fuera de tolerancia (> ±0,5 s)',
+      valor: '#E3A0A8',
+      regla: 'Aviso de penalización o desvío sobre fondo tinta #141816 (contraste WCAG AA).',
+      clase: 'guia__token--fuera',
+    },
+    {
+      nombre: 'Filete divisorio tinta (14%)',
+      valor: 'rgba(20, 24, 22, 0.14)',
+      regla: 'Divisores internos y rejillas sutiles de tablas y fichas.',
+      clase: 'guia__token--filete',
+    },
+    {
+      nombre: 'Resaltado líder cuero (10%)',
+      valor: 'rgba(163, 106, 58, 0.10)',
+      regla: 'Tinte exclusivo para destacar la primera posición en clasificación.',
+      clase: 'guia__token--lider',
     },
   ];
 

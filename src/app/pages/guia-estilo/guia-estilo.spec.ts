@@ -20,6 +20,10 @@ describe('GuiaEstilo', () => {
     expect(el.textContent).toContain('Burdeos');
     expect(el.textContent).toContain('Marfil');
     expect(el.textContent).toContain('Tinta');
+    expect(el.textContent).toContain('#9EC7A8');
+    expect(el.textContent).toContain('#E3A0A8');
+    expect(el.textContent).toContain('rgba(20, 24, 22, 0.14)');
+    expect(el.textContent).toContain('rgba(163, 106, 58, 0.10)');
     expect(el.querySelector('app-cuadro-instrumentos')).toBeTruthy();
     expect(el.querySelector('.boton--primario')).toBeTruthy();
     expect(el.querySelector('.boton--secundario')).toBeTruthy();

@@ -15,6 +15,25 @@ export interface PageShellMeta {
   subtitulo: string;
 }
 
+export interface TramoPrograma {
+  codigo: string;
+  nombre: string;
+  estado: string;
+  distancia: string;
+  media: string;
+  controles: string;
+}
+
+export interface FilaClasificacion {
+  posicion: string;
+  dorsal: string;
+  equipo: string;
+  vehiculo: string;
+  desviacion: string;
+  esLider: boolean;
+  penalizado: boolean;
+}
+
 @Injectable({
   providedIn: 'root',
 })

@@ -1,13 +1,5 @@
 import { Component } from '@angular/core';
-
-interface TramoPrograma {
-  codigo: string;
-  nombre: string;
-  estado: string;
-  distancia: string;
-  media: string;
-  controles: string;
-}
+import { TramoPrograma } from '../../../navegacion-service';
 
 @Component({
   selector: 'app-itinerario-programa',

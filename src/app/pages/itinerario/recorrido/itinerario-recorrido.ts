@@ -1,14 +1,5 @@
 import { Component } from '@angular/core';
-
-interface FilaClasificacion {
-  posicion: string;
-  dorsal: string;
-  equipo: string;
-  vehiculo: string;
-  desviacion: string;
-  esLider: boolean;
-  penalizado: boolean;
-}
+import { FilaClasificacion } from '../../../navegacion-service';
 
 @Component({
   selector: 'app-itinerario-recorrido',

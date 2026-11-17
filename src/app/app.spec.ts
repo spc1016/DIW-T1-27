@@ -27,6 +27,7 @@ describe('App', () => {
     expect(compiled.querySelector('a.cabecera__salto')?.getAttribute('href')).toBe(
       '#contenido-principal',
     );
+    expect(compiled.querySelector('header.cabecera .cabecera__bisel')).toBeTruthy();
     expect(compiled.querySelector('header.cabecera .filete-cromo')).toBeTruthy();
     expect(compiled.querySelector('footer.pie .filete-cromo')).toBeTruthy();
     expect(compiled.querySelector('footer.pie')?.textContent).toContain(
