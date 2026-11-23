@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="MG TC Midget · Dorsal 08">
-  <rect width="640" height="360" fill="#1F3B2D" />
-  <rect x="18" y="18" width="604" height="324" fill="none" stroke="#EEE8DC" stroke-opacity="0.28" stroke-width="1.5" />
-  <line x1="56" y1="264" x2="584" y2="264" stroke="#A36A3A" stroke-width="2" />
-  <path d="M 122 228 L 132 182 L 210 182 L 244 168 L 326 168 L 348 134 L 360 168 L 490 174 L 516 228 Z" fill="none" stroke="#EEE8DC" stroke-width="3" stroke-linejoin="round" />
-  <circle cx="192" cy="234" r="38" fill="#141816" stroke="#EEE8DC" stroke-width="3" />
-  <circle cx="456" cy="234" r="38" fill="#141816" stroke="#EEE8DC" stroke-width="3" />
-  <text x="40" y="54" font-family="sans-serif" font-size="13" font-weight="600" letter-spacing="3" fill="#9EC7A8">DORSAL 08 · MG TC MIDGET · 1948</text>
-</svg>

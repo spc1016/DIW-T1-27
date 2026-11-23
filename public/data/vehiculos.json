@@ -8,8 +8,8 @@
     "tono": "verde",
     "potencia": "210 CV · 2.687 cc",
     "historial": "Chasis serie Touring homologado FIA Grupo 4. Participaciones documentadas en regularidad histórica alpina y conservación original de mecánica bóxer de 6 cilindros.",
-    "imagen": "/img/vehiculos/porsche-911-rs.svg",
-    "imagenAlt": "Ilustración técnica lateral del Porsche 911 Carrera RS 2.7 de 1973 con dorsal 14 en acabado verde carreras",
+    "imagen": "/img/vehiculos/porsche-911-rs.jpg",
+    "imagenAlt": "Fotografía exterior de tres cuartos delantero de un Porsche 911 Carrera RS 2.7 de 1973 en color verde con franja lateral Carrera y llantas Fuchs",
     "resumen": "Unidad homologada con doble cronometraje mecánico y pasaporte técnico histórico vigente."
   },
   {
@@ -21,8 +21,8 @@
     "tono": "burdeos",
     "potencia": "115 CV · 1.584 cc",
     "historial": "Preparación Fanalone de tracción delantera con motor V4 estrecho. Campeón de clase en pruebas de regularidad de montaña 2023–2025.",
-    "imagen": "/img/vehiculos/lancia-fulvia-hf.svg",
-    "imagenAlt": "Ilustración técnica lateral del Lancia Fulvia Coupé 1.6 HF de 1972 con dorsal 27 en acabado burdeos",
+    "imagen": "/img/vehiculos/lancia-fulvia-hf.jpg",
+    "imagenAlt": "Fotografía de tres cuartos delantero de un Lancia Fulvia Coupé 1.6 HF de 1972 en color burdeos con preparación de rally y faros auxiliares",
     "resumen": "Preparación de regularidad clásica para tramos de montaña con media impuesta de 42 km/h."
   },
   {
@@ -34,8 +34,8 @@
     "tono": "verde",
     "potencia": "115 CV · 1.570 cc",
     "historial": "Carrocería en aleación ligera Peraluman 25 restaurada fielmente según especificaciones Autodelta de 1967 con doble encendido.",
-    "imagen": "/img/vehiculos/alfa-giulia-gta.svg",
-    "imagenAlt": "Ilustración técnica lateral del Alfa Romeo Giulia Sprint GTA de 1967 con dorsal 42 en acabado verde carreras",
+    "imagen": "/img/vehiculos/alfa-giulia-gta.jpg",
+    "imagenAlt": "Fotografía de tres cuartos delantero de un Alfa Romeo Giulia Sprint GTA de 1967 en color verde oscuro carreras sobre asfalto",
     "resumen": "Carrocería ligera de época verificada por los comisarios técnicos en parque cerrado."
   },
   {
@@ -47,8 +47,8 @@
     "tono": "verde",
     "potencia": "54 CV · 1.250 cc",
     "historial": "Importado desde Abingdon con volante a la derecha, llantas de radios de 19 pulgadas y bitácora completa de rallies clásicos británicos.",
-    "imagen": "/img/vehiculos/mg-tc-midget.svg",
-    "imagenAlt": "Ilustración técnica lateral del MG TC Midget de 1948 con dorsal 08 en acabado verde carreras",
+    "imagen": "/img/vehiculos/mg-tc-midget.jpg",
+    "imagenAlt": "Fotografía de perfil lateral de un MG TC Midget de 1948 en color verde carreras británico con llantas de radios de 19 pulgadas",
     "resumen": "Roadster británico de posguerra equipado con instrumentación analógica de época calibrada."
   },
   {
@@ -60,8 +60,8 @@
     "tono": "burdeos",
     "potencia": "265 CV · 3.781 cc",
     "historial": "Serie 1 de faros carenados con historial documental FIVA completo y participación ininterrumpida en concentraciones de gran turismo.",
-    "imagen": "/img/vehiculos/jaguar-etype-38.svg",
-    "imagenAlt": "Ilustración técnica lateral del Jaguar E-Type Coupé 3.8 de 1964 con dorsal 31 en acabado burdeos",
+    "imagen": "/img/vehiculos/jaguar-etype-38.jpg",
+    "imagenAlt": "Fotografía de tres cuartos delantero de un Jaguar E-Type Coupé 3.8 Serie 1 de 1964 en color burdeos con faros carenados y llantas de radios",
     "resumen": "Gran turismo de seis cilindros en línea admitido tras inspección documental en salida."
   },
   {
@@ -73,8 +73,8 @@
     "tono": "verde",
     "potencia": "138 CV · 1.565 cc",
     "historial": "Unidad de carrocería en fibra de vidrio sobre chasis viga central, equipada con faros supletorios de largo alcance para etapas de sierra.",
-    "imagen": "/img/vehiculos/alpine-a110-1600s.svg",
-    "imagenAlt": "Ilustración técnica lateral del Alpine A110 1600S de 1971 con dorsal 53 en acabado verde carreras",
+    "imagen": "/img/vehiculos/alpine-a110-1600s.jpg",
+    "imagenAlt": "Fotografía de dos Alpine A110 clásicos en carretera al atardecer, destacando en primer plano a la derecha una unidad en color verde",
     "resumen": "Berlina ligera de tracción trasera puesta a punto para enlaces nocturnos y puertos de sierra."
   }
 ]

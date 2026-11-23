@@ -96,6 +96,24 @@ describe('Inicio', () => {
     httpMock.verify();
   });
 
+  it('debe mostrar el banner fotográfico sin cuadro de instrumentos y dejar las rutas en el panel lateral', () => {
+    const fixture = TestBed.createComponent(Inicio);
+    fixture.detectChanges();
+    httpMock.expectOne('/data/navegacion.json').flush(MOCK_NAV);
+    httpMock.expectOne('/data/itinerario.json').flush({ tramos: [], clasificacion: [] });
+    httpMock.expectOne('/data/vehiculos.json').flush(MOCK_VEHICULOS);
+    fixture.detectChanges();
+
+    const el = fixture.nativeElement as HTMLElement;
+    const banner = el.querySelector('img.inicio__banner-imagen') as HTMLImageElement;
+    expect(banner).toBeTruthy();
+    expect(banner.getAttribute('src')).toBe('/img/banner-rally.jpg');
+    expect(banner.getAttribute('alt')?.trim().length).toBeGreaterThan(20);
+    expect(el.querySelector('app-cuadro-instrumentos')).toBeNull();
+    expect(el.querySelectorAll('.inicio__principal a').length).toBe(0);
+    expect(el.querySelectorAll('.inicio__lateral a').length).toBe(1);
+  });
+
   it('debe mostrar 3 vehículos destacados con imagen alt descriptiva y enlace a su ficha', () => {
     const fixture = TestBed.createComponent(Inicio);
     fixture.detectChanges();

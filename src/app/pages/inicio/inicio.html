@@ -11,21 +11,22 @@
   </header>
 
   <div class="pagina__grid">
-    <section class="inicio__principal marco-sobrio" aria-label="Cuadro de instrumentos y portada">
+    <section class="inicio__principal marco-sobrio" aria-label="Banner principal del evento">
       <div class="inicio__cabecera-bloque">
         <span class="placa-semantica placa-semantica--verde">PRECISIÓN ±0,1 S · 1925–1975</span>
-        <span class="etiqueta-ed1">CUADRO DE INSTRUMENTOS</span>
+        <span class="etiqueta-ed1">PARQUE CERRADO DE MONTAÑA</span>
       </div>
 
-      <app-cuadro-instrumentos />
-
-      <hr class="filete-cromo" aria-hidden="true" />
-
-      <div class="pagina__acciones">
-        <a class="boton boton--primario" routerLink="/catalogo">Parque Cerrado</a>
-        <a class="boton boton--secundario" routerLink="/itinerario">Tramos y Clasificación</a>
-        <a class="boton boton--terciario" routerLink="/guia-estilo">Manual Ed. I</a>
-      </div>
+      <figure class="inicio__banner">
+        <img
+          class="inicio__banner-imagen"
+          [src]="banner.src"
+          [alt]="banner.alt"
+          width="1024"
+          height="576"
+        />
+        <figcaption class="inicio__banner-pie numero-tabular">{{ banner.pie }}</figcaption>
+      </figure>
     </section>
 
     <aside class="inicio__lateral" aria-label="Secciones de la prueba">
@@ -46,7 +47,6 @@
         <p class="etiqueta-ed1">PARQUE CERRADO · SELECCIÓN OFICIAL</p>
         <h2 id="titulo-destacados" class="inicio__seccion-titulo">Vehículos Destacados</h2>
       </div>
-      <a class="boton boton--terciario" routerLink="/catalogo">Ver Catálogo Completo</a>
     </div>
 
     @if (vehiculosDestacados().length === 0) {
@@ -102,9 +102,6 @@
           Parque Cerrado de Salida · San Lorenzo
         </h2>
       </div>
-      <a class="boton boton--secundario" routerLink="/itinerario/recorrido">
-        Consultar Itinerario
-      </a>
     </div>
 
     <article class="marco-sobrio inicio__encuentro-caja">

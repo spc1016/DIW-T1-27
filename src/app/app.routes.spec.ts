@@ -160,7 +160,7 @@ describe('App Routes', () => {
     httpMock.match('/data/itinerario.json').forEach((req) => req.flush(MOCK_ITINERARIO));
   };
 
-  it('debe redirigir la ruta raíz vacía hacia /inicio y mostrar el cuadro de instrumentos firma', async () => {
+  it('debe redirigir la ruta raíz vacía hacia /inicio y mostrar el banner principal y los bloques de portada', async () => {
     const harness = await RouterTestingHarness.create('/');
     responderMocksPendientes();
     harness.detectChanges();
@@ -169,7 +169,10 @@ describe('App Routes', () => {
     expect(harness.routeNativeElement?.textContent).toContain(
       'I Rally & Concentración Histórica Classic Motor',
     );
-    expect(harness.routeNativeElement?.querySelector('app-cuadro-instrumentos')).toBeTruthy();
+    expect(harness.routeNativeElement?.querySelector('app-cuadro-instrumentos')).toBeNull();
+    expect(
+      harness.routeNativeElement?.querySelector('img.inicio__banner-imagen')?.getAttribute('alt'),
+    ).toBeTruthy();
     expect(harness.routeNativeElement?.querySelectorAll('.inicio__vehiculo').length).toBe(3);
     expect(
       harness.routeNativeElement?.querySelector('img.inicio__mapa')?.getAttribute('alt'),
