@@ -1,4 +1,7 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable, signal } from '@angular/core';
+import { catchError, of } from 'rxjs';
+import { EstadoCarga } from './vehiculo-service';
 
 export interface NavItem {
   id: number;
@@ -34,80 +37,74 @@ export interface FilaClasificacion {
   penalizado: boolean;
 }
 
+export interface ItinerarioMockData {
+  tramos: readonly TramoPrograma[];
+  clasificacion: readonly FilaClasificacion[];
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class NavegacionService {
-  private readonly coleccion: readonly NavItem[] = [
-    {
-      id: 1,
-      etiqueta: 'Inicio',
-      ruta: '/inicio',
-      exacto: true,
-      descripcion: 'Portada general, cuadro de instrumentos y salida de la próxima prueba.',
-      grupo: 'principal',
-    },
-    {
-      id: 2,
-      etiqueta: 'Catálogo',
-      ruta: '/catalogo',
-      exacto: false,
-      descripcion: 'Parque cerrado de vehículos clásicos (1925–1975) y ficha técnica por dorsal.',
-      grupo: 'principal',
-    },
-    {
-      id: 3,
-      etiqueta: 'Itinerario',
-      ruta: '/itinerario',
-      exacto: false,
-      descripcion: 'Tarjetas de tramo, seguimiento en directo y tabla oficial de clasificación.',
-      grupo: 'principal',
-    },
-    {
-      id: 4,
-      etiqueta: 'Inscripción',
-      ruta: '/inscripcion',
-      exacto: false,
-      descripcion: 'Carnet de ruta para registro de equipo, vehículo y categoría.',
-      grupo: 'principal',
-    },
-    {
-      id: 5,
-      etiqueta: 'Guía de Estilo',
-      ruta: '/guia-estilo',
-      exacto: false,
-      descripcion: 'Manual de identidad Ed. I: laca, piel, cromo y tipografía de carrocero.',
-      grupo: 'principal',
-    },
-    {
-      id: 6,
-      etiqueta: 'Programa y Tramos',
-      ruta: '/itinerario/programa',
-      exacto: false,
-      descripcion: 'Tarjetas de tramo en verde carreras con distancia, media y controles.',
-      grupo: 'itinerario',
-    },
-    {
-      id: 7,
-      etiqueta: 'Directo y Clasificación',
-      ruta: '/itinerario/recorrido',
-      exacto: false,
-      descripcion: 'Control en vivo en burdeos y tabla general de tiempos a la décima.',
-      grupo: 'itinerario',
-    },
-  ];
+  private readonly http = inject(HttpClient);
+  private readonly coleccion = signal<readonly NavItem[]>([]);
+  private readonly tramosInternos = signal<readonly TramoPrograma[]>([]);
+  private readonly clasificacionInterna = signal<readonly FilaClasificacion[]>([]);
+  private readonly estadoNavegacionInterno = signal<EstadoCarga>('cargando');
+  private readonly estadoItinerarioInterno = signal<EstadoCarga>('cargando');
+
+  readonly estadoNavegacion = this.estadoNavegacionInterno.asReadonly();
+  readonly estadoItinerario = this.estadoItinerarioInterno.asReadonly();
+  readonly tramos = this.tramosInternos.asReadonly();
+  readonly clasificacion = this.clasificacionInterna.asReadonly();
+
+  private readonly inicializacion = this.cargarDesdeJson();
+
+  private cargarDesdeJson(): void {
+    this.http
+      .get<readonly NavItem[]>('/data/navegacion.json')
+      .pipe(
+        catchError(() => {
+          this.estadoNavegacionInterno.set('error');
+          return of(null);
+        }),
+      )
+      .subscribe((items) => {
+        if (items !== null) {
+          this.coleccion.set(items);
+          this.estadoNavegacionInterno.set('listo');
+        }
+      });
+
+    this.http
+      .get<ItinerarioMockData>('/data/itinerario.json')
+      .pipe(
+        catchError(() => {
+          this.estadoItinerarioInterno.set('error');
+          return of(null);
+        }),
+      )
+      .subscribe((datos) => {
+        if (datos !== null) {
+          this.tramosInternos.set(datos.tramos ?? []);
+          this.clasificacionInterna.set(datos.clasificacion ?? []);
+          this.estadoItinerarioInterno.set('listo');
+        }
+      });
+  }
 
   obtenerTodas(filtro?: string): NavItem[] {
+    const lista = this.coleccion();
     if (!filtro) {
-      return [...this.coleccion];
+      return [...lista];
     }
 
     const termino = filtro.trim().toLowerCase();
     if (termino === 'principal' || termino === 'itinerario') {
-      return this.coleccion.filter((item) => item.grupo === termino);
+      return lista.filter((item) => item.grupo === termino);
     }
 
-    return this.coleccion.filter(
+    return lista.filter(
       (item) =>
         item.etiqueta.toLowerCase().includes(termino) ||
         item.descripcion.toLowerCase().includes(termino),
@@ -115,16 +112,21 @@ export class NavegacionService {
   }
 
   obtenerPorId(id: number): NavItem | undefined {
-    return this.coleccion.find((item) => item.id === id);
+    return this.coleccion().find((item) => item.id === id);
   }
 
   idSiguiente(idActual: number): number {
-    const indice = this.coleccion.findIndex((item) => item.id === idActual);
-    if (indice === -1) {
-      return this.coleccion[0].id;
+    const lista = this.coleccion();
+    if (lista.length === 0) {
+      return 0;
     }
 
-    const siguienteIndice = (indice + 1) % this.coleccion.length;
-    return this.coleccion[siguienteIndice].id;
+    const indice = lista.findIndex((item) => item.id === idActual);
+    if (indice === -1) {
+      return lista[0].id;
+    }
+
+    const siguienteIndice = (indice + 1) % lista.length;
+    return lista[siguienteIndice].id;
   }
 }

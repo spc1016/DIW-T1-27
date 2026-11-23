@@ -5,7 +5,23 @@
     <p class="pagina__descripcion">{{ cabecera.subtitulo }}</p>
   </header>
 
-  @if (vehiculo(); as v) {
+  @if (estadoCarga() === 'cargando') {
+    <article class="marco-sobrio" aria-live="polite">
+      <p class="etiqueta-ed1">CONTROL DE PARQUE · CONSULTANDO FICHA</p>
+      <p class="detalle__texto">Cargando especificaciones técnicas del dorsal solicitado.</p>
+    </article>
+  } @else if (estadoCarga() === 'error') {
+    <article class="panel-directo detalle__aviso" role="alert">
+      <p class="etiqueta-ed1 detalle__aviso-etiqueta">CONTROL DE PARQUE · LECTURA INTERRUMPIDA</p>
+      <h2 class="detalle__aviso-titulo titulo-cursiva">
+        No se ha podido consultar el archivo oficial del parque cerrado.
+      </h2>
+      <div class="pagina__acciones">
+        <a class="boton boton--secundario" routerLink="/catalogo">Volver al Catálogo</a>
+        <a class="boton boton--primario" routerLink="/inicio">Regresar a Portada</a>
+      </div>
+    </article>
+  } @else if (vehiculo(); as v) {
     <article class="marco-sobrio detalle__ficha">
       <div class="detalle__identificador">
         <span

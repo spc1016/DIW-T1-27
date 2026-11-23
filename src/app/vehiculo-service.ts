@@ -1,4 +1,6 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable, signal } from '@angular/core';
+import { catchError, of } from 'rxjs';
 
 export interface VehiculoMuestra {
   id: number;
@@ -10,68 +12,69 @@ export interface VehiculoMuestra {
   resumen: string;
 }
 
+export type EstadoCarga = 'cargando' | 'listo' | 'error';
+
 @Injectable({
   providedIn: 'root',
 })
 export class VehiculoService {
-  private readonly coleccion: readonly VehiculoMuestra[] = [
-    {
-      id: 1,
-      dorsal: '14',
-      modelo: 'Porsche 911 Carrera RS 2.7',
-      anio: 1973,
-      categoria: 'GRAN TURISMO',
-      tono: 'verde',
-      resumen:
-        'Unidad homologada con doble cronometraje mecánico y pasaporte técnico histórico vigente.',
-    },
-    {
-      id: 2,
-      dorsal: '27',
-      modelo: 'Lancia Fulvia Coupé 1.6 HF',
-      anio: 1972,
-      categoria: 'TURISMO HISTÓRICO',
-      tono: 'burdeos',
-      resumen:
-        'Preparación de regularidad clásica para tramos de montaña con media impuesta de 42 km/h.',
-    },
-    {
-      id: 3,
-      dorsal: '42',
-      modelo: 'Alfa Romeo Giulia Sprint GTA',
-      anio: 1967,
-      categoria: 'SPORT CLÁSICO',
-      tono: 'verde',
-      resumen:
-        'Carrocería ligera de época verificada por los comisarios técnicos en parque cerrado.',
-    },
-  ];
+  private readonly http = inject(HttpClient);
+  private readonly coleccion = signal<readonly VehiculoMuestra[]>([]);
+  private readonly estadoCargaInterno = signal<EstadoCarga>('cargando');
+
+  readonly estadoCarga = this.estadoCargaInterno.asReadonly();
+
+  private readonly inicializacion = this.cargarDesdeJson();
+
+  private cargarDesdeJson(): void {
+    this.http
+      .get<readonly VehiculoMuestra[]>('/data/vehiculos.json')
+      .pipe(
+        catchError(() => {
+          this.estadoCargaInterno.set('error');
+          return of(null);
+        }),
+      )
+      .subscribe((datos) => {
+        if (datos !== null) {
+          this.coleccion.set(datos);
+          this.estadoCargaInterno.set('listo');
+        }
+      });
+  }
 
   obtenerTodas(filtro?: string): VehiculoMuestra[] {
+    const lista = this.coleccion();
     if (!filtro) {
-      return [...this.coleccion];
+      return [...lista];
     }
 
     const termino = filtro.trim().toLowerCase();
-    return this.coleccion.filter(
+    return lista.filter(
       (vehiculo) =>
         vehiculo.categoria.toLowerCase().includes(termino) ||
         vehiculo.tono.toLowerCase() === termino ||
-        vehiculo.modelo.toLowerCase().includes(termino),
+        vehiculo.modelo.toLowerCase().includes(termino) ||
+        vehiculo.dorsal.toLowerCase().includes(termino),
     );
   }
 
   obtenerPorId(id: number): VehiculoMuestra | undefined {
-    return this.coleccion.find((vehiculo) => vehiculo.id === id);
+    return this.coleccion().find((vehiculo) => vehiculo.id === id);
   }
 
   idSiguiente(idActual: number): number {
-    const indice = this.coleccion.findIndex((vehiculo) => vehiculo.id === idActual);
-    if (indice === -1) {
-      return this.coleccion[0].id;
+    const lista = this.coleccion();
+    if (lista.length === 0) {
+      return 0;
     }
 
-    const siguienteIndice = (indice + 1) % this.coleccion.length;
-    return this.coleccion[siguienteIndice].id;
+    const indice = lista.findIndex((vehiculo) => vehiculo.id === idActual);
+    if (indice === -1) {
+      return lista[0].id;
+    }
+
+    const siguienteIndice = (indice + 1) % lista.length;
+    return lista[siguienteIndice].id;
   }
 }

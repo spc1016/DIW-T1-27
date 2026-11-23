@@ -20,6 +20,7 @@ export class Catalogo {
       'Relación oficial de dorsales verificados por los comisarios técnicos antes de la salida.',
   };
 
+  protected readonly estadoCarga = this.vehiculoService.estadoCarga;
   protected readonly muestras = computed(() => this.vehiculoService.obtenerTodas());
 
   protected abrirDetalle(id: number): void {

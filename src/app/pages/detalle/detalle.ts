@@ -21,6 +21,8 @@ export class Detalle {
     subtitulo: 'Lectura reactiva del dorsal asignado y estado de verificación técnica.',
   };
 
+  protected readonly estadoCarga = this.vehiculoService.estadoCarga;
+
   protected readonly vehiculo = computed(() => {
     const idNumerico = Number(this.id());
     if (!Number.isInteger(idNumerico) || idNumerico <= 0) {

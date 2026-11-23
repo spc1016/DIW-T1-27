@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "etiqueta": "Inicio",
+    "ruta": "/inicio",
+    "exacto": true,
+    "descripcion": "Portada general, cuadro de instrumentos y salida de la próxima prueba.",
+    "grupo": "principal"
+  },
+  {
+    "id": 2,
+    "etiqueta": "Catálogo",
+    "ruta": "/catalogo",
+    "exacto": false,
+    "descripcion": "Parque cerrado de vehículos clásicos (1925–1975) y ficha técnica por dorsal.",
+    "grupo": "principal"
+  },
+  {
+    "id": 3,
+    "etiqueta": "Itinerario",
+    "ruta": "/itinerario",
+    "exacto": false,
+    "descripcion": "Tarjetas de tramo, seguimiento en directo y tabla oficial de clasificación.",
+    "grupo": "principal"
+  },
+  {
+    "id": 4,
+    "etiqueta": "Inscripción",
+    "ruta": "/inscripcion",
+    "exacto": false,
+    "descripcion": "Carnet de ruta para registro de equipo, vehículo y categoría.",
+    "grupo": "principal"
+  },
+  {
+    "id": 5,
+    "etiqueta": "Guía de Estilo",
+    "ruta": "/guia-estilo",
+    "exacto": false,
+    "descripcion": "Manual de identidad Ed. I: laca, piel, cromo y tipografía de carrocero.",
+    "grupo": "principal"
+  },
+  {
+    "id": 6,
+    "etiqueta": "Programa y Tramos",
+    "ruta": "/itinerario/programa",
+    "exacto": false,
+    "descripcion": "Tarjetas de tramo en verde carreras con distancia, media y controles.",
+    "grupo": "itinerario"
+  },
+  {
+    "id": 7,
+    "etiqueta": "Directo y Clasificación",
+    "ruta": "/itinerario/recorrido",
+    "exacto": false,
+    "descripcion": "Control en vivo en burdeos y tabla general de tiempos a la décima.",
+    "grupo": "itinerario"
+  }
+]

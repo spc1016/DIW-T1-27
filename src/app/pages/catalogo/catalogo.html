@@ -5,43 +5,71 @@
     <p class="pagina__descripcion">{{ cabecera.subtitulo }}</p>
   </header>
 
-  <div class="pagina__grid">
-    @for (vehiculo of muestras(); track vehiculo.id) {
-      <article class="marco-sobrio catalogo__tarjeta">
-        <div class="catalogo__cabecera-ficha">
-          <span
-            class="dorsal-circular"
-            [class.dorsal-circular--burdeos]="vehiculo.tono === 'burdeos'"
-            [attr.aria-label]="'Dorsal ' + vehiculo.dorsal"
-          >
-            {{ vehiculo.dorsal }}
-          </span>
-          <span
-            class="placa-semantica"
-            [class.placa-semantica--verde]="vehiculo.tono === 'verde'"
-            [class.placa-semantica--burdeos]="vehiculo.tono === 'burdeos'"
-          >
-            {{ vehiculo.categoria }}
-          </span>
-        </div>
+  @if (estadoCarga() === 'cargando') {
+    <article class="marco-sobrio" aria-live="polite">
+      <p class="etiqueta-ed1">PARQUE CERRADO · CONSULTANDO REGISTRO</p>
+      <p class="catalogo__resumen">
+        Cargando la relación oficial de dorsales admitidos desde el archivo local.
+      </p>
+    </article>
+  } @else if (estadoCarga() === 'error') {
+    <article class="panel-directo" role="alert">
+      <p class="etiqueta-ed1">CONTROL TÉCNICO · LECTURA INTERRUMPIDA</p>
+      <p>
+        No se ha podido consultar la relación oficial del parque cerrado. Revise los datos locales o
+        intente acceder de nuevo.
+      </p>
+    </article>
+  } @else if (muestras().length === 0) {
+    <article class="marco-sobrio" aria-live="polite">
+      <p class="etiqueta-ed1">PARQUE CERRADO · SIN REGISTROS</p>
+      <p class="catalogo__resumen">
+        No constan vehículos admitidos en la relación oficial vigente.
+      </p>
+    </article>
+  } @else {
+    <div class="pagina__grid">
+      @for (vehiculo of muestras(); track vehiculo.id) {
+        <article class="marco-sobrio catalogo__tarjeta">
+          <div class="catalogo__cabecera-ficha">
+            <span
+              class="dorsal-circular"
+              [class.dorsal-circular--burdeos]="vehiculo.tono === 'burdeos'"
+              [attr.aria-label]="'Dorsal ' + vehiculo.dorsal"
+            >
+              {{ vehiculo.dorsal }}
+            </span>
+            <span
+              class="placa-semantica"
+              [class.placa-semantica--verde]="vehiculo.tono === 'verde'"
+              [class.placa-semantica--burdeos]="vehiculo.tono === 'burdeos'"
+            >
+              {{ vehiculo.categoria }}
+            </span>
+          </div>
 
-        <div class="catalogo__cuerpo">
-          <p class="etiqueta-ed1 numero-tabular">AÑO DE HOMOLOGACIÓN · {{ vehiculo.anio }}</p>
-          <h2 class="catalogo__modelo titulo-cursiva">{{ vehiculo.modelo }}</h2>
-          <p class="catalogo__resumen">{{ vehiculo.resumen }}</p>
-        </div>
+          <div class="catalogo__cuerpo">
+            <p class="etiqueta-ed1 numero-tabular">AÑO DE HOMOLOGACIÓN · {{ vehiculo.anio }}</p>
+            <h2 class="catalogo__modelo titulo-cursiva">{{ vehiculo.modelo }}</h2>
+            <p class="catalogo__resumen">{{ vehiculo.resumen }}</p>
+          </div>
 
-        <div class="catalogo__acciones">
-          <a class="boton boton--primario" [routerLink]="['/catalogo', vehiculo.id]">
-            Ver Ficha Dorsal {{ vehiculo.dorsal }}
-          </a>
-          <button type="button" class="boton boton--secundario" (click)="abrirDetalle(vehiculo.id)">
-            Abrir por Router
-          </button>
-        </div>
-      </article>
-    }
-  </div>
+          <div class="catalogo__acciones">
+            <a class="boton boton--primario" [routerLink]="['/catalogo', vehiculo.id]">
+              Ver Ficha Dorsal {{ vehiculo.dorsal }}
+            </a>
+            <button
+              type="button"
+              class="boton boton--secundario"
+              (click)="abrirDetalle(vehiculo.id)"
+            >
+              Abrir por Router
+            </button>
+          </div>
+        </article>
+      }
+    </div>
+  }
 
   <div class="pagina__acciones">
     <a class="boton boton--terciario" routerLink="/inicio">Regresar a Portada</a>

@@ -1,28 +1,45 @@
-<div class="pagina__grid">
-  @for (tramo of tramos; track tramo.codigo) {
-    <article class="tarjeta-tramo programa__tarjeta">
-      <div class="tarjeta-tramo__cabecera">
-        <div>
-          <p class="tarjeta-tramo__codigo numero-tabular">{{ tramo.codigo }}</p>
-          <h2 class="tarjeta-tramo__titulo">{{ tramo.nombre }}</h2>
+@if (estadoCarga() === 'cargando') {
+  <article class="marco-sobrio" aria-live="polite">
+    <p class="etiqueta-ed1">RUTÓMETRO OFICIAL · CONSULTANDO TRAMOS</p>
+    <p>Cargando los tramos de regularidad desde el archivo local.</p>
+  </article>
+} @else if (estadoCarga() === 'error') {
+  <article class="panel-directo" role="alert">
+    <p class="etiqueta-ed1">RUTÓMETRO OFICIAL · LECTURA INTERRUMPIDA</p>
+    <p>No se han podido cargar los tramos del programa oficial.</p>
+  </article>
+} @else if (tramos().length === 0) {
+  <article class="marco-sobrio" aria-live="polite">
+    <p class="etiqueta-ed1">RUTÓMETRO OFICIAL · SIN TRAMOS</p>
+    <p>No figuran tramos publicados en el programa oficial.</p>
+  </article>
+} @else {
+  <div class="pagina__grid">
+    @for (tramo of tramos(); track tramo.codigo) {
+      <article class="tarjeta-tramo programa__tarjeta">
+        <div class="tarjeta-tramo__cabecera">
+          <div>
+            <p class="tarjeta-tramo__codigo numero-tabular">{{ tramo.codigo }}</p>
+            <h2 class="tarjeta-tramo__titulo">{{ tramo.nombre }}</h2>
+          </div>
+          <span class="tarjeta-tramo__estado">{{ tramo.estado }}</span>
         </div>
-        <span class="tarjeta-tramo__estado">{{ tramo.estado }}</span>
-      </div>
 
-      <div class="tarjeta-tramo__metricas">
-        <div>
-          <p class="tarjeta-tramo__etiqueta">DISTANCIA</p>
-          <p class="tarjeta-tramo__dato">{{ tramo.distancia }}</p>
+        <div class="tarjeta-tramo__metricas">
+          <div>
+            <p class="tarjeta-tramo__etiqueta">DISTANCIA</p>
+            <p class="tarjeta-tramo__dato">{{ tramo.distancia }}</p>
+          </div>
+          <div>
+            <p class="tarjeta-tramo__etiqueta">MEDIA</p>
+            <p class="tarjeta-tramo__dato">{{ tramo.media }}</p>
+          </div>
+          <div>
+            <p class="tarjeta-tramo__etiqueta">CONTROLES</p>
+            <p class="tarjeta-tramo__dato">{{ tramo.controles }}</p>
+          </div>
         </div>
-        <div>
-          <p class="tarjeta-tramo__etiqueta">MEDIA</p>
-          <p class="tarjeta-tramo__dato">{{ tramo.media }}</p>
-        </div>
-        <div>
-          <p class="tarjeta-tramo__etiqueta">CONTROLES</p>
-          <p class="tarjeta-tramo__dato">{{ tramo.controles }}</p>
-        </div>
-      </div>
-    </article>
-  }
-</div>
+      </article>
+    }
+  </div>
+}

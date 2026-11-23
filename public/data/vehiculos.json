@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "dorsal": "14",
+    "modelo": "Porsche 911 Carrera RS 2.7",
+    "anio": 1973,
+    "categoria": "GRAN TURISMO",
+    "tono": "verde",
+    "resumen": "Unidad homologada con doble cronometraje mecánico y pasaporte técnico histórico vigente."
+  },
+  {
+    "id": 2,
+    "dorsal": "27",
+    "modelo": "Lancia Fulvia Coupé 1.6 HF",
+    "anio": 1972,
+    "categoria": "TURISMO HISTÓRICO",
+    "tono": "burdeos",
+    "resumen": "Preparación de regularidad clásica para tramos de montaña con media impuesta de 42 km/h."
+  },
+  {
+    "id": 3,
+    "dorsal": "42",
+    "modelo": "Alfa Romeo Giulia Sprint GTA",
+    "anio": 1967,
+    "categoria": "SPORT CLÁSICO",
+    "tono": "verde",
+    "resumen": "Carrocería ligera de época verificada por los comisarios técnicos en parque cerrado."
+  },
+  {
+    "id": 4,
+    "dorsal": "08",
+    "modelo": "MG TC Midget",
+    "anio": 1948,
+    "categoria": "PRE-1960 CLÁSICO",
+    "tono": "verde",
+    "resumen": "Roadster británico de posguerra equipado con instrumentación analógica de época calibrada."
+  },
+  {
+    "id": 5,
+    "dorsal": "31",
+    "modelo": "Jaguar E-Type Coupé 3.8",
+    "anio": 1964,
+    "categoria": "GRAN TURISMO",
+    "tono": "burdeos",
+    "resumen": "Gran turismo de seis cilindros en línea admitido tras inspección documental en salida."
+  },
+  {
+    "id": 6,
+    "dorsal": "53",
+    "modelo": "Alpine A110 1600S",
+    "anio": 1971,
+    "categoria": "SPORT CLÁSICO",
+    "tono": "verde",
+    "resumen": "Berlina ligera de tracción trasera puesta a punto para enlaces nocturnos y puertos de sierra."
+  }
+]

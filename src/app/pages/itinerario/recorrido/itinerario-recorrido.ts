@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FilaClasificacion } from '../../../navegacion-service';
+import { Component, inject } from '@angular/core';
+import { NavegacionService } from '../../../navegacion-service';
 
 @Component({
   selector: 'app-itinerario-recorrido',
@@ -8,33 +8,8 @@ import { FilaClasificacion } from '../../../navegacion-service';
   styleUrl: './itinerario-recorrido.scss',
 })
 export class ItinerarioRecorrido {
-  protected readonly filas: readonly FilaClasificacion[] = [
-    {
-      posicion: '1',
-      dorsal: '14',
-      equipo: 'M. Valdés / C. Serrano',
-      vehiculo: 'Porsche 911 Carrera RS',
-      desviacion: '0.2 s',
-      esLider: true,
-      penalizado: false,
-    },
-    {
-      posicion: '2',
-      dorsal: '27',
-      equipo: 'A. Prieto / E. Navarro',
-      vehiculo: 'Lancia Fulvia Coupé HF',
-      desviacion: '0.5 s',
-      esLider: false,
-      penalizado: false,
-    },
-    {
-      posicion: '3',
-      dorsal: '42',
-      equipo: 'J. Morales / R. Gil',
-      vehiculo: 'Alfa Romeo Giulia GTA',
-      desviacion: '1.8 s',
-      esLider: false,
-      penalizado: true,
-    },
-  ];
+  private readonly navegacionService = inject(NavegacionService);
+
+  protected readonly estadoCarga = this.navegacionService.estadoItinerario;
+  protected readonly filas = this.navegacionService.clasificacion;
 }

@@ -12,45 +12,53 @@
 
   <article class="marco-sobrio recorrido__tabla-marco">
     <p class="etiqueta-ed1">CLASIFICACIÓN PROVISIONAL · TIEMPOS A LA DÉCIMA</p>
-    <table class="tabla-clasificacion" aria-label="Clasificación provisional de regularidad">
-      <thead>
-        <tr>
-          <th class="tabla-clasificacion__num">Pos.</th>
-          <th class="tabla-clasificacion__num">Dorsal</th>
-          <th>Equipo</th>
-          <th>Vehículo</th>
-          <th class="tabla-clasificacion__num">Desviación</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (fila of filas; track fila.dorsal) {
-          <tr [class.tabla-clasificacion__lider]="fila.esLider">
-            <td class="tabla-clasificacion__num">
-              <span class="tabla-clasificacion__movil">POS.</span>
-              {{ fila.posicion }}
-            </td>
-            <td class="tabla-clasificacion__num">
-              <span class="tabla-clasificacion__movil">DORSAL</span>
-              {{ fila.dorsal }}
-            </td>
-            <td>
-              <span class="tabla-clasificacion__movil">EQUIPO</span>
-              {{ fila.equipo }}
-            </td>
-            <td>
-              <span class="tabla-clasificacion__movil">VEHÍCULO</span>
-              {{ fila.vehiculo }}
-            </td>
-            <td
-              class="tabla-clasificacion__num"
-              [class.tabla-clasificacion__penalizacion]="fila.penalizado"
-            >
-              <span class="tabla-clasificacion__movil">DESVIACIÓN</span>
-              {{ fila.desviacion }}
-            </td>
+    @if (estadoCarga() === 'cargando') {
+      <p aria-live="polite">Cargando clasificación provisional desde el archivo local.</p>
+    } @else if (estadoCarga() === 'error') {
+      <p role="alert">No se ha podido consultar la clasificación provisional.</p>
+    } @else if (filas().length === 0) {
+      <p aria-live="polite">Aún no constan registros publicados en la clasificación provisional.</p>
+    } @else {
+      <table class="tabla-clasificacion" aria-label="Clasificación provisional de regularidad">
+        <thead>
+          <tr>
+            <th class="tabla-clasificacion__num">Pos.</th>
+            <th class="tabla-clasificacion__num">Dorsal</th>
+            <th>Equipo</th>
+            <th>Vehículo</th>
+            <th class="tabla-clasificacion__num">Desviación</th>
           </tr>
-        }
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          @for (fila of filas(); track fila.dorsal) {
+            <tr [class.tabla-clasificacion__lider]="fila.esLider">
+              <td class="tabla-clasificacion__num">
+                <span class="tabla-clasificacion__movil">POS.</span>
+                {{ fila.posicion }}
+              </td>
+              <td class="tabla-clasificacion__num">
+                <span class="tabla-clasificacion__movil">DORSAL</span>
+                {{ fila.dorsal }}
+              </td>
+              <td>
+                <span class="tabla-clasificacion__movil">EQUIPO</span>
+                {{ fila.equipo }}
+              </td>
+              <td>
+                <span class="tabla-clasificacion__movil">VEHÍCULO</span>
+                {{ fila.vehiculo }}
+              </td>
+              <td
+                class="tabla-clasificacion__num"
+                [class.tabla-clasificacion__penalizacion]="fila.penalizado"
+              >
+                <span class="tabla-clasificacion__movil">DESVIACIÓN</span>
+                {{ fila.desviacion }}
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
   </article>
 </div>

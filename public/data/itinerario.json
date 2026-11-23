@@ -1,0 +1,57 @@
+{
+  "tramos": [
+    {
+      "codigo": "TC-01 · SALIDA 09:00",
+      "nombre": "Puerto de la Cruz Verde",
+      "estado": "PROGRAMADO",
+      "distancia": "14.20 km",
+      "media": "45.0 km/h",
+      "controles": "03"
+    },
+    {
+      "codigo": "TC-02 · SALIDA 09:40",
+      "nombre": "Subida a Navacerrada",
+      "estado": "MEDIA IMPUESTA",
+      "distancia": "18.40 km",
+      "media": "42.0 km/h",
+      "controles": "04"
+    },
+    {
+      "codigo": "TC-03 · SALIDA 10:35",
+      "nombre": "Valle del Lozoya",
+      "estado": "CONTROL SECRETO",
+      "distancia": "22.80 km",
+      "media": "48.5 km/h",
+      "controles": "05"
+    }
+  ],
+  "clasificacion": [
+    {
+      "posicion": "1",
+      "dorsal": "14",
+      "equipo": "M. Valdés / C. Serrano",
+      "vehiculo": "Porsche 911 Carrera RS",
+      "desviacion": "0.2 s",
+      "esLider": true,
+      "penalizado": false
+    },
+    {
+      "posicion": "2",
+      "dorsal": "27",
+      "equipo": "A. Prieto / E. Navarro",
+      "vehiculo": "Lancia Fulvia Coupé HF",
+      "desviacion": "0.5 s",
+      "esLider": false,
+      "penalizado": false
+    },
+    {
+      "posicion": "3",
+      "dorsal": "42",
+      "equipo": "J. Morales / R. Gil",
+      "vehiculo": "Alfa Romeo Giulia GTA",
+      "desviacion": "1.8 s",
+      "esLider": false,
+      "penalizado": true
+    }
+  ]
+}
