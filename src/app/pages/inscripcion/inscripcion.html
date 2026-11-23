@@ -7,53 +7,275 @@
 
   <div class="pagina__grid">
     <article class="marco-sobrio inscripcion__formulario">
-      <div class="inscripcion__cabecera">
-        <span class="etiqueta-ed1">HOJA DE INSCRIPCIÓN · MUESTRA VISUAL</span>
-        <span class="placa-semantica placa-semantica--cuero">FASE PRELIMINAR</span>
-      </div>
+      @if (resguardo(); as r) {
+        <div class="inscripcion__resguardo" aria-live="polite">
+          <div class="inscripcion__cabecera">
+            <span class="etiqueta-ed1">RESGUARDO ADMINISTRATIVO</span>
+            <span class="placa-semantica placa-semantica--verde numero-tabular">
+              {{ r.referencia }}
+            </span>
+          </div>
 
-      <div class="inscripcion__campos">
-        <div class="campo-carnet">
-          <label class="campo-carnet__etiqueta" for="inscripcion-piloto">PILOTO Y COPILOTO</label>
-          <input
-            id="inscripcion-piloto"
-            class="campo-carnet__entrada"
-            type="text"
-            placeholder="M. Valdés / C. Serrano"
-          />
+          <h2 class="inscripcion__titulo titulo-cursiva">
+            Solicitud registrada en control administrativo
+          </h2>
+          <p class="inscripcion__texto">
+            Su inscripción ha superado la validación preliminar. Conserve el número de referencia
+            para las verificaciones presenciales en parque cerrado.
+          </p>
+
+          <dl class="inscripcion__datos numero-tabular">
+            <div class="inscripcion__dato-fila">
+              <span>PILOTO / COPILOTO</span>
+              <strong>{{ r.piloto }} / {{ r.copiloto }}</strong>
+            </div>
+            <div class="inscripcion__dato-fila">
+              <span>CONTACTO</span>
+              <strong>{{ r.email }} · {{ r.telefono }}</strong>
+            </div>
+            <div class="inscripcion__dato-fila">
+              <span>VEHÍCULO Y AÑO</span>
+              <strong>{{ r.modelo }} · {{ r.anio }}</strong>
+            </div>
+            <div class="inscripcion__dato-fila">
+              <span>CATEGORÍA Y POTENCIA</span>
+              <strong>{{ r.categoria }} · {{ r.potencia }}</strong>
+            </div>
+            <div class="inscripcion__dato-fila">
+              <span>PASAPORTE FIVA</span>
+              <strong>{{ r.pasaporteFiva }}</strong>
+            </div>
+          </dl>
+
+          <div class="pagina__acciones">
+            <button type="button" class="boton boton--secundario" (click)="nuevaInscripcion()">
+              Nueva Inscripción
+            </button>
+            <a class="boton boton--primario" routerLink="/catalogo">Consultar Parque Cerrado</a>
+          </div>
+        </div>
+      } @else {
+        <div class="inscripcion__cabecera">
+          <span class="etiqueta-ed1">HOJA DE INSCRIPCIÓN · CARNET DE RUTA</span>
+          <span class="placa-semantica placa-semantica--cuero">VALIDACIÓN ACTIVA</span>
         </div>
 
-        <div class="campo-carnet">
-          <label class="campo-carnet__etiqueta" for="inscripcion-vehiculo">
-            VEHÍCULO Y AÑO (1925–1975)
-          </label>
-          <input
-            id="inscripcion-vehiculo"
-            class="campo-carnet__entrada"
-            type="text"
-            placeholder="Porsche 911 Carrera RS · 1973"
-          />
-        </div>
+        <form [formGroup]="formulario" (ngSubmit)="enviarInscripcion()" novalidate>
+          <div class="inscripcion__campos">
+            <div class="campo-carnet">
+              <label class="campo-carnet__etiqueta" for="inscripcion-piloto">PILOTO TITULAR</label>
+              <input
+                id="inscripcion-piloto"
+                class="campo-carnet__entrada"
+                [class.campo-carnet__entrada--invalida]="esInvalido('piloto')"
+                type="text"
+                formControlName="piloto"
+                placeholder="Ej. Manuel Valdés"
+                [attr.aria-invalid]="esInvalido('piloto')"
+                [attr.aria-describedby]="esInvalido('piloto') ? 'error-piloto' : null"
+              />
+              @if (esInvalido('piloto')) {
+                <p id="error-piloto" class="campo-carnet__error" role="alert">
+                  {{ mensajeError('piloto') }}
+                </p>
+              }
+            </div>
 
-        <div class="campo-carnet">
-          <label class="campo-carnet__etiqueta" for="inscripcion-fiva"
-            >PASAPORTE FIVA / DORSAL</label
-          >
-          <input
-            id="inscripcion-fiva"
-            class="campo-carnet__entrada numero-tabular"
-            type="text"
-            placeholder="FIVA-1973-014"
-          />
-        </div>
-      </div>
+            <div class="campo-carnet">
+              <label class="campo-carnet__etiqueta" for="inscripcion-copiloto">COPILOTO</label>
+              <input
+                id="inscripcion-copiloto"
+                class="campo-carnet__entrada"
+                [class.campo-carnet__entrada--invalida]="esInvalido('copiloto')"
+                type="text"
+                formControlName="copiloto"
+                placeholder="Ej. Clara Serrano"
+                [attr.aria-invalid]="esInvalido('copiloto')"
+                [attr.aria-describedby]="esInvalido('copiloto') ? 'error-copiloto' : null"
+              />
+              @if (esInvalido('copiloto')) {
+                <p id="error-copiloto" class="campo-carnet__error" role="alert">
+                  {{ mensajeError('copiloto') }}
+                </p>
+              }
+            </div>
 
-      <hr class="filete-cromo" aria-hidden="true" />
+            <div class="campo-carnet">
+              <label class="campo-carnet__etiqueta" for="inscripcion-email">
+                CORREO ELECTRÓNICO
+              </label>
+              <input
+                id="inscripcion-email"
+                class="campo-carnet__entrada"
+                [class.campo-carnet__entrada--invalida]="esInvalido('email')"
+                type="email"
+                formControlName="email"
+                placeholder="equipo@classicmotor.es"
+                [attr.aria-invalid]="esInvalido('email')"
+                [attr.aria-describedby]="esInvalido('email') ? 'error-email' : null"
+              />
+              @if (esInvalido('email')) {
+                <p id="error-email" class="campo-carnet__error" role="alert">
+                  {{ mensajeError('email') }}
+                </p>
+              }
+            </div>
 
-      <div class="pagina__acciones">
-        <a class="boton boton--primario" routerLink="/catalogo">Consultar Parque Cerrado</a>
-        <a class="boton boton--terciario" routerLink="/inicio">Regresar a Portada</a>
-      </div>
+            <div class="campo-carnet">
+              <label class="campo-carnet__etiqueta" for="inscripcion-telefono">
+                TELÉFONO DE CONTACTO
+              </label>
+              <input
+                id="inscripcion-telefono"
+                class="campo-carnet__entrada numero-tabular"
+                [class.campo-carnet__entrada--invalida]="esInvalido('telefono')"
+                type="tel"
+                formControlName="telefono"
+                placeholder="600 123 456"
+                [attr.aria-invalid]="esInvalido('telefono')"
+                [attr.aria-describedby]="esInvalido('telefono') ? 'error-telefono' : null"
+              />
+              @if (esInvalido('telefono')) {
+                <p id="error-telefono" class="campo-carnet__error" role="alert">
+                  {{ mensajeError('telefono') }}
+                </p>
+              }
+            </div>
+
+            <div class="campo-carnet">
+              <label class="campo-carnet__etiqueta" for="inscripcion-modelo">
+                MARCA Y MODELO DEL VEHÍCULO
+              </label>
+              <input
+                id="inscripcion-modelo"
+                class="campo-carnet__entrada"
+                [class.campo-carnet__entrada--invalida]="esInvalido('modelo')"
+                type="text"
+                formControlName="modelo"
+                placeholder="Porsche 911 Carrera RS 2.7"
+                [attr.aria-invalid]="esInvalido('modelo')"
+                [attr.aria-describedby]="esInvalido('modelo') ? 'error-modelo' : null"
+              />
+              @if (esInvalido('modelo')) {
+                <p id="error-modelo" class="campo-carnet__error" role="alert">
+                  {{ mensajeError('modelo') }}
+                </p>
+              }
+            </div>
+
+            <div class="campo-carnet">
+              <label class="campo-carnet__etiqueta" for="inscripcion-anio">
+                AÑO DE FABRICACIÓN (1925–1975)
+              </label>
+              <input
+                id="inscripcion-anio"
+                class="campo-carnet__entrada numero-tabular"
+                [class.campo-carnet__entrada--invalida]="esInvalido('anio')"
+                type="number"
+                formControlName="anio"
+                placeholder="1973"
+                [attr.aria-invalid]="esInvalido('anio')"
+                [attr.aria-describedby]="esInvalido('anio') ? 'error-anio' : null"
+              />
+              @if (esInvalido('anio')) {
+                <p id="error-anio" class="campo-carnet__error" role="alert">
+                  {{ mensajeError('anio') }}
+                </p>
+              }
+            </div>
+
+            <div class="campo-carnet">
+              <label class="campo-carnet__etiqueta" for="inscripcion-categoria">CATEGORÍA</label>
+              <select
+                id="inscripcion-categoria"
+                class="campo-carnet__entrada"
+                [class.campo-carnet__entrada--invalida]="esInvalido('categoria')"
+                formControlName="categoria"
+                [attr.aria-invalid]="esInvalido('categoria')"
+                [attr.aria-describedby]="esInvalido('categoria') ? 'error-categoria' : null"
+              >
+                <option value="">Seleccione categoría</option>
+                @for (cat of categorias; track cat) {
+                  <option [value]="cat">{{ cat }}</option>
+                }
+              </select>
+              @if (esInvalido('categoria')) {
+                <p id="error-categoria" class="campo-carnet__error" role="alert">
+                  {{ mensajeError('categoria') }}
+                </p>
+              }
+            </div>
+
+            <div class="campo-carnet">
+              <label class="campo-carnet__etiqueta" for="inscripcion-potencia">POTENCIA</label>
+              <input
+                id="inscripcion-potencia"
+                class="campo-carnet__entrada numero-tabular"
+                [class.campo-carnet__entrada--invalida]="esInvalido('potencia')"
+                type="text"
+                formControlName="potencia"
+                placeholder="210 CV"
+                [attr.aria-invalid]="esInvalido('potencia')"
+                [attr.aria-describedby]="esInvalido('potencia') ? 'error-potencia' : null"
+              />
+              @if (esInvalido('potencia')) {
+                <p id="error-potencia" class="campo-carnet__error" role="alert">
+                  {{ mensajeError('potencia') }}
+                </p>
+              }
+            </div>
+
+            <div class="campo-carnet inscripcion__campo-completo">
+              <label class="campo-carnet__etiqueta" for="inscripcion-fiva">
+                PASAPORTE FIVA / MATRÍCULA HISTÓRICA
+              </label>
+              <input
+                id="inscripcion-fiva"
+                class="campo-carnet__entrada numero-tabular"
+                [class.campo-carnet__entrada--invalida]="esInvalido('pasaporteFiva')"
+                type="text"
+                formControlName="pasaporteFiva"
+                placeholder="FIVA-1973-014"
+                [attr.aria-invalid]="esInvalido('pasaporteFiva')"
+                [attr.aria-describedby]="esInvalido('pasaporteFiva') ? 'error-fiva' : null"
+              />
+              @if (esInvalido('pasaporteFiva')) {
+                <p id="error-fiva" class="campo-carnet__error" role="alert">
+                  {{ mensajeError('pasaporteFiva') }}
+                </p>
+              }
+            </div>
+          </div>
+
+          <div class="inscripcion__reglamento">
+            <label class="inscripcion__casilla" for="inscripcion-reglamento">
+              <input
+                id="inscripcion-reglamento"
+                type="checkbox"
+                formControlName="aceptaReglamento"
+                [attr.aria-invalid]="esInvalido('aceptaReglamento')"
+                [attr.aria-describedby]="esInvalido('aceptaReglamento') ? 'error-reglamento' : null"
+              />
+              <span>
+                Acepto el reglamento particular de regularidad clásica y las verificaciones técnicas
+                en parque cerrado.
+              </span>
+            </label>
+            @if (esInvalido('aceptaReglamento')) {
+              <p id="error-reglamento" class="campo-carnet__error" role="alert">
+                {{ mensajeError('aceptaReglamento') }}
+              </p>
+            }
+          </div>
+
+          <hr class="filete-cromo" aria-hidden="true" />
+
+          <div class="pagina__acciones">
+            <button type="submit" class="boton boton--primario">Enviar Inscripción</button>
+            <a class="boton boton--terciario" routerLink="/inicio">Regresar a Portada</a>
+          </div>
+        </form>
+      }
     </article>
 
     <aside class="marco-sobrio inscripcion__normas" aria-label="Requisitos de verificación">

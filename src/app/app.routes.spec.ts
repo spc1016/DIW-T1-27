@@ -198,7 +198,10 @@ describe('App Routes', () => {
     harness.detectChanges();
     expect(router.url).toBe('/inscripcion');
     expect(harness.routeNativeElement?.textContent).toContain('Inscripción de Equipo y Vehículo');
-    expect(harness.routeNativeElement?.querySelectorAll('.campo-carnet__entrada').length).toBe(3);
+    expect(
+      harness.routeNativeElement?.querySelectorAll('.campo-carnet__entrada').length,
+    ).toBeGreaterThanOrEqual(8);
+    expect(harness.routeNativeElement?.querySelector('form button[type="submit"]')).toBeTruthy();
 
     await harness.navigateByUrl('/guia-estilo');
     responderMocksPendientes();

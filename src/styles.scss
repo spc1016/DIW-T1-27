@@ -241,6 +241,11 @@ img {
       opacity: 0.92;
     }
   }
+
+  &:disabled {
+    opacity: 0.48;
+    cursor: not-allowed;
+  }
 }
 
 // Formularios: Estética Carnet de ruta
@@ -281,6 +286,17 @@ img {
       outline: none;
       border-bottom: 2px solid $color-cuero-conac;
     }
+
+    &--invalida {
+      border-bottom: 2px solid $color-burdeos;
+    }
+  }
+
+  &__error {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+    color: $color-burdeos;
   }
 }
 

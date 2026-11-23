@@ -29,6 +29,7 @@ describe('GuiaEstilo', () => {
     expect(el.querySelector('.boton--secundario')).toBeTruthy();
     expect(el.querySelector('.boton--terciario')).toBeTruthy();
     expect(el.querySelector('.boton--alerta')).toBeTruthy();
+    expect(el.querySelector('.boton:disabled')).toBeTruthy();
     expect(el.querySelector('.campo-carnet__entrada')).toBeTruthy();
     expect(el.querySelectorAll('.dorsal-circular').length).toBe(2);
     expect(el.querySelector('.tarjeta-tramo')).toBeTruthy();

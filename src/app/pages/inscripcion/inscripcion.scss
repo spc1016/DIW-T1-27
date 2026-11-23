@@ -25,6 +25,54 @@
 
 .inscripcion__campos {
   display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-md;
+
+  @media (min-width: $bp-tablet) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: $bp-wide) {
+    gap: $space-lg;
+  }
+}
+
+.inscripcion__campo-completo {
+  @media (min-width: $bp-tablet) {
+    grid-column: span 2;
+  }
+}
+
+.inscripcion__reglamento {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+  margin-block: $space-lg;
+}
+
+.inscripcion__casilla {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-sm;
+  min-height: 48px;
+  padding-block: $space-xs;
+  font-size: 15px;
+  line-height: 1.45;
+  color: $color-tinta;
+  cursor: pointer;
+
+  input {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: $color-verde-carreras;
+  }
+}
+
+.inscripcion__resguardo {
+  display: flex;
+  flex-direction: column;
   gap: $space-md;
 }
 
@@ -63,7 +111,9 @@
 
 .inscripcion__dato-fila {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  gap: $space-xs;
   padding-block: $space-sm;
   border-bottom: 1px solid $color-filete-tinta;
   font-family: $font-label;
