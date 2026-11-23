@@ -75,12 +75,20 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  overflow: hidden;
   border-radius: $radius-control;
   border: 2px solid $color-cuero-conac;
-  background-color: $color-marfil;
-  color: $color-tinta;
+  background-color: $color-verde-carreras;
+}
+
+.cabecera__logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .cabecera__identidad {
