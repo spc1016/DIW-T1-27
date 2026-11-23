@@ -10,6 +10,25 @@
     <span class="placa-semantica recorrido__estado-directo">EN CURSO · ±0,1 S</span>
   </article>
 
+  <article class="marco-sobrio recorrido__mapa-marco">
+    <div class="recorrido__mapa-cabecera">
+      <div>
+        <p class="etiqueta-ed1">TRAZADO OFICIAL · ETAPAS DE LA RUTA</p>
+        <h2 class="recorrido__mapa-titulo titulo-cursiva">Mapa de Tramos y Puntos de Control</h2>
+      </div>
+      <p class="etiqueta-ed1 numero-tabular">
+        {{ mapaEtapas.distanciaTotal }} · {{ mapaEtapas.controlesTotales }}
+      </p>
+    </div>
+    <img
+      class="recorrido__mapa"
+      [src]="mapaEtapas.src"
+      [alt]="mapaEtapas.alt"
+      width="900"
+      height="420"
+    />
+  </article>
+
   <article class="marco-sobrio recorrido__tabla-marco">
     <p class="etiqueta-ed1">CLASIFICACIÓN PROVISIONAL · TIEMPOS A LA DÉCIMA</p>
     @if (estadoCarga() === 'cargando') {

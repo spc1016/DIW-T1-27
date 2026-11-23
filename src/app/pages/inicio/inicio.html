@@ -61,16 +61,8 @@
           <article class="marco-sobrio inicio__vehiculo">
             <img
               class="inicio__vehiculo-imagen"
-              [src]="'/img/vehiculo-' + vehiculo.tono + '.svg'"
-              [alt]="
-                vehiculo.modelo +
-                ' de ' +
-                vehiculo.anio +
-                ', dorsal ' +
-                vehiculo.dorsal +
-                ', categoría ' +
-                vehiculo.categoria
-              "
+              [src]="vehiculo.imagen"
+              [alt]="vehiculo.imagenAlt"
               width="640"
               height="360"
             />

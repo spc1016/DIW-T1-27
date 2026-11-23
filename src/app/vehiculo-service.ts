@@ -9,6 +9,10 @@ export interface VehiculoMuestra {
   anio: number;
   categoria: string;
   tono: 'verde' | 'burdeos';
+  potencia: string;
+  historial: string;
+  imagen: string;
+  imagenAlt: string;
   resumen: string;
 }
 

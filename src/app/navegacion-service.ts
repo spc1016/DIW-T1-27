@@ -37,9 +37,18 @@ export interface FilaClasificacion {
   penalizado: boolean;
 }
 
+export interface ActividadJornada {
+  hora: string;
+  titulo: string;
+  lugar: string;
+  estado: string;
+  tono: 'verde' | 'cuero' | 'burdeos';
+}
+
 export interface ItinerarioMockData {
   tramos: readonly TramoPrograma[];
   clasificacion: readonly FilaClasificacion[];
+  cronograma?: readonly ActividadJornada[];
 }
 
 @Injectable({
@@ -50,6 +59,7 @@ export class NavegacionService {
   private readonly coleccion = signal<readonly NavItem[]>([]);
   private readonly tramosInternos = signal<readonly TramoPrograma[]>([]);
   private readonly clasificacionInterna = signal<readonly FilaClasificacion[]>([]);
+  private readonly cronogramaInterno = signal<readonly ActividadJornada[]>([]);
   private readonly estadoNavegacionInterno = signal<EstadoCarga>('cargando');
   private readonly estadoItinerarioInterno = signal<EstadoCarga>('cargando');
 
@@ -57,6 +67,7 @@ export class NavegacionService {
   readonly estadoItinerario = this.estadoItinerarioInterno.asReadonly();
   readonly tramos = this.tramosInternos.asReadonly();
   readonly clasificacion = this.clasificacionInterna.asReadonly();
+  readonly cronograma = this.cronogramaInterno.asReadonly();
 
   private readonly inicializacion = this.cargarDesdeJson();
 
@@ -88,6 +99,7 @@ export class NavegacionService {
         if (datos !== null) {
           this.tramosInternos.set(datos.tramos ?? []);
           this.clasificacionInterna.set(datos.clasificacion ?? []);
+          this.cronogramaInterno.set(datos.cronograma ?? []);
           this.estadoItinerarioInterno.set('listo');
         }
       });

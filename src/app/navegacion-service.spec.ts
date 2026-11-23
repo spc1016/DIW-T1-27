@@ -84,6 +84,15 @@ const MOCK_ITINERARIO: ItinerarioMockData = {
       penalizado: false,
     },
   ],
+  cronograma: [
+    {
+      hora: '07:45',
+      titulo: 'Apertura de parque cerrado',
+      lugar: 'San Lorenzo',
+      estado: 'OBLIGATORIO',
+      tono: 'cuero',
+    },
+  ],
 };
 
 describe('NavegacionService', () => {
@@ -111,6 +120,7 @@ describe('NavegacionService', () => {
     expect(service.obtenerTodas().length).toBe(7);
     expect(service.tramos().length).toBe(1);
     expect(service.clasificacion().length).toBe(1);
+    expect(service.cronograma().length).toBe(1);
   });
 
   it('debe filtrar los ítems por grupo principal e itinerario', () => {

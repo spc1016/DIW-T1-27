@@ -39,6 +39,39 @@
   color: $color-tolerancia-fuera;
 }
 
+.recorrido__mapa-marco {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+}
+
+.recorrido__mapa-cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: $space-sm;
+}
+
+.recorrido__mapa-titulo {
+  margin: $space-xs 0 0;
+  font-size: 26px;
+  line-height: 1.15;
+  color: $color-tinta;
+}
+
+.recorrido__mapa {
+  width: 100%;
+  height: auto;
+  border: 1px solid $color-filete-tinta;
+  border-radius: $radius-control;
+
+  @media (min-width: $bp-wide) {
+    max-height: 460px;
+    object-fit: contain;
+  }
+}
+
 .recorrido__tabla-marco {
   display: flex;
   flex-direction: column;

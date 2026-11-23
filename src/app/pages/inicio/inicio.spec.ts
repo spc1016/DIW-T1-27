@@ -14,6 +14,10 @@ const MOCK_VEHICULOS: readonly VehiculoMuestra[] = [
     anio: 1973,
     categoria: 'GRAN TURISMO',
     tono: 'verde',
+    potencia: '210 CV · 2.687 cc',
+    historial: 'Chasis serie Touring homologado FIA.',
+    imagen: '/img/vehiculos/porsche-911-rs.svg',
+    imagenAlt: 'Ilustración Porsche 911 Carrera RS 2.7 dorsal 14',
     resumen: 'Unidad homologada con doble cronometraje.',
   },
   {
@@ -23,6 +27,10 @@ const MOCK_VEHICULOS: readonly VehiculoMuestra[] = [
     anio: 1972,
     categoria: 'TURISMO HISTÓRICO',
     tono: 'burdeos',
+    potencia: '115 CV · 1.584 cc',
+    historial: 'Preparación Fanalone de montaña.',
+    imagen: '/img/vehiculos/lancia-fulvia-hf.svg',
+    imagenAlt: 'Ilustración Lancia Fulvia Coupé 1.6 HF dorsal 27',
     resumen: 'Preparación de montaña.',
   },
   {
@@ -32,6 +40,10 @@ const MOCK_VEHICULOS: readonly VehiculoMuestra[] = [
     anio: 1967,
     categoria: 'SPORT CLÁSICO',
     tono: 'verde',
+    potencia: '115 CV · 1.570 cc',
+    historial: 'Carrocería ligera Peraluman 25.',
+    imagen: '/img/vehiculos/alfa-giulia-gta.svg',
+    imagenAlt: 'Ilustración Alfa Romeo Giulia Sprint GTA dorsal 42',
     resumen: 'Carrocería ligera de época.',
   },
   {
@@ -41,6 +53,10 @@ const MOCK_VEHICULOS: readonly VehiculoMuestra[] = [
     anio: 1948,
     categoria: 'PRE-1960 CLÁSICO',
     tono: 'verde',
+    potencia: '54 CV · 1.250 cc',
+    historial: 'Bitácora de rallies británicos.',
+    imagen: '/img/vehiculos/mg-tc-midget.svg',
+    imagenAlt: 'Ilustración MG TC Midget dorsal 08',
     resumen: 'Roadster británico de posguerra.',
   },
 ];

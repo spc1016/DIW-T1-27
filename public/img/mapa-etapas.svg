@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" role="img" aria-label="Mapa de etapas del rally: Salida San Lorenzo, TC-01 Cruz Verde, TC-02 Navacerrada, Reagrupamiento, TC-03 Valle del Lozoya y Meta">
+  <rect width="900" height="420" fill="#EEE8DC" />
+  <g stroke="#141816" stroke-opacity="0.12" stroke-width="1">
+    <line x1="0" y1="84" x2="900" y2="84" />
+    <line x1="0" y1="168" x2="900" y2="168" />
+    <line x1="0" y1="252" x2="900" y2="252" />
+    <line x1="0" y1="336" x2="900" y2="336" />
+    <line x1="150" y1="0" x2="150" y2="420" />
+    <line x1="300" y1="0" x2="300" y2="420" />
+    <line x1="450" y1="0" x2="450" y2="420" />
+    <line x1="600" y1="0" x2="600" y2="420" />
+    <line x1="750" y1="0" x2="750" y2="420" />
+  </g>
+  <!-- Enlaces neutralizados (cuero) y tramos cronometrados (verde / burdeos) -->
+  <path d="M 90 310 Q 170 300 240 245" fill="none" stroke="#A36A3A" stroke-width="4" stroke-dasharray="8 6" />
+  <path d="M 240 245 Q 320 165 430 140" fill="none" stroke="#1F3B2D" stroke-width="7" stroke-linecap="round" />
+  <path d="M 430 140 Q 520 110 610 155" fill="none" stroke="#6B1F2A" stroke-width="7" stroke-linecap="round" />
+  <path d="M 610 155 Q 690 215 740 250" fill="none" stroke="#A36A3A" stroke-width="4" stroke-dasharray="8 6" />
+  <path d="M 740 250 Q 795 270 825 315" fill="none" stroke="#1F3B2D" stroke-width="7" stroke-linecap="round" />
+  <!-- Puntos de etapa -->
+  <circle cx="90" cy="310" r="11" fill="#141816" stroke="#EEE8DC" stroke-width="2.5" />
+  <circle cx="240" cy="245" r="12" fill="#1F3B2D" stroke="#EEE8DC" stroke-width="2.5" />
+  <circle cx="430" cy="140" r="13" fill="#6B1F2A" stroke="#EEE8DC" stroke-width="3" />
+  <circle cx="610" cy="155" r="11" fill="#A36A3A" stroke="#EEE8DC" stroke-width="2.5" />
+  <circle cx="740" cy="250" r="12" fill="#1F3B2D" stroke="#EEE8DC" stroke-width="2.5" />
+  <circle cx="825" cy="315" r="11" fill="#141816" stroke="#EEE8DC" stroke-width="2.5" />
+  <!-- Rótulos -->
+  <g font-family="sans-serif" font-size="12" font-weight="700" fill="#141816">
+    <text x="90" y="346" text-anchor="middle">SALIDA · 09:00</text>
+    <text x="235" y="282" text-anchor="middle">TC-01 · CRUZ VERDE</text>
+    <text x="430" y="114" text-anchor="middle" fill="#6B1F2A">TC-02 · NAVACERRADA (DIRECTO)</text>
+    <text x="615" y="130" text-anchor="middle">REAGRUPAMIENTO 13:00</text>
+    <text x="725" y="228" text-anchor="middle">TC-03 · LOZOYA</text>
+    <text x="820" y="352" text-anchor="middle">META · 16:30</text>
+  </g>
+</svg>

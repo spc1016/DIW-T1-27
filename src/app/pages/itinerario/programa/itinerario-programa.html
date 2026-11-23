@@ -42,4 +42,41 @@
       </article>
     }
   </div>
+
+  @if (cronograma().length > 0) {
+    <section
+      class="marco-sobrio programa__cronograma-bloque"
+      aria-labelledby="titulo-cronograma-jornada"
+    >
+      <div class="programa__cronograma-cabecera">
+        <div>
+          <p class="etiqueta-ed1">PROGRAMA HORARIO COMPLETO · JORNADA OFICIAL</p>
+          <h2 id="titulo-cronograma-jornada" class="programa__cronograma-titulo titulo-cursiva">
+            Cronograma de Actividades
+          </h2>
+        </div>
+        <span class="placa-semantica placa-semantica--verde numero-tabular">07:45 – 16:30</span>
+      </div>
+
+      <ol class="programa__cronograma">
+        @for (hito of cronograma(); track hito.hora) {
+          <li class="programa__hito">
+            <span class="programa__hora numero-tabular">{{ hito.hora }}</span>
+            <div class="programa__hito-detalle">
+              <strong class="programa__hito-titulo">{{ hito.titulo }}</strong>
+              <span class="programa__hito-lugar">{{ hito.lugar }}</span>
+            </div>
+            <span
+              class="placa-semantica"
+              [class.placa-semantica--verde]="hito.tono === 'verde'"
+              [class.placa-semantica--cuero]="hito.tono === 'cuero'"
+              [class.placa-semantica--burdeos]="hito.tono === 'burdeos'"
+            >
+              {{ hito.estado }}
+            </span>
+          </li>
+        }
+      </ol>
+    </section>
+  }
 }

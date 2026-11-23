@@ -13,6 +13,10 @@ const MOCK_VEHICULOS: readonly VehiculoMuestra[] = [
     anio: 1973,
     categoria: 'GRAN TURISMO',
     tono: 'verde',
+    potencia: '210 CV · 2.687 cc',
+    historial: 'Chasis serie Touring homologado FIA.',
+    imagen: '/img/vehiculos/porsche-911-rs.svg',
+    imagenAlt: 'Porsche 911 Carrera RS 2.7 dorsal 14',
     resumen: 'Unidad homologada.',
   },
   {
@@ -22,6 +26,10 @@ const MOCK_VEHICULOS: readonly VehiculoMuestra[] = [
     anio: 1972,
     categoria: 'TURISMO HISTÓRICO',
     tono: 'burdeos',
+    potencia: '115 CV · 1.584 cc',
+    historial: 'Preparación Fanalone de montaña.',
+    imagen: '/img/vehiculos/lancia-fulvia-hf.svg',
+    imagenAlt: 'Lancia Fulvia Coupé 1.6 HF dorsal 27',
     resumen: 'Preparación de montaña.',
   },
   {
@@ -31,6 +39,10 @@ const MOCK_VEHICULOS: readonly VehiculoMuestra[] = [
     anio: 1967,
     categoria: 'SPORT CLÁSICO',
     tono: 'verde',
+    potencia: '115 CV · 1.570 cc',
+    historial: 'Carrocería ligera Peraluman 25.',
+    imagen: '/img/vehiculos/alfa-giulia-gta.svg',
+    imagenAlt: 'Alfa Romeo Giulia Sprint GTA dorsal 42',
     resumen: 'Carrocería ligera.',
   },
   {
@@ -40,6 +52,10 @@ const MOCK_VEHICULOS: readonly VehiculoMuestra[] = [
     anio: 1948,
     categoria: 'PRE-1960 CLÁSICO',
     tono: 'verde',
+    potencia: '54 CV · 1.250 cc',
+    historial: 'Bitácora de rallies británicos.',
+    imagen: '/img/vehiculos/mg-tc-midget.svg',
+    imagenAlt: 'MG TC Midget dorsal 08',
     resumen: 'Roadster británico de posguerra.',
   },
 ];
@@ -67,6 +83,10 @@ describe('Catalogo', () => {
     fixture.detectChanges();
 
     const el = fixture.nativeElement as HTMLElement;
+    const imagenes = el.querySelectorAll('img.catalogo__imagen');
+    expect(imagenes.length).toBe(4);
+    imagenes.forEach((img) => expect(img.getAttribute('alt')?.trim().length).toBeGreaterThan(5));
+    expect(el.textContent).toContain('210 CV · 2.687 cc');
     expect(el.querySelector('.catalogo__contador')?.textContent).toContain(
       'MOSTRANDO 4 DE 4 DORSALES',
     );

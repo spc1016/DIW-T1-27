@@ -15,6 +15,10 @@ const MOCK_VEHICULOS: readonly VehiculoMuestra[] = [
     anio: 1973,
     categoria: 'GRAN TURISMO',
     tono: 'verde',
+    potencia: '210 CV · 2.687 cc',
+    historial: 'Chasis serie Touring homologado FIA Grupo 4.',
+    imagen: '/img/vehiculos/porsche-911-rs.svg',
+    imagenAlt: 'Ilustración Porsche 911 Carrera RS 2.7 dorsal 14',
     resumen: 'Unidad homologada con doble cronometraje mecánico.',
   },
   {
@@ -24,6 +28,10 @@ const MOCK_VEHICULOS: readonly VehiculoMuestra[] = [
     anio: 1972,
     categoria: 'TURISMO HISTÓRICO',
     tono: 'burdeos',
+    potencia: '115 CV · 1.584 cc',
+    historial: 'Preparación Fanalone de tracción delantera.',
+    imagen: '/img/vehiculos/lancia-fulvia-hf.svg',
+    imagenAlt: 'Ilustración Lancia Fulvia Coupé 1.6 HF dorsal 27',
     resumen: 'Preparación de regularidad clásica para tramos de montaña.',
   },
   {
@@ -33,6 +41,10 @@ const MOCK_VEHICULOS: readonly VehiculoMuestra[] = [
     anio: 1967,
     categoria: 'SPORT CLÁSICO',
     tono: 'verde',
+    potencia: '115 CV · 1.570 cc',
+    historial: 'Carrocería en aleación ligera Peraluman 25.',
+    imagen: '/img/vehiculos/alfa-giulia-gta.svg',
+    imagenAlt: 'Ilustración Alfa Romeo Giulia Sprint GTA dorsal 42',
     resumen: 'Carrocería ligera de época verificada por comisarios.',
   },
 ];
@@ -108,6 +120,22 @@ const MOCK_ITINERARIO: ItinerarioMockData = {
       desviacion: '0.2 s',
       esLider: true,
       penalizado: false,
+    },
+  ],
+  cronograma: [
+    {
+      hora: '07:45',
+      titulo: 'Apertura de parque cerrado y verificaciones',
+      lugar: 'Lonja del Monasterio',
+      estado: 'OBLIGATORIO',
+      tono: 'cuero',
+    },
+    {
+      hora: '16:30',
+      titulo: 'Entrega de trofeos',
+      lugar: 'Lonja del Monasterio · Meta',
+      estado: 'OFICIAL',
+      tono: 'verde',
     },
   ],
 };
@@ -188,6 +216,11 @@ describe('App Routes', () => {
     const router = TestBed.inject(Router);
     expect(harness.routeNativeElement?.textContent).toContain('DORSAL 14');
     expect(harness.routeNativeElement?.textContent).toContain('Porsche 911 Carrera RS 2.7');
+    expect(harness.routeNativeElement?.textContent).toContain('210 CV · 2.687 cc');
+    expect(harness.routeNativeElement?.textContent).toContain('Chasis serie Touring');
+    expect(
+      harness.routeNativeElement?.querySelector('img.detalle__imagen')?.getAttribute('alt'),
+    ).toBeTruthy();
     expect(harness.routeNativeElement?.querySelector('.dorsal-circular')?.textContent?.trim()).toBe(
       '14',
     );
@@ -231,12 +264,18 @@ describe('App Routes', () => {
 
     expect(router.url).toBe('/itinerario/programa');
     expect(harness.routeNativeElement?.querySelectorAll('.tarjeta-tramo').length).toBe(3);
+    expect(harness.routeNativeElement?.querySelectorAll('.programa__hito').length).toBe(2);
+    expect(harness.routeNativeElement?.textContent).toContain('Cronograma de Actividades');
 
     await harness.navigateByUrl('/itinerario/recorrido');
     responderMocksPendientes();
     harness.detectChanges();
     expect(router.url).toBe('/itinerario/recorrido');
     expect(harness.routeNativeElement?.querySelector('.panel-directo')).toBeTruthy();
+    expect(
+      harness.routeNativeElement?.querySelector('img.recorrido__mapa')?.getAttribute('alt'),
+    ).toBeTruthy();
+    expect(harness.routeNativeElement?.textContent).toContain('55.40 km cronometrados');
     expect(harness.routeNativeElement?.querySelector('table.tabla-clasificacion')).toBeTruthy();
     expect(harness.routeNativeElement?.querySelector('.tabla-clasificacion__lider')).toBeTruthy();
   });

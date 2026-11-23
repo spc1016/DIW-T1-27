@@ -41,11 +41,39 @@
       </div>
 
       <div class="detalle__contenido">
+        <img
+          class="detalle__imagen"
+          [src]="v.imagen"
+          [alt]="v.imagenAlt"
+          width="640"
+          height="360"
+        />
+
         <p class="etiqueta-ed1 numero-tabular">
           DORSAL {{ v.dorsal }} · AÑO {{ v.anio }} · REGISTRO {{ v.id }}
         </p>
         <h2 class="detalle__modelo titulo-cursiva">{{ v.modelo }}</h2>
         <p class="detalle__texto">{{ v.resumen }}</p>
+
+        <dl class="detalle__especificaciones" aria-label="Especificaciones técnicas del vehículo">
+          <div class="detalle__dato">
+            <dt class="etiqueta-ed1">AÑO</dt>
+            <dd class="detalle__valor numero-tabular">{{ v.anio }}</dd>
+          </div>
+          <div class="detalle__dato">
+            <dt class="etiqueta-ed1">CATEGORÍA</dt>
+            <dd class="detalle__valor">{{ v.categoria }}</dd>
+          </div>
+          <div class="detalle__dato">
+            <dt class="etiqueta-ed1">POTENCIA</dt>
+            <dd class="detalle__valor numero-tabular">{{ v.potencia }}</dd>
+          </div>
+        </dl>
+
+        <section class="detalle__historial" aria-label="Historial técnico y deportivo">
+          <p class="etiqueta-ed1">HISTORIAL DEPORTIVO Y TÉCNICO</p>
+          <p class="detalle__texto">{{ v.historial }}</p>
+        </section>
 
         <hr class="filete-cromo" aria-hidden="true" />
 

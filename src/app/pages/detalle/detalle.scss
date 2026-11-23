@@ -3,11 +3,16 @@
 .detalle__ficha {
   display: grid;
   gap: $space-lg;
-  max-width: 56rem;
+  max-width: 62rem;
 
   @media (min-width: $bp-tablet) {
     grid-template-columns: 180px 1fr;
     align-items: start;
+  }
+
+  @media (min-width: $bp-wide) {
+    max-width: 68rem;
+    gap: $space-xl;
   }
 }
 
@@ -21,7 +26,15 @@
 .detalle__contenido {
   display: flex;
   flex-direction: column;
-  gap: $space-sm;
+  gap: $space-md;
+}
+
+.detalle__imagen {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: 1px solid $color-filete-tinta;
+  border-radius: $radius-control;
 }
 
 .detalle__modelo {
@@ -33,8 +46,44 @@
 
 .detalle__texto {
   margin: 0;
+  max-width: 65ch;
   font-size: 16px;
   line-height: 1.55;
+}
+
+.detalle__especificaciones {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-sm;
+  margin: 0;
+  padding-block: $space-md;
+  border-top: 1px solid $color-filete-tinta;
+  border-bottom: 1px solid $color-filete-tinta;
+
+  @media (min-width: $bp-tablet) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: $space-md;
+  }
+}
+
+.detalle__dato {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+}
+
+.detalle__valor {
+  margin: 0;
+  font-family: $font-label;
+  font-size: 18px;
+  font-weight: 600;
+  color: $color-tinta;
+}
+
+.detalle__historial {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
 }
 
 .detalle__aviso {

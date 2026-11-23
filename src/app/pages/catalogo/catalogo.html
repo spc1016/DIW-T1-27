@@ -108,6 +108,15 @@
       <div class="pagina__grid">
         @for (vehiculo of vehiculosFiltrados(); track vehiculo.id) {
           <article class="marco-sobrio catalogo__tarjeta">
+            <img
+              class="catalogo__imagen"
+              [src]="vehiculo.imagen"
+              [alt]="vehiculo.imagenAlt"
+              width="640"
+              height="400"
+              loading="lazy"
+            />
+
             <div class="catalogo__cabecera-ficha">
               <span
                 class="dorsal-circular"
@@ -126,7 +135,9 @@
             </div>
 
             <div class="catalogo__cuerpo">
-              <p class="etiqueta-ed1 numero-tabular">AÑO DE HOMOLOGACIÓN · {{ vehiculo.anio }}</p>
+              <p class="etiqueta-ed1 numero-tabular">
+                AÑO {{ vehiculo.anio }} · {{ vehiculo.potencia }}
+              </p>
               <h2 class="catalogo__modelo titulo-cursiva">{{ vehiculo.modelo }}</h2>
               <p class="catalogo__resumen">{{ vehiculo.resumen }}</p>
             </div>

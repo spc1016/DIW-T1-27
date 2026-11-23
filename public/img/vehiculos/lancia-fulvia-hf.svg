@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Lancia Fulvia Coupé 1.6 HF · Dorsal 27">
+  <rect width="640" height="360" fill="#6B1F2A" />
+  <rect x="18" y="18" width="604" height="324" fill="none" stroke="#EEE8DC" stroke-opacity="0.28" stroke-width="1.5" />
+  <line x1="56" y1="264" x2="584" y2="264" stroke="#EEE8DC" stroke-opacity="0.65" stroke-width="2" />
+  <path d="M 118 228 L 136 178 L 228 172 L 288 128 L 418 128 L 478 172 L 534 184 L 530 232 L 118 232 Z" fill="none" stroke="#EEE8DC" stroke-width="3" stroke-linejoin="round" />
+  <circle cx="204" cy="236" r="34" fill="#141816" stroke="#EEE8DC" stroke-width="3" />
+  <circle cx="446" cy="236" r="34" fill="#141816" stroke="#EEE8DC" stroke-width="3" />
+  <text x="40" y="54" font-family="sans-serif" font-size="13" font-weight="600" letter-spacing="3" fill="#E3A0A8">DORSAL 27 · LANCIA FULVIA HF · 1972</text>
+</svg>

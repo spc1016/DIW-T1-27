@@ -7,3 +7,77 @@
 .programa__tarjeta {
   grid-column: span 4;
 }
+
+.programa__cronograma-bloque {
+  margin-top: $space-xl;
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+}
+
+.programa__cronograma-cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: $space-sm;
+}
+
+.programa__cronograma-titulo {
+  margin: $space-xs 0 0;
+  font-size: 26px;
+  line-height: 1.15;
+  color: $color-tinta;
+}
+
+.programa__cronograma {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid $color-filete-tinta;
+}
+
+.programa__hito {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-xs;
+  padding-block: $space-md;
+  border-bottom: 1px solid $color-filete-tinta;
+  align-items: start;
+
+  @media (min-width: $bp-tablet) {
+    grid-template-columns: 88px 1fr auto;
+    gap: $space-md;
+    align-items: center;
+  }
+
+  @media (min-width: $bp-wide) {
+    grid-template-columns: 108px 1fr auto;
+    padding-block: $space-md;
+  }
+}
+
+.programa__hora {
+  font-family: $font-label;
+  font-size: 22px;
+  font-weight: 600;
+  color: $color-verde-carreras;
+}
+
+.programa__hito-detalle {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.programa__hito-titulo {
+  font-size: 16px;
+  font-weight: 500;
+  color: $color-tinta;
+}
+
+.programa__hito-lugar {
+  font-size: 14px;
+  color: $color-tinta;
+  opacity: 0.8;
+}

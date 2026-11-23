@@ -25,6 +25,57 @@
       "controles": "05"
     }
   ],
+  "cronograma": [
+    {
+      "hora": "07:45",
+      "titulo": "Apertura de parque cerrado y verificaciones",
+      "lugar": "Lonja del Monasterio · San Lorenzo",
+      "estado": "OBLIGATORIO",
+      "tono": "cuero"
+    },
+    {
+      "hora": "08:30",
+      "titulo": "Briefing oficial de dirección de carrera",
+      "lugar": "Carpa de Comisarios · Salida",
+      "estado": "OFICIAL",
+      "tono": "verde"
+    },
+    {
+      "hora": "09:00",
+      "titulo": "Salida primer dorsal · TC-01 Cruz Verde",
+      "lugar": "Carretera M-505 · Sector Sur",
+      "estado": "TRAMO",
+      "tono": "verde"
+    },
+    {
+      "hora": "09:40",
+      "titulo": "TC-02 · Subida a Navacerrada (42.0 km/h)",
+      "lugar": "Puerto de Navacerrada · Sector Norte",
+      "estado": "EN DIRECTO",
+      "tono": "burdeos"
+    },
+    {
+      "hora": "10:35",
+      "titulo": "TC-03 · Valle del Lozoya con control secreto",
+      "lugar": "Valle del Lozoya · Enlace Sierra",
+      "estado": "TRAMO",
+      "tono": "verde"
+    },
+    {
+      "hora": "13:00",
+      "titulo": "Reagrupamiento y almuerzo de participantes",
+      "lugar": "Parque Cerrado Rascafría",
+      "estado": "NEUTRALIZADO",
+      "tono": "cuero"
+    },
+    {
+      "hora": "16:30",
+      "titulo": "Publicación de tiempos y entrega de trofeos",
+      "lugar": "Lonja del Monasterio · Meta",
+      "estado": "OFICIAL",
+      "tono": "verde"
+    }
+  ],
   "clasificacion": [
     {
       "posicion": "1",

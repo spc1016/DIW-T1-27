@@ -52,6 +52,18 @@
   flex-direction: column;
   justify-content: space-between;
   gap: $space-md;
+
+  @media (min-width: $bp-wide) {
+    gap: $space-lg;
+  }
+}
+
+.catalogo__imagen {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border: 1px solid $color-filete-tinta;
+  border-radius: $radius-control;
 }
 
 .catalogo__cabecera-ficha {

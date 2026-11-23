@@ -11,6 +11,10 @@ const MOCK_VEHICULOS: readonly VehiculoMuestra[] = [
     anio: 1973,
     categoria: 'GRAN TURISMO',
     tono: 'verde',
+    potencia: '210 CV · 2.687 cc',
+    historial: 'Chasis serie Touring homologado FIA Grupo 4.',
+    imagen: '/img/vehiculos/porsche-911-rs.svg',
+    imagenAlt: 'Ilustración Porsche 911 Carrera RS 2.7 dorsal 14',
     resumen: 'Unidad homologada con doble cronometraje mecánico.',
   },
   {
@@ -20,6 +24,10 @@ const MOCK_VEHICULOS: readonly VehiculoMuestra[] = [
     anio: 1972,
     categoria: 'TURISMO HISTÓRICO',
     tono: 'burdeos',
+    potencia: '115 CV · 1.584 cc',
+    historial: 'Preparación Fanalone de tracción delantera.',
+    imagen: '/img/vehiculos/lancia-fulvia-hf.svg',
+    imagenAlt: 'Ilustración Lancia Fulvia Coupé 1.6 HF dorsal 27',
     resumen: 'Preparación de regularidad clásica para tramos de montaña.',
   },
   {
@@ -29,6 +37,10 @@ const MOCK_VEHICULOS: readonly VehiculoMuestra[] = [
     anio: 1967,
     categoria: 'SPORT CLÁSICO',
     tono: 'verde',
+    potencia: '115 CV · 1.570 cc',
+    historial: 'Carrocería en aleación ligera Peraluman 25.',
+    imagen: '/img/vehiculos/alfa-giulia-gta.svg',
+    imagenAlt: 'Ilustración Alfa Romeo Giulia Sprint GTA dorsal 42',
     resumen: 'Carrocería ligera verificada en parque cerrado.',
   },
 ];

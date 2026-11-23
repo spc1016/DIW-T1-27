@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { NavegacionService } from '../../../navegacion-service';
 
 @Component({
@@ -12,4 +12,5 @@ export class ItinerarioPrograma {
 
   protected readonly estadoCarga = this.navegacionService.estadoItinerario;
   protected readonly tramos = this.navegacionService.tramos;
+  protected readonly cronograma = computed(() => this.navegacionService.cronograma());
 }
