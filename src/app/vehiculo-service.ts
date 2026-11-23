@@ -50,13 +50,26 @@ export class VehiculoService {
     }
 
     const termino = filtro.trim().toLowerCase();
-    return lista.filter(
-      (vehiculo) =>
+    if (!termino) {
+      return [...lista];
+    }
+
+    const terminoSinCeros = termino.replace(/^0+/, '');
+    return lista.filter((vehiculo) => {
+      const dorsalLower = vehiculo.dorsal.toLowerCase();
+      const dorsalSinCeros = dorsalLower.replace(/^0+/, '');
+      const coincideDorsal =
+        dorsalLower.includes(termino) ||
+        (terminoSinCeros.length > 0 && dorsalSinCeros === terminoSinCeros);
+
+      return (
         vehiculo.categoria.toLowerCase().includes(termino) ||
         vehiculo.tono.toLowerCase() === termino ||
         vehiculo.modelo.toLowerCase().includes(termino) ||
-        vehiculo.dorsal.toLowerCase().includes(termino),
-    );
+        String(vehiculo.anio).includes(termino) ||
+        coincideDorsal
+      );
+    });
   }
 
   obtenerPorId(id: number): VehiculoMuestra | undefined {

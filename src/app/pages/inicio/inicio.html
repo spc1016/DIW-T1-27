@@ -39,4 +39,111 @@
       }
     </aside>
   </div>
+
+  <section class="inicio__destacados" aria-labelledby="titulo-destacados">
+    <div class="inicio__seccion-cabecera">
+      <div>
+        <p class="etiqueta-ed1">PARQUE CERRADO · SELECCIÓN OFICIAL</p>
+        <h2 id="titulo-destacados" class="inicio__seccion-titulo">Vehículos Destacados</h2>
+      </div>
+      <a class="boton boton--terciario" routerLink="/catalogo">Ver Catálogo Completo</a>
+    </div>
+
+    @if (vehiculosDestacados().length === 0) {
+      <article class="marco-sobrio" aria-live="polite">
+        <p class="inicio__modulo-texto">
+          Consultando los vehículos destacados en la relación oficial del parque cerrado.
+        </p>
+      </article>
+    } @else {
+      <div class="pagina__grid">
+        @for (vehiculo of vehiculosDestacados(); track vehiculo.id) {
+          <article class="marco-sobrio inicio__vehiculo">
+            <img
+              class="inicio__vehiculo-imagen"
+              [src]="'/img/vehiculo-' + vehiculo.tono + '.svg'"
+              [alt]="
+                vehiculo.modelo +
+                ' de ' +
+                vehiculo.anio +
+                ', dorsal ' +
+                vehiculo.dorsal +
+                ', categoría ' +
+                vehiculo.categoria
+              "
+              width="640"
+              height="360"
+            />
+            <div class="inicio__vehiculo-meta">
+              <span
+                class="dorsal-circular"
+                [class.dorsal-circular--burdeos]="vehiculo.tono === 'burdeos'"
+                [attr.aria-label]="'Dorsal ' + vehiculo.dorsal"
+              >
+                {{ vehiculo.dorsal }}
+              </span>
+              <span
+                class="placa-semantica"
+                [class.placa-semantica--verde]="vehiculo.tono === 'verde'"
+                [class.placa-semantica--burdeos]="vehiculo.tono === 'burdeos'"
+              >
+                {{ vehiculo.categoria }}
+              </span>
+            </div>
+            <p class="etiqueta-ed1 numero-tabular">HOMOLOGACIÓN · {{ vehiculo.anio }}</p>
+            <h3 class="inicio__modulo-titulo titulo-cursiva">{{ vehiculo.modelo }}</h3>
+            <p class="inicio__modulo-texto">{{ vehiculo.resumen }}</p>
+            <a class="boton boton--primario" [routerLink]="['/catalogo', vehiculo.id]">
+              Ver Ficha Dorsal {{ vehiculo.dorsal }}
+            </a>
+          </article>
+        }
+      </div>
+    }
+  </section>
+
+  <section class="inicio__encuentro" aria-labelledby="titulo-encuentro">
+    <div class="inicio__seccion-cabecera">
+      <div>
+        <p class="etiqueta-ed1">LOCALIZACIÓN Y PUNTO DE ENCUENTRO</p>
+        <h2 id="titulo-encuentro" class="inicio__seccion-titulo">
+          Parque Cerrado de Salida · San Lorenzo
+        </h2>
+      </div>
+      <a class="boton boton--secundario" routerLink="/itinerario/recorrido">
+        Consultar Itinerario
+      </a>
+    </div>
+
+    <article class="marco-sobrio inicio__encuentro-caja">
+      <div class="inicio__mapa-marco">
+        <img
+          class="inicio__mapa"
+          [src]="puntoEncuentro.mapaSrc"
+          [alt]="puntoEncuentro.mapaAlt"
+          width="800"
+          height="440"
+        />
+      </div>
+
+      <dl class="inicio__encuentro-datos">
+        <div class="inicio__encuentro-fila">
+          <dt class="etiqueta-ed1">EMPLAZAMIENTO</dt>
+          <dd class="inicio__encuentro-valor">{{ puntoEncuentro.recinto }}</dd>
+        </div>
+        <div class="inicio__encuentro-fila">
+          <dt class="etiqueta-ed1">LOCALIDAD</dt>
+          <dd class="inicio__encuentro-valor">{{ puntoEncuentro.localidad }}</dd>
+        </div>
+        <div class="inicio__encuentro-fila">
+          <dt class="etiqueta-ed1">COORDENADAS</dt>
+          <dd class="inicio__encuentro-valor numero-tabular">{{ puntoEncuentro.coordenadas }}</dd>
+        </div>
+        <div class="inicio__encuentro-fila">
+          <dt class="etiqueta-ed1">HORARIO OFICIAL</dt>
+          <dd class="inicio__encuentro-valor numero-tabular">{{ puntoEncuentro.horarioParque }}</dd>
+        </div>
+      </dl>
+    </article>
+  </section>
 </section>

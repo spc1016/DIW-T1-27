@@ -95,6 +95,10 @@ img {
   @media (min-width: $bp-desktop) {
     padding: $space-xl $margin-desktop $space-2xl;
   }
+
+  @media (min-width: $bp-wide) {
+    padding: $space-2xl $margin-desktop $space-2xl;
+  }
 }
 
 .pagina__cabecera {

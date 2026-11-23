@@ -142,6 +142,10 @@ describe('App Routes', () => {
       'I Rally & Concentración Histórica Classic Motor',
     );
     expect(harness.routeNativeElement?.querySelector('app-cuadro-instrumentos')).toBeTruthy();
+    expect(harness.routeNativeElement?.querySelectorAll('.inicio__vehiculo').length).toBe(3);
+    expect(
+      harness.routeNativeElement?.querySelector('img.inicio__mapa')?.getAttribute('alt'),
+    ).toBeTruthy();
   });
 
   it('debe cargar las páginas principales con la biblioteca Ed. I', async () => {
@@ -154,6 +158,12 @@ describe('App Routes', () => {
     expect(router.url).toBe('/catalogo');
     expect(harness.routeNativeElement?.textContent).toContain('Catálogo de Vehículos Admitidos');
     expect(harness.routeNativeElement?.querySelectorAll('.dorsal-circular').length).toBe(3);
+
+    await harness.navigateByUrl('/catalogo?categoria=GRAN%20TURISMO');
+    responderMocksPendientes();
+    harness.detectChanges();
+    expect(harness.routeNativeElement?.querySelectorAll('.catalogo__tarjeta').length).toBe(1);
+    expect(harness.routeNativeElement?.textContent).toContain('MOSTRANDO 1 DE 3 DORSALES');
 
     await harness.navigateByUrl('/inscripcion');
     responderMocksPendientes();

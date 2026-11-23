@@ -28,47 +28,125 @@
       </p>
     </article>
   } @else {
-    <div class="pagina__grid">
-      @for (vehiculo of muestras(); track vehiculo.id) {
-        <article class="marco-sobrio catalogo__tarjeta">
-          <div class="catalogo__cabecera-ficha">
-            <span
-              class="dorsal-circular"
-              [class.dorsal-circular--burdeos]="vehiculo.tono === 'burdeos'"
-              [attr.aria-label]="'Dorsal ' + vehiculo.dorsal"
-            >
-              {{ vehiculo.dorsal }}
-            </span>
-            <span
-              class="placa-semantica"
-              [class.placa-semantica--verde]="vehiculo.tono === 'verde'"
-              [class.placa-semantica--burdeos]="vehiculo.tono === 'burdeos'"
-            >
-              {{ vehiculo.categoria }}
-            </span>
-          </div>
+    <section class="marco-sobrio catalogo__filtros" aria-label="Filtros del catálogo de vehículos">
+      <div class="catalogo__controles">
+        <div class="campo-carnet">
+          <label class="campo-carnet__etiqueta" for="catalogo-busqueda">
+            BUSCAR MODELO O DORSAL
+          </label>
+          <input
+            id="catalogo-busqueda"
+            class="campo-carnet__entrada"
+            type="search"
+            placeholder="Ej. Porsche, Lancia o 14"
+            [value]="terminoBusqueda()"
+            (input)="actualizarBusqueda($event)"
+          />
+        </div>
 
-          <div class="catalogo__cuerpo">
-            <p class="etiqueta-ed1 numero-tabular">AÑO DE HOMOLOGACIÓN · {{ vehiculo.anio }}</p>
-            <h2 class="catalogo__modelo titulo-cursiva">{{ vehiculo.modelo }}</h2>
-            <p class="catalogo__resumen">{{ vehiculo.resumen }}</p>
-          </div>
+        <div class="campo-carnet">
+          <label class="campo-carnet__etiqueta" for="catalogo-categoria">CATEGORÍA</label>
+          <select
+            id="catalogo-categoria"
+            class="campo-carnet__entrada"
+            [value]="categoriaSeleccionada()"
+            (change)="actualizarCategoria($event)"
+          >
+            <option value="TODAS">Todas las categorías</option>
+            @for (cat of categoriasDisponibles(); track cat) {
+              <option [value]="cat">{{ cat }}</option>
+            }
+          </select>
+        </div>
 
-          <div class="catalogo__acciones">
-            <a class="boton boton--primario" [routerLink]="['/catalogo', vehiculo.id]">
-              Ver Ficha Dorsal {{ vehiculo.dorsal }}
-            </a>
-            <button
-              type="button"
-              class="boton boton--secundario"
-              (click)="abrirDetalle(vehiculo.id)"
-            >
-              Abrir por Router
-            </button>
-          </div>
-        </article>
-      }
-    </div>
+        <div class="campo-carnet">
+          <label class="campo-carnet__etiqueta" for="catalogo-epoca">ÉPOCA DE FABRICACIÓN</label>
+          <select
+            id="catalogo-epoca"
+            class="campo-carnet__entrada"
+            [value]="epocaSeleccionada()"
+            (change)="actualizarEpoca($event)"
+          >
+            <option value="TODAS">Todas las épocas (1925–1975)</option>
+            <option value="pre-1960">Anteriores a 1960</option>
+            <option value="1960-1969">Década 1960–1969</option>
+            <option value="1970-1975">Década 1970–1975</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="catalogo__barra-estado">
+        <p class="etiqueta-ed1 numero-tabular catalogo__contador" aria-live="polite">
+          MOSTRANDO {{ vehiculosFiltrados().length }} DE {{ muestras().length }} DORSALES
+        </p>
+
+        @if (hayFiltrosActivos()) {
+          <button type="button" class="boton boton--terciario" (click)="limpiarFiltros()">
+            Limpiar filtros
+          </button>
+        }
+      </div>
+    </section>
+
+    @if (vehiculosFiltrados().length === 0) {
+      <article class="marco-sobrio catalogo__vacio" aria-live="polite">
+        <p class="etiqueta-ed1">CONTROL DE PARQUE · SIN COINCIDENCIAS</p>
+        <h2 class="catalogo__modelo titulo-cursiva">
+          Ningún dorsal coincide con los criterios seleccionados.
+        </h2>
+        <p class="catalogo__resumen">
+          Ajuste la búsqueda o restablezca los filtros para consultar la relación completa del
+          parque cerrado.
+        </p>
+        <div class="catalogo__acciones">
+          <button type="button" class="boton boton--terciario" (click)="limpiarFiltros()">
+            Limpiar filtros
+          </button>
+        </div>
+      </article>
+    } @else {
+      <div class="pagina__grid">
+        @for (vehiculo of vehiculosFiltrados(); track vehiculo.id) {
+          <article class="marco-sobrio catalogo__tarjeta">
+            <div class="catalogo__cabecera-ficha">
+              <span
+                class="dorsal-circular"
+                [class.dorsal-circular--burdeos]="vehiculo.tono === 'burdeos'"
+                [attr.aria-label]="'Dorsal ' + vehiculo.dorsal"
+              >
+                {{ vehiculo.dorsal }}
+              </span>
+              <span
+                class="placa-semantica"
+                [class.placa-semantica--verde]="vehiculo.tono === 'verde'"
+                [class.placa-semantica--burdeos]="vehiculo.tono === 'burdeos'"
+              >
+                {{ vehiculo.categoria }}
+              </span>
+            </div>
+
+            <div class="catalogo__cuerpo">
+              <p class="etiqueta-ed1 numero-tabular">AÑO DE HOMOLOGACIÓN · {{ vehiculo.anio }}</p>
+              <h2 class="catalogo__modelo titulo-cursiva">{{ vehiculo.modelo }}</h2>
+              <p class="catalogo__resumen">{{ vehiculo.resumen }}</p>
+            </div>
+
+            <div class="catalogo__acciones">
+              <a class="boton boton--primario" [routerLink]="['/catalogo', vehiculo.id]">
+                Ver Ficha Dorsal {{ vehiculo.dorsal }}
+              </a>
+              <button
+                type="button"
+                class="boton boton--secundario"
+                (click)="abrirDetalle(vehiculo.id)"
+              >
+                Abrir por Router
+              </button>
+            </div>
+          </article>
+        }
+      </div>
+    }
   }
 
   <div class="pagina__acciones">
