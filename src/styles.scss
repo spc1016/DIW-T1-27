@@ -435,7 +435,7 @@ img {
   width: 100%;
   border-collapse: collapse;
 
-  thead {
+  &__cabecera {
     display: none;
 
     @media (min-width: $bp-tablet) {
@@ -443,7 +443,7 @@ img {
     }
   }
 
-  tbody {
+  &__cuerpo {
     display: grid;
     gap: $space-sm;
 
@@ -452,7 +452,7 @@ img {
     }
   }
 
-  tr {
+  &__fila {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: $space-xs $space-md;
@@ -467,13 +467,13 @@ img {
       border-radius: 0;
       padding: 0;
     }
-
-    &.tabla-clasificacion__lider {
-      background-color: $color-lider-cuero;
-    }
   }
 
-  th {
+  &__lider {
+    background-color: $color-lider-cuero;
+  }
+
+  &__encabezado {
     padding: $space-sm $space-md;
     border-bottom: 2px solid $color-tinta;
     font-family: $font-label;
@@ -483,13 +483,9 @@ img {
     text-transform: uppercase;
     text-align: left;
     color: $color-tinta;
-
-    &.tabla-clasificacion__num {
-      text-align: right;
-    }
   }
 
-  td {
+  &__celda {
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -500,19 +496,19 @@ img {
       padding: $space-sm $space-md;
       vertical-align: middle;
     }
+  }
 
-    &.tabla-clasificacion__num {
-      font-variant-numeric: tabular-nums lining-nums;
+  &__num {
+    font-variant-numeric: tabular-nums lining-nums;
 
-      @media (min-width: $bp-tablet) {
-        text-align: right;
-      }
+    @media (min-width: $bp-tablet) {
+      text-align: right;
     }
+  }
 
-    &.tabla-clasificacion__penalizacion {
-      color: $color-burdeos;
-      font-weight: 600;
-    }
+  &__penalizacion {
+    color: $color-burdeos;
+    font-weight: 600;
   }
 
   &__movil {

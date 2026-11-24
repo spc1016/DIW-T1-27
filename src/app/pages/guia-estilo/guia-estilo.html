@@ -146,36 +146,39 @@
       <article class="marco-sobrio guia__completo">
         <p class="etiqueta-ed1">TABLA DE CLASIFICACIÓN · LÍDER CON TINTE CUERO 10%</p>
         <table class="tabla-clasificacion" aria-label="Clasificación de muestra Ed. I">
-          <thead>
-            <tr>
-              <th class="tabla-clasificacion__num">Pos.</th>
-              <th class="tabla-clasificacion__num">Dorsal</th>
-              <th>Equipo</th>
-              <th>Vehículo</th>
-              <th class="tabla-clasificacion__num">Desviación</th>
+          <thead class="tabla-clasificacion__cabecera">
+            <tr class="tabla-clasificacion__fila">
+              <th class="tabla-clasificacion__encabezado tabla-clasificacion__num">Pos.</th>
+              <th class="tabla-clasificacion__encabezado tabla-clasificacion__num">Dorsal</th>
+              <th class="tabla-clasificacion__encabezado">Equipo</th>
+              <th class="tabla-clasificacion__encabezado">Vehículo</th>
+              <th class="tabla-clasificacion__encabezado tabla-clasificacion__num">Desviación</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="tabla-clasificacion__cuerpo">
             @for (fila of clasificacion; track fila.dorsal) {
-              <tr [class.tabla-clasificacion__lider]="fila.esLider">
-                <td class="tabla-clasificacion__num">
+              <tr
+                class="tabla-clasificacion__fila"
+                [class.tabla-clasificacion__lider]="fila.esLider"
+              >
+                <td class="tabla-clasificacion__celda tabla-clasificacion__num">
                   <span class="tabla-clasificacion__movil">POS.</span>
                   {{ fila.posicion }}
                 </td>
-                <td class="tabla-clasificacion__num">
+                <td class="tabla-clasificacion__celda tabla-clasificacion__num">
                   <span class="tabla-clasificacion__movil">DORSAL</span>
                   {{ fila.dorsal }}
                 </td>
-                <td>
+                <td class="tabla-clasificacion__celda">
                   <span class="tabla-clasificacion__movil">EQUIPO</span>
                   {{ fila.equipo }}
                 </td>
-                <td>
+                <td class="tabla-clasificacion__celda">
                   <span class="tabla-clasificacion__movil">VEHÍCULO</span>
                   {{ fila.vehiculo }}
                 </td>
                 <td
-                  class="tabla-clasificacion__num"
+                  class="tabla-clasificacion__celda tabla-clasificacion__num"
                   [class.tabla-clasificacion__penalizacion]="fila.penalizado"
                 >
                   <span class="tabla-clasificacion__movil">DESVIACIÓN</span>
